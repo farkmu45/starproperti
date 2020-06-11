@@ -17,8 +17,10 @@ class CreatePropertiesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('type_id');
             $table->unsignedBigInteger('status_id');
+            $table->unsignedBigInteger('user_id');
             $table->foreign('status_id')->references('id')->on('property_status')->onDelete('restrict')->onUpdate('cascade');
             $table->foreign('type_id')->references('id')->on('property_types')->onDelete('restrict')->onUpdate('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('restrict')->onUpdate('cascade');
             $table->string('title', 60);
             $table->string('location', 70);
             $table->string('direction', 40);
