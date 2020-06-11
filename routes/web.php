@@ -16,11 +16,14 @@ Route::get('/', 'FrontEndController@index');
 
 Route::get('/properties/1', 'FrontEndController@propertyDetails');
 Route::get('/search', 'FrontEndController@search');
-Route::get('/profile', 'FrontEndController@profile');
 
 
 Route::group(['prefix' => 'agent'], function () {
-    Route::get('/', 'FrontEndController@dashboard');
+    Route::get('/', 'FrontEndController@profile');
+    Route::patch('/', 'FrontEndController@profileUpdate');
+    Route::get('/dashboard', 'FrontEndController@dashboard');
+
+    Route::get('/properties', 'FrontEndController@allProperties');
     Route::get('/properties/add', 'FrontEndController@add');
 });
 

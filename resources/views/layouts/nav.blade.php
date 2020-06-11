@@ -14,7 +14,7 @@
                <div class="col-md-4">
                    <div class="header-top-nav">
                        @if (Request::is('login'))
-                       <a href="/register" class="header-top-button white-bg">Daftar</a>
+                   <a href="/register" class="header-top-button white-bg">Daftar</a>
                        @elseif(Request::is('register'))
                        <a href="/login" class="header-top-button">Masuk</a>
                        @else
@@ -27,16 +27,27 @@
                @auth
                <div class="col-md-4">
                    <div class="header-top-nav">
-                       <form id="logout" action="/logout" method="post">
+                    <a href="/agent" class="header-top-button white-bg">Profil</a>
+                       <form id="logout" hidden action="/logout" method="post">
                            @csrf
-                           <button class="header-top-button">Logout</button>
-                       </form>
+                        </form>
+                        <button id="btn_logout" class="header-top-button">Logout</button>
                    </div>
                </div>
                @endauth
            </div>
        </div>
    </div>
+
+   <script>
+       @auth
+       var logout = document.getElementById('logout')
+        document.getElementById('btn_logout').addEventListener('click',function (e) {
+            e.preventDefault();
+            logout.submit()
+        })
+        @endauth
+   </script>
    <!-- Top Nav End -->
 
    <!-- Header -->
