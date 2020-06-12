@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
 use Illuminate\Http\File;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File as FacadesFile;
 use Illuminate\Support\Facades\Storage;
 
@@ -68,18 +66,8 @@ class FrontEndController extends Controller
         return view('property-details');
     }
 
-    public function add()
-    {
-        return view('agent.properties.add');
-    }
-
     public function search()
     {
         return view('search');
-    }
-
-    public function allProperties()
-    {
-        return view('agent.properties.all-properties');
     }
 }
