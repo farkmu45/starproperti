@@ -151,71 +151,58 @@
                     <div class="row">
                       <div class="col-xs-12">
                         <div class="form-group">
-                          <label for="listing_name">Judul</label>
-                          <input id="listing_name" type="text" class="form-control form-single-element" placeholder="Ex: Anderson Hotel" aria-required="true">
+                          <label for="title">Judul</label>
+                          <input id="title" name="title" type="text" class="form-control">
                         </div>
 
                       </div>
-                      <!-- <div class="col-xs-12">
-                        <div class="add-listing-map-block">
-                          <div class="add-listing-map" id="location" data-lat="40.713355" data-lng="-74.005535" data-zoom="12"></div>
-                        </div>
-                        <div class="form-group">
-                          <label for="listing_address">Location (Full Address)</label>
-                          <input id="listing_address" type="text" class="form-control" placeholder="Find your place in gogle map" aria-required="true">
-                        </div>
-                        <div class="form-group">
-                          <label for="listing_region">Listing Region</label>
-                          <input id="listing_region" type="text" class="form-control" placeholder="Select your listing region" aria-required="true">
-                        </div>
-                      </div> -->
                       <div class="col-lg-6">
                         <div class="form-group">
-                          <label for="listing_user_name">Luas Tanah</label>
-                          <input id="listing_user_name" type="number" class="form-control" placeholder="Enter your full name here" aria-required="true">
+                          <label for="surface_area">Luas Tanah</label>
+                          <input id="surface_area" type="number" class="form-control" placeholder="Dalam satuan meter persegi" aria-required="true">
                         </div>
                       </div>
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="listing_user_email">Luas Bangunan</label>
-                          <input id="listing_user_email" type="number" class="form-control" placeholder="Enter your email here" aria-required="true">
+                          <input id="listing_user_email" type="number" class="form-control" placeholder="" aria-required="true">
                         </div>
                       </div>
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="listing_user_email">Lokasi</label>
-                          <input id="listing_user_email" type="email" class="form-control" placeholder="Enter your email here" aria-required="true">
+                          <input id="listing_user_email" type="text" class="form-control" placeholder="" aria-required="true">
                         </div>
                       </div>
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="listing_user_email">Arah hadap</label>
-                          <input id="listing_user_email" type="email" class="form-control" placeholder="Enter your email here" aria-required="true">
+                          <input id="listing_user_email" type="text" class="form-control" placeholder="" aria-required="true">
                         </div>
                       </div>
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="listing_user_email">Kamar Mandi</label>
-                          <input id="listing_user_email" type="email" class="form-control" placeholder="Enter your email here" aria-required="true">
+                          <input id="listing_user_email" type="number" class="form-control" placeholder="" aria-required="true">
                         </div>
                       </div>
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="listing_user_email">Kamar Tidur</label>
-                          <input id="listing_user_email" type="email" class="form-control" placeholder="Enter your email here" aria-required="true">
+                          <input id="listing_user_email" type="number" class="form-control" placeholder="" aria-required="true">
                         </div>
                       </div>
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="listing_user_email">Harga</label>
-                          <input id="listing_user_email" type="email" class="form-control" placeholder="Enter your email here" aria-required="true">
+                          <input id="listing_user_email" type="number" class="form-control" placeholder="" aria-required="true">
                         </div>
                       </div>
                       <div class="col-sm-6">
                         <div class="form-group">
                           <label>Satuan Harga</label>
                           <select id="listing_price" class="form-control">
-                            <option>Default select</option>
+                            <option>Pilih</option>
                             <option>Price One</option>
                             <option>Price Two</option>
                             <option>Price Three</option>
@@ -226,35 +213,35 @@
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="listing_user_email">Listrik</label>
-                          <input id="listing_user_email" type="email" class="form-control" placeholder="Enter your email here" aria-required="true">
+                          <input id="listing_user_email" type="email" class="form-control" placeholder="" aria-required="true">
                         </div>
                       </div>
 
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="listing_user_email">Sumber Air</label>
-                          <input id="listing_user_email" type="email" class="form-control" placeholder="Enter your email here" aria-required="true">
+                          <input id="listing_user_email" type="email" class="form-control" placeholder="" aria-required="true">
                         </div>
                       </div>
 
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="listing_user_email">Legalitas</label>
-                          <input id="listing_user_email" type="email" class="form-control" placeholder="Enter your email here" aria-required="true">
+                          <input id="listing_user_email" type="email" class="form-control" placeholder="" aria-required="true">
                         </div>
                       </div>
 
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="listing_user_email">Garasi</label>
-                          <input id="listing_user_email" type="email" class="form-control" placeholder="Enter your email here" aria-required="true">
+                          <input id="listing_user_email" type="email" class="form-control" placeholder="" aria-required="true">
                         </div>
                       </div>
 
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="listing_user_email">Nama</label>
-                          <input id="listing_user_email" type="email" class="form-control" placeholder="Enter your email here" aria-required="true">
+                          <input id="listing_user_email" type="email" class="form-control" placeholder="" aria-required="true">
                         </div>
                       </div>
 

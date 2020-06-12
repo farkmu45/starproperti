@@ -27,7 +27,7 @@ Route::group(['prefix' => 'agent'], function () {
     Route::get('/properties/add', 'FrontEndController@add');
 });
 
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function () {
     Route::get('/dashboard', 'AdminController@index');
     Route::resource('/slides', 'Admin\SliderController');
     Route::resource('/popups', 'Admin\PopupController');
