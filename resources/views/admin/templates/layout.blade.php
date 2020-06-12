@@ -286,7 +286,7 @@
         <script>
             $.toast({
             heading: "{{session('status')}}",
-            // text: 'Use the predefined ones, or specify a custom position object.',
+            text: "Your data {{session('status')}}",
             position: 'top-right',
             loaderBg:'#ff6849',
             icon: 'success',
