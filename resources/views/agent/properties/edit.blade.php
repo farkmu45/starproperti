@@ -46,13 +46,7 @@
   <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
   <script>
     tinymce.init({
-      selector: '#mytextarea',
-      plugins: [
-        "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
-        "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
-        "save table contextmenu directionality emoticons template paste textcolor"
-      ],
-      toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons",
+      selector: '#mytextarea'
     });
   </script>
 
@@ -81,7 +75,7 @@
             <div class="user-name">
               <h5><a href="#">Maria K.Marlin</a></h5>
             </div>
-            <div class="info">
+            {{-- <div class="info">
               <div class="profile-info">
                 <h6>85%</h6>
                 <p>Profile comp</p>
@@ -92,7 +86,7 @@
                 <p>Notification</p>
                 <a href="#" class="button primary-bg">Log Out</a>
               </div>
-            </div>
+            </div> --}}
           </div>
           <div class="dashboard-sidenav">
             <ul class="dashboard-nav" id="dashboard-nav">
@@ -150,8 +144,9 @@
         <div class="col-md-6">
           <div class="dashboard-body-block">
             <div class="cpdv-add-listing-container">
-              <form action="/agent/properties" method="POST" class="add-listing-form" enctype="multipart/form-data">
+            <form action="/agent/properties/{{$property->id}}" method="POST" class="add-listing-form" enctype="multipart/form-data">
                 @csrf
+                @method('PATCH')
                 <div class="listing-form-section business-information-container">
                   <h4 class="title">Tambah Properti</h4>
                   <div class="listing-section-body">
@@ -159,50 +154,50 @@
                       <div class="col-xs-12">
                         <div class="form-group">
                           <label for="title">Judul</label>
-                          <input id="title" name="title" type="text" value="{{old('title')}}" class="form-control">
+                        <input id="title" name="title" type="text" value="{{$property->title}}" class="form-control">
                         </div>
 
                       </div>
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="surface_area">Luas Tanah</label>
-                          <input id="surface_area" name="surface_area" type="number" class="form-control" value="{{old('surface_area')}}" placeholder="Dalam satuan meter persegi" aria-required="true">
+                          <input id="surface_area" name="surface_area" type="number" class="form-control" value="{{$property->surface_area}}" placeholder="Dalam satuan meter persegi" aria-required="true">
                         </div>
                       </div>
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="building_area">Luas Bangunan</label>
-                          <input id="building_area" name="building_area" type="number" class="form-control" value="{{old('building_area')}}" placeholder="Dalam satuan meter persegi" aria-required="true">
+                          <input id="building_area" name="building_area" type="number" class="form-control" value="{{$property->building_area}}" placeholder="Dalam satuan meter persegi" aria-required="true">
                         </div>
                       </div>
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="location">Lokasi</label>
-                          <input id="location" name="location" type="text" class="form-control" value="{{old('location')}}" placeholder="" aria-required="true">
+                          <input id="location" name="location" type="text" class="form-control" value="{{$property->location}}" placeholder="" aria-required="true">
                         </div>
                       </div>
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="direction">Arah hadap</label>
-                          <input id="direction" name="direction" type="text" class="form-control" value="{{old('direction')}}" placeholder="Barat,Timur dll" aria-required="true">
+                          <input id="direction" name="direction" type="text" class="form-control" value="{{$property->direction}}" placeholder="Barat,Timur dll" aria-required="true">
                         </div>
                       </div>
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="bathroom">Kamar Mandi</label>
-                          <input id="bathroom" name="bathroom" type="number" class="form-control" value="{{old('bathroom')}}" placeholder="" aria-required="true">
+                          <input id="bathroom" name="bathroom" type="number" class="form-control" value="{{$property->bathroom}}" placeholder="" aria-required="true">
                         </div>
                       </div>
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="bedroom">Kamar Tidur</label>
-                          <input id="bedroom" name="bedroom" type="number" class="form-control" value="{{old('bedroom')}}" placeholder="" aria-required="true">
+                          <input id="bedroom" name="bedroom" type="number" class="form-control" value="{{$property->bedroom}}" placeholder="" aria-required="true">
                         </div>
                       </div>
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="price">Harga</label>
-                          <input id="price" name="price" type="number" class="form-control" value="{{old('price')}}" placeholder="" aria-required="true">
+                          <input id="price" name="price" type="number" class="form-control" value="{{$property->price}}" placeholder="" aria-required="true">
                         </div>
                       </div>
                       <div class="col-sm-6">
@@ -219,8 +214,8 @@
                         <div class="form-group">
                           <label for="type_id">Tipe Rumah</label>
                           <select id="type_id" name="type_id" class="form-control">
-                            @foreach ($types as $type)
-                            <option value="{{$type->id}}" {{old('type_id') == $type->id ? 'selected' : ''}}>{{$type->name}}</option>
+                            @foreach ($types as $type)    
+                              <option value="{{$type->id}}" {{old('type_id') == $type->id ? 'selected' : ''}}>{{$type->name}}</option>
                             @endforeach
                           </select>
                         </div>
@@ -230,8 +225,8 @@
                         <div class="form-group">
                           <label for="status_id">Status</label>
                           <select id="status_id" name="status_id" class="form-control">
-                            @foreach ($status as $s)
-                            <option value="{{$s->id}}" {{old('status_id') == $s->id ? 'selected' : ''}}>{{$s->name}}</option>
+                            @foreach ($status as $s)    
+                              <option value="{{$s->id}}" {{old('status_id') == $s->id ? 'selected' : ''}}>{{$s->name}}</option>
                             @endforeach
                           </select>
                         </div>
@@ -240,42 +235,42 @@
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="electricity">Listrik</label>
-                          <input id="electricity" name="electricity" value="{{old('electricity')}}" type="number" class="form-control" placeholder="Satuan Watt" aria-required="true">
+                          <input id="electricity" name="electricity" value="{{$property->electricity}}"   type="number" class="form-control" placeholder="Satuan Watt" aria-required="true">
                         </div>
                       </div>
 
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="water">Sumber Air</label>
-                          <input id="water" name="water" type="text" value="{{old('water')}}" class="form-control" placeholder="" aria-required="true">
+                          <input id="water" name="water" type="text" value="{{$property->water}}"  class="form-control" placeholder="" aria-required="true">
                         </div>
                       </div>
 
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="legality">Legalitas</label>
-                          <input id="legality" name="legality" value="{{old('legality')}}" type="text" class="form-control" placeholder="" aria-required="true">
+                          <input id="legality" name="legality" value="{{$property->legality}}"  type="text" class="form-control" placeholder="" aria-required="true">
                         </div>
                       </div>
 
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="garage">Garasi</label>
-                          <input id="garage" name="garage" value="{{old('garage')}}" type="number" class="form-control" placeholder="" aria-required="true">
+                          <input id="garage" name="garage" value="{{$property->garage}}"  type="number" class="form-control" placeholder="" aria-required="true">
                         </div>
                       </div>
 
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="name">Nama</label>
-                          <input id="name" name="name" type="text" value="{{old('name')}}" class="form-control" placeholder="" aria-required="true">
+                          <input id="name" name="name" type="text" value="{{$property->name}}"  class="form-control" placeholder="" aria-required="true">
                         </div>
                       </div>
 
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="phone_number">Nomor Handphone Pemilik</label>
-                          <input id="phone_number" name="phone_number" type="text" value="{{old('phone_number')}}" class="form-control" placeholder="" aria-required="true">
+                          <input id="phone_number" name="phone_number" type="text" value="{{$property->phone_number}}"  class="form-control" placeholder="" aria-required="true">
                         </div>
                       </div>
 
@@ -283,26 +278,26 @@
                       <div class="col-xs-12">
                         <div class="form-group listing-compose-block">
                           <label for="mytextarea">Description</label>
-                          <textarea name="description" id="mytextarea" rows="20" class="tinymce-editor">{{old('description')}}</textarea>
+                        <textarea name="description" id="mytextarea" rows="20" class="tinymce-editor">{{$property->description}}</textarea>
                         </div>
                       </div>
 
                       <div class="col-lg-4">
                         <div class="form-group">
                           <label for="">Foto 1</label>
-                          <input type="file" name="photo[]" data-max-file-size="2M" class="dropify" />
+                        <input type="file" name="photo[]" data-max-file-size="2M" class="dropify" data-default-file="{{isset($property->images[0]) ? asset($property->images[0]->photo) : ''}}" />
                         </div>
                       </div>
                       <div class="col-lg-4">
                         <div class="form-group">
                           <label for="">Foto 2</label>
-                          <input type="file" name="photo[]" data-max-file-size="2M" class="dropify" />
+                          <input type="file" name="photo[]" data-max-file-size="2M" class="dropify" data-default-file="{{isset($property->images[1]) ? asset($property->images[1]->photo) : ''}}" />
                         </div>
                       </div>
                       <div class="col-lg-4">
                         <div class="form-group">
                           <label for="">Foto 3</label>
-                          <input type="file" name="photo[]" data-max-file-size="2M" class="dropify" />
+                          <input type="file" name="photo[]" data-max-file-size="2M" class="dropify" ata-default-file="{{isset($property->images[2]) ? asset($property->images[0]->photo) : ''}}"/>
                         </div>
                       </div>
 
@@ -315,7 +310,7 @@
 
                     </div>
                   </div>
-                  <button type="submit" class="button primary-bg">Tambah</button>
+                  <button type="submit" class="button primary-bg">Update</button>
                 </div>
               </form>
             </div>
@@ -605,6 +600,12 @@
 
   <script>
     $('.dropify').dropify();
+
+    var drEvent = $('.dropify').dropify();
+
+drEvent.on('dropify.afterClear', function(event, element){
+    console.log(element)
+});
   </script>
 </body>
 

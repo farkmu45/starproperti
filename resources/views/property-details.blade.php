@@ -40,47 +40,45 @@
     @include('layouts.nav')
 
     <!-- Subheader -->
-    <div class="cpdv-subheader-bg">
+    <div class="cpdv-subheader-bg" style="background: url({{asset($property->images[0]->photo)}}); background-repeat: no-repeat; background-size:cover; background-position:center; !important">
       <div class="subheader">
         <div class="container">
           <div class="row">
             <div class="col-md-12">
               <div class="property-details-subheader-content">
                 <ul class="breadcrumb">
-                  <li><a href="#">Home</a></li>
-                  <li class="active">Oliver Villas</li>
+                  <li><a href="/">Beranda</a></li>
+                  <li class="active">{{$property->title}}</li>
                 </ul>
                 <div class="property-details">
                   <div class="row">
                     <div class="col-md-4 col-sm-6">
                       <div class="info">
-                        <h3>Olivers Villas <span class="badge">sale</span></h3>
-                        <p class="room-type">Living Room</p>
-                        <p class="address"><i class="fas fa-map-marker-alt"></i> 187, Madison Squre, New York, NY2154215</p>
+                        <h3>{{$property->title}} <span class="badge">{{$property->status->name}}</span></h3>
+                        <p class="room-type">{{$property->type->name}}</p>
+                      <p class="address"><i class="fas fa-map-marker-alt"></i>{{$property->location}}</p>
                       </div>
                     </div>
                     <div class="col-md-4 col-sm-6">
                       <div class="details">
                         <div class="details-listing">
-                          <p>Bedrooms</p>
-                          <h5>05</h5>
+                          <p>Kamar Tidur</p>
+                          <h5>{{$property->bedroom}}</h5>
                         </div>
                         <div class="details-listing">
-                          <p>Washrooms</p>
-                          <h5>06</h5>
+                          <p>Kamar Mandi</p>
+                          <h5>{{$property->bathroom}}</h5>
                         </div>
                         <div class="details-listing">
-                          <p>Size (Sq.ft)</p>
-                          <h5>1650</h5>
+                          <p>Luas</p>
+                        <h5>{{$property->building_area}}m<sup>2</sup> </h5>
                         </div>
                       </div>
                     </div>
                     <div class="col-md-4 col-sm-12">
                       <div class="others">
                         <ul>
-                          <li><span>RP. 22,500.00</span></li>
-                          <li><a href="#"><i class="fas fa-exchange-alt"></i></a></li>
-                          <li><a href="#"><i class="far fa-heart"></i></a></li>
+                        <li><span>RP. {{(int)$property->price.' '.$property->value}}</span></li>
                         </ul>
                       </div>
                     </div>
@@ -102,34 +100,33 @@
             <div class="property-block-container">
               <div class="property-block property-thumb">
                 <div class="property-slider" id="property-slider">
-                  <div class="slider-thumb">
-                    <img src="{{asset('images/slider/property-slider-1.jpg')}}" class="img-responsive" alt="">
+
+                  @foreach ($property->images as $image)    
+                  <div class="slider-thumb" style="height: 500px">
+                    <img src="{{asset($image->photo)}}" style="width: 100%; height:100%; object-fit:cover" class="img-responsive" alt="">
                   </div>
-                  <div class="slider-thumb">
-                    <img src="{{asset('images/slider/property-slider-2.jpg')}}" class="img-responsive" alt="">
-                  </div>
-                  <div class="slider-thumb">
-                    <img src="{{asset('images/slider/property-slider-3.jpg')}}" class="img-responsive" alt="">
-                  </div>
+                  @endforeach
+
                 </div>
               </div>
               <div class="property-block property-content">
-                <h4>Property Description</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in</p>
-                <p>Mvoluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim </p>
+                <h4>Deskripsi</h4>
+                {!!$property->description!!}
               </div>
               <div class="property-block property-details">
-                <h4>Property Details</h4>
+                <h4>Detail Properti</h4>
                 <ul class="detail-list">
-                  <li>Type: Flat, Low-Rise (1-3)</li>
-                  <li>Year Built: 1890</li>
-                  <li>Square Footage: 1752</li>
-                  <li>Property Subtype: Condominium</li>
-                  <li>Property Type: Condo/Coop/TIC/Loft</li>
-                  <li>HOA Dues: 375 HOA</li>
+                  <li>Luas Tanah      : {{$property->surface_area}}m<sup>2</sup></li>
+                  <li>Luas Bangunan   : {{$property->building_area}}m<sup>2</sup></li>
+                  <li>Arah Hadap      : {{$property->direction}}</li>
+                  <li>Garasi          : {{$property->garage}}</li>
+                  <li>Listrik         : {{$property->electricity}} Watt</li>
+                  <li>Air             : {{$property->water}}</li>
+                  <li>Legalitas       : {{$property->legality}}</li>
+                  <li>Kode            : {{$property->code}}</li>
                 </ul>
               </div>
-              <div class="property-block property-features">
+              {{-- <div class="property-block property-features">
                 <h4>Property Features</h4>
                 <ul class="feature-list">
                   <li>Air Conditioning</li>
@@ -148,7 +145,7 @@
                   <li>Wifi</li>
                   <li>Window Coverings</li>
                 </ul>
-              </div>
+              </div> --}}
               <div class="property-block property-locaton">
                 <h4>Map Location</h4>
                 <!-- Maps -->
@@ -168,9 +165,9 @@
                   </a>
                 </div>
                 <div class="info">
-                  <h5><a href="#">Maria K.Marlin</a></h5>
-                  <p>Real Estate Company</p>
-                  <h6><i class="fas fa-phone"></i> +1 (253) 2568-568</h6>
+                <h5><a href="#">{{$property->user->name}}</a></h5>
+                  <p>{{$property->user->role->definition}}</p>
+                <h6><i class="fas fa-phone"></i>{{$property->user->phone_number}}</h6>
                 </div>
                 <div class="author-contact">
                   <form action="#">
@@ -279,12 +276,6 @@
                   </div>
                 </div>
                 <div class="overlay"></div>
-                <div class="quick-action">
-                  <ul>
-                    <li><a href="#"><i class="fas fa-exchange-alt"></i></a></li>
-                    <li><a href="#"><i class="far fa-heart"></i></a></li>
-                  </ul>
-                </div>
                 <div class="rate">
                   <span>&#36;22,500.00</span>
                 </div>
@@ -317,7 +308,7 @@
                     <a href="#"><img src="{{asset('images/listing/author-thumb-1.jpg')}}" class="img-responsive" alt=""></a>
                   </div>
                   <div class="author-info">
-                    <h6><a href="#">Maria Marlin</a></h6>
+                  <h6>{{$property->user->name}}</h6>
                     <span class="listing-date"><i class="far fa-clock"></i> 12 December 2018</span>
                     <a href="#"><i class="fas fa-long-arrow-alt-right"></i></a>
                   </div>

@@ -29,9 +29,9 @@ class CreatePropertiesTable extends Migration
             $table->unsignedTinyInteger('bedroom');
             $table->unsignedTinyInteger('bathroom');
             $table->unsignedDecimal('price');
-            $table->string('value', 10);
+            $table->enum('value', ['JT', 'M']);
             $table->string('phone_number', 20);
-            $table->unsignedSmallInteger('electricity');
+            $table->unsignedInteger('electricity');
             $table->string('water', 20);
             $table->string('legality',20);
             $table->unsignedTinyInteger('garage');

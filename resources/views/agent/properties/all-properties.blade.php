@@ -135,210 +135,57 @@
             <div class="dashboard-body-block">
               <div class="all-listing">
                 <div class="row">
+
+                  @foreach ($properties as $property)
+                                            
+                  
+
                   <div class="col-lg-6 col-md-12 col-sm-6">
                     <div class="listing">
                       <div class="listing-thumb">
                         <div class="listing-slider">
-                          <div class="slide slide-1">
-                            <img src="{{asset('images/listing/listing-slide-1.jpg')}}" class="img-responsive" alt="">
+
+                          @foreach ($property->images as $image)    
+                          <div class="slide" style="height: 300px; overflow:hidden">
+                            <img src="{{asset($image->photo)}}" class="img-responsive" style="width: 100%; height: 100%; object-fit:cover" alt="">
                           </div>
-                          <div class="slide slide-2">
-                            <img src="{{asset('images/listing/listing-slide-2.jpg')}}" class="img-responsive" alt="">
-                          </div>
-                          <div class="slide slide-3">
-                            <img src="{{asset('images/listing/listing-slide-3.jpg')}}" class="img-responsive" alt="">
-                          </div>
+                          @endforeach
+
                         </div>
                         <div class="overlay"></div>
-                        <div class="quick-action">
-                          <ul>
-                            <li><a href="#"><i class="fas fa-exchange-alt"></i></a></li>
-                            <li><a href="#"><i class="far fa-heart"></i></a></li>
-                          </ul>
-                        </div>
                         <div class="rate">
-                          <span>&#36;22,500.00</span>
+                        <span>{{$property->price}} {{$property->value}}</span>
                         </div>
                       </div>
                       <div class="content-block">
                         <div class="listing-body">
-                          <h5><a href="#">Olivers Kitchen</a> <span class="badge sale">Sale</span></h5>
+                        <h5><a href="/agent/properties/{{$property->id}}">{{$property->title}}</a> <span class="badge sale">{{$property->status->name}}</span></h5>
                           <div class="meta">
-                            <span class="listing-type">living room</span>
-                            <span class="listing-status open">Open</span>
+                            <span class="listing-type">{{$property->type->name}}</span>
+                          <span class="listing-status open">{{$property->user->name}}</span>
                           </div>
-                          <span class="address"><i class="fas fa-map-marker-alt"></i> 187, Madison Squre, New York, NY2154215</span>
+                        <span class="address"><i class="fas fa-map-marker-alt"></i>{{$property->location}}</span>
                           <div class="info">
                             <div class="listing-info bedroom">
-                              <span class="title">Bedrooms</span>
-                              <span class="number">05</span>
+                              <span class="title">Kamar Tidur</span>
+                              <span class="number">{{$property->bedroom}}</span>
                             </div>
                             <div class="listing-info bath">
-                              <span class="title">Baths</span>
-                              <span class="number">05</span>
+                              <span class="title">Kamar Mandi</span>
+                            <span class="number">{{$property->bathroom}}</span>
                             </div>
                             <div class="listing-info size">
-                              <span class="title">Size (Sq.ft)</span>
-                              <span class="number">1650</span>
+                              <span class="title">Luas (m<sup>2</sup>)</span>
+                            <span class="number">{{$property->building_area}}</span>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div class="col-lg-6 col-md-12 col-sm-6">
-                    <div class="listing">
-                      <div class="listing-thumb">
-                        <div class="listing-slider">
-                          <div class="slide slide-1">
-                            <img src="{{asset('images/listing/listing-slide-1.jpg')}}" class="img-responsive" alt="">
-                          </div>
-                          <div class="slide slide-2">
-                            <img src="{{asset('images/listing/listing-slide-2.jpg')}}" class="img-responsive" alt="">
-                          </div>
-                          <div class="slide slide-3">
-                            <img src="{{asset('images/listing/listing-slide-3.jpg')}}" class="img-responsive" alt="">
-                          </div>
-                        </div>
-                        <div class="overlay"></div>
-                        <div class="quick-action">
-                          <ul>
-                            <li><a href="#"><i class="fas fa-exchange-alt"></i></a></li>
-                            <li><a href="#"><i class="far fa-heart"></i></a></li>
-                          </ul>
-                        </div>
-                        <div class="rate">
-                          <span>&#36;22,500.00</span>
-                        </div>
-                      </div>
-                      <div class="content-block">
-                        <div class="listing-body">
-                          <h5><a href="#">Olivers Kitchen</a> <span class="badge sale">Sale</span></h5>
-                          <div class="meta">
-                            <span class="listing-type">living room</span>
-                            <span class="listing-status open">Open</span>
-                          </div>
-                          <span class="address"><i class="fas fa-map-marker-alt"></i> 187, Madison Squre, New York, NY2154215</span>
-                          <div class="info">
-                            <div class="listing-info bedroom">
-                              <span class="title">Bedrooms</span>
-                              <span class="number">05</span>
-                            </div>
-                            <div class="listing-info bath">
-                              <span class="title">Baths</span>
-                              <span class="number">05</span>
-                            </div>
-                            <div class="listing-info size">
-                              <span class="title">Size (Sq.ft)</span>
-                              <span class="number">1650</span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-6 col-md-12 col-sm-6">
-                    <div class="listing">
-                      <div class="listing-thumb">
-                        <div class="listing-slider">
-                          <div class="slide slide-1">
-                            <img src="{{asset('images/listing/listing-slide-1.jpg')}}" class="img-responsive" alt="">
-                          </div>
-                          <div class="slide slide-2">
-                            <img src="{{asset('images/listing/listing-slide-2.jpg')}}" class="img-responsive" alt="">
-                          </div>
-                          <div class="slide slide-3">
-                            <img src="{{asset('images/listing/listing-slide-3.jpg')}}" class="img-responsive" alt="">
-                          </div>
-                        </div>
-                        <div class="overlay"></div>
-                        <div class="quick-action">
-                          <ul>
-                            <li><a href="#"><i class="fas fa-exchange-alt"></i></a></li>
-                            <li><a href="#"><i class="far fa-heart"></i></a></li>
-                          </ul>
-                        </div>
-                        <div class="rate">
-                          <span>&#36;22,500.00</span>
-                        </div>
-                      </div>
-                      <div class="content-block">
-                        <div class="listing-body">
-                          <h5><a href="#">Olivers Kitchen</a> <span class="badge sale">Sale</span></h5>
-                          <div class="meta">
-                            <span class="listing-type">living room</span>
-                            <span class="listing-status open">Open</span>
-                          </div>
-                          <span class="address"><i class="fas fa-map-marker-alt"></i> 187, Madison Squre, New York, NY2154215</span>
-                          <div class="info">
-                            <div class="listing-info bedroom">
-                              <span class="title">Bedrooms</span>
-                              <span class="number">05</span>
-                            </div>
-                            <div class="listing-info bath">
-                              <span class="title">Baths</span>
-                              <span class="number">05</span>
-                            </div>
-                            <div class="listing-info size">
-                              <span class="title">Size (Sq.ft)</span>
-                              <span class="number">1650</span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-6 col-md-12 col-sm-6">
-                    <div class="listing">
-                      <div class="listing-thumb">
-                        <div class="listing-slider">
-                          <div class="slide slide-1">
-                            <img src="{{asset('images/listing/listing-slide-1.jpg')}}" class="img-responsive" alt="">
-                          </div>
-                          <div class="slide slide-2">
-                            <img src="{{asset('images/listing/listing-slide-2.jpg')}}" class="img-responsive" alt="">
-                          </div>
-                          <div class="slide slide-3">
-                            <img src="{{asset('images/listing/listing-slide-3.jpg')}}" class="img-responsive" alt="">
-                          </div>
-                        </div>
-                        <div class="overlay"></div>
-                        <div class="quick-action">
-                          <ul>
-                            <li><a href="#"><i class="fas fa-exchange-alt"></i></a></li>
-                            <li><a href="#"><i class="far fa-heart"></i></a></li>
-                          </ul>
-                        </div>
-                        <div class="rate">
-                          <span>&#36;22,500.00</span>
-                        </div>
-                      </div>
-                      <div class="content-block">
-                        <div class="listing-body">
-                          <h5><a href="#">Olivers Kitchen</a> <span class="badge sale">Sale</span></h5>
-                          <div class="meta">
-                            <span class="listing-type">living room</span>
-                            <span class="listing-status open">Open</span>
-                          </div>
-                          <span class="address"><i class="fas fa-map-marker-alt"></i> 187, Madison Squre, New York, NY2154215</span>
-                          <div class="info">
-                            <div class="listing-info bedroom">
-                              <span class="title">Bedrooms</span>
-                              <span class="number">05</span>
-                            </div>
-                            <div class="listing-info bath">
-                              <span class="title">Baths</span>
-                              <span class="number">05</span>
-                            </div>
-                            <div class="listing-info size">
-                              <span class="title">Size (Sq.ft)</span>
-                              <span class="number">1650</span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+
+                  @endforeach
+
                 </div>
               </div>
             </div>

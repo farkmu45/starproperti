@@ -82,7 +82,8 @@ return [
         public_path('storage') => storage_path('app/public'),
         public_path('photos') => storage_path('app/photos'),
         public_path('slides') => storage_path('app/slides'),
-        public_path('popups') => storage_path('app/popups')
+        public_path('popups') => storage_path('app/popups'),
+        public_path('propertyPhotos') => storage_path('app/propertyPhotos')
     ],
 
 ];
