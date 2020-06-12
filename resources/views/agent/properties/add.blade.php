@@ -29,13 +29,10 @@
   <link rel="stylesheet" href="{{asset('assets/leaflet/css/leaflet.css')}}">
   <link rel="stylesheet" href="{{asset('assets/leaflet/css/MarkerCluster.css')}}">
   <link rel="stylesheet" href="{{asset('assets/leaflet/css/MarkerCluster.Default.css')}}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.min.css">
 
   <!-- Custom Css -->
   <link rel="stylesheet" type="text/css" href="{{asset('css/main.css')}}">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.1/dropzone.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.1/basic.min.css">
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.1/min/dropzone.min.js"></script>
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
@@ -265,9 +262,29 @@
                       <div class="col-xs-12">
                         <div class="form-group listing-compose-block">
                           <label for="mytextarea">Description</label>
-                          <textarea id="mytextarea" class="tinymce-editor"></textarea>
+                          <textarea id="mytextarea" rows="20" class="tinymce-editor"></textarea>
                         </div>
                       </div>
+
+                      <div class="col-lg-4">
+                        <div class="form-group">
+                          <label for="">Foto 1</label>
+                          <input type="file" name="photo[]" data-max-file-size="2M" class="dropify" />
+                        </div>
+                      </div>
+                      <div class="col-lg-4">
+                        <div class="form-group">
+                          <label for="">Foto 2</label>
+                          <input type="file" name="photo[]" data-max-file-size="2M" class="dropify" />
+                        </div>
+                      </div>
+                      <div class="col-lg-4">
+                        <div class="form-group">
+                          <label for="">Foto 3</label>
+                          <input type="file" name="photo[]" data-max-file-size="2M" class="dropify" />
+                        </div>
+                      </div>
+
 
                       <!-- <div class="form-group form-group-file-type">
                         <label for="listing_company_brochure">Company Brochure</label>
@@ -277,10 +294,8 @@
 
                     </div>
                   </div>
+                  <button type="submit" class="button primary-bg">Tambah</button>
                 </div>
-              </form>
-
-              <form action="/file-upload" class="dropzone" id="my-awesome-dropzone">
               </form>
             </div>
           </div>
@@ -563,6 +578,12 @@
       }
       netbro_cache_analytics(requestCfs, function() {});
     };
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js"></script>
+
+  <script>
+    $('.dropify').dropify();
   </script>
 </body>
 
