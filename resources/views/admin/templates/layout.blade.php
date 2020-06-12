@@ -93,7 +93,7 @@
                     <!-- ============================================================== -->
                     <ul class="navbar-nav my-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link text-muted waves-effect waves-dark" href="" aria-haspopup="true" aria-expanded="false"> <i class="mdi mdi-power"></i>
+                            <a class="nav-link text-muted waves-effect waves-dark" href="#" aria-haspopup="true" aria-expanded="false"> <i class="mdi mdi-power"></i>
                             </a>
                         </li>
                     </ul>
@@ -281,6 +281,28 @@
     <!-- Style switcher -->
     <!-- ============================================================== -->
     <script src="{{asset('admin/assets/plugins/styleswitcher/jQuery.style.switcher.js')}}"></script>
+
+    {{-- <script src="{{asset('admin/assets/plugins/tinymce/tinymce.min.js')}}"></script> --}}
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+    $(document).ready(function() {
+
+        if ($("#mymce").length > 0) {
+            tinymce.init({
+                selector: "textarea#mymce",
+                // theme: "modern",
+                height: 400,
+                plugins: [
+                    "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
+                    "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+                    "save table contextmenu directionality emoticons template paste textcolor"
+                ],
+                toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | l      ink image | print preview media fullpage | forecolor backcolor emoticons",
+
+            });
+        }
+    });
+    </script>
 
     @if (session('status'))
         <script>

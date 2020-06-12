@@ -4,14 +4,9 @@
         <!-- User profile -->
         <div class="user-profile" style="background: url({{asset('admin/assets/images/background/user-info.jpg) no-repeat;')}}">
             <!-- User profile image -->
-            <div class="profile-img"> <img src="{{asset('admin/assets/images/users/profile.png')}}"  alt="user" /> </div>
+            <div class="profile-img"> <img src="{{auth()->user()->photo ? asset(auth()->user()->photo) : asset('images/dashboard/user/demo-user.png')}}"  alt="user" /> </div>
             <!-- User profile text-->
-            <div class="profile-text"> <a href="#" class="dropdown-toggle u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Markarn Doe</a>
-                <div class="dropdown-menu animated flipInY">
-                    <a href="#" class="dropdown-item"><i class="ti-user"></i> My Profile</a>
-                    <div class="dropdown-divider"></div> <a href="#" class="dropdown-item"><i class="ti-settings"></i> Account Setting</a>
-                    <div class="dropdown-divider"></div> <a href="login.html" class="dropdown-item"><i class="fa fa-power-off"></i> Logout</a>
-                </div>
+            <div class="profile-text"> <a href="#" role="button" aria-haspopup="true" aria-expanded="true">{{auth()->user()->name}}</a>
             </div>
         </div>
         <!-- End User profile text-->
@@ -39,29 +34,31 @@
                 <li>
                     <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-home-map-marker"></i><span class="hide-menu">Properties</span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="/admin/poperties">All Properties</a></li>
-                        <li><a href="/admin/poperties/create">Add Properties</a></li>
+                        <li><a href="/admin/propertys">All Listings</a></li>
+                        <li><a href="/admin/propertys/create">Add Listings</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-border-color"></i><span class="hide-menu">Blog</span></a>
+                    <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-border-color"></i><span class="hide-menu">Article</span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="/admin/blog">All Blog</a></li>
-                        <li><a href="/admin/blog/create">Add Blog</a></li>
+                        <li><a href="/admin/articles">All Article</a></li>
+                        <li><a href="/admin/articles/create">Add Article</a></li>
                     </ul>
                 </li>
                 <li>
                     <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-book"></i><span class="hide-menu">Event</span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="/admin/event">All Event</a></li>
-                        <li><a href="/admin/event/create">Add Event</a></li>
+                        <li><a href="/admin/events">All Event</a></li>
+                        <li><a href="/admin/events/create">Add Event</a></li>
+                        <li><a href="/admin/events-categories/">Categories</a></li>
+                        <li><a href="/admin/events-categories/create">Add Categories</a></li>
                     </ul>
                 </li>
                 <li>
                     <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-account-multiple"></i><span class="hide-menu">Users</span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="/admin/user">All User</a></li>
-                        <li><a href="/admin/user/create">Add User</a></li>
+                        <li><a href="/admin/users">All User</a></li>
+                        <li><a href="/admin/users/create">Add User</a></li>
                     </ul>
                 </li>
             </ul>

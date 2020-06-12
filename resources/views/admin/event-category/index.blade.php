@@ -15,20 +15,18 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Title</th>
-                                    <th>Image</th>
+                                    <th>Name</th>
                                     <th>Option</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($popups as $s)
+                                @foreach ($eventCategory as $s)
                                     <tr>
                                         <td>{{$loop->iteration}}</td>
-                                        <td>{{$s->title}}</td>
-                                        <td><img width="60" src="{{asset($s->photo)}}" alt=""></td>
+                                        <td>{{$s->name}}</td>
                                         <td>
-                                            <a href="/admin/popups/{{$s->id}}/edit" class="btn btn-info"><i class="ti-pencil"></i></a>
-                                            <form action="/admin/popups/{{$s->id}}" method="POST" class="d-inline">
+                                            <a href="/admin/events-categories/{{$s->id}}/edit" class="btn btn-info"><i class="ti-pencil"></i></a>
+                                            <form action="/admin/events-categories/{{$s->id}}" method="POST" class="d-inline">
                                                 @method('delete')
                                                 @csrf
                                                 <button type="submit" class="btn btn-danger"><i class="ti-trash"></i></button>

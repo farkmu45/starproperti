@@ -6,7 +6,7 @@
     @include('admin.templates.heading')
 
     <div class="row justify-content-center">
-        <div class="col-10">
+        <div class="col-12">
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Data {{$title}}</h4>
@@ -15,20 +15,29 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Title</th>
                                     <th>Image</th>
+                                    <th>Title</th>
+                                    <th>Description</th>
+                                    <th>Date Upload</th>
+                                    <th>Date Event</th>
+                                    <th>Event Category</th>
+                                    <th>Location</th>
                                     <th>Option</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($popups as $s)
+                                @foreach ($events as $s)
                                     <tr>
                                         <td>{{$loop->iteration}}</td>
-                                        <td>{{$s->title}}</td>
                                         <td><img width="60" src="{{asset($s->photo)}}" alt=""></td>
+                                        <td>{{$s->title}}</td>
+                                        <td>{{$s->description}}</td>
+                                        <td>{{$s->create_at}}</td>
+                                        <td>{{$s->event_date}}</td>
+                                        <td>{{$s->Location}}</td>
                                         <td>
-                                            <a href="/admin/popups/{{$s->id}}/edit" class="btn btn-info"><i class="ti-pencil"></i></a>
-                                            <form action="/admin/popups/{{$s->id}}" method="POST" class="d-inline">
+                                            <a href="/admin/events/{{$s->id}}/edit" class="btn btn-info"><i class="ti-pencil"></i></a>
+                                            <form action="/admin/events/{{$s->id}}" method="POST" class="d-inline">
                                                 @method('delete')
                                                 @csrf
                                                 <button type="submit" class="btn btn-danger"><i class="ti-trash"></i></button>

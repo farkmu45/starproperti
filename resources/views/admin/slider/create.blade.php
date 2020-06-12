@@ -19,7 +19,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group @error('title') has-danger @enderror">
                                         <label class="control-label">Title</label>
-                                        <input type="text" id="firstName" name="title" class="form-control @error('title') form-control-danger @enderror" placeholder="Title Promo" value="{{ old('username') }}">
+                                        <input type="text" id="firstName" name="title" class="form-control @error('title') form-control-danger @enderror" placeholder="Title Promo" value="{{ old('title') }}">
                                         @error('title')
                                             <small class="form-control-feedback">{{$message}}</small>
                                         @enderror

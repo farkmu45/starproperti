@@ -17,7 +17,7 @@ class CreatePopupsTable extends Migration
             $table->id();
             $table->string('photo');
             $table->string('title',60);
-            $table->boolean('status');
+            $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }
