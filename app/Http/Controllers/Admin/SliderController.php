@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\File;
 use App\Slide;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File as FacadesFile;
+use Illuminate\Support\Facades\Storage;
 
 class SliderController extends Controller
 {
@@ -15,7 +18,8 @@ class SliderController extends Controller
      */
     public function index()
     {
-        return view('admin.slider.index', ['title' => 'Slider']);
+        $sliders = Slide::all();
+        return view('admin.slider.index', ['title' => 'Slides', 'sliders' => $sliders]);
     }
 
     /**
@@ -36,11 +40,21 @@ class SliderController extends Controller
      */
     public function store(Request $request)
     {
-        // $data = $request->validate([
-        //     'title' => '',
-        //     'photo' =>
-        // ])
-        // Slide::create()
+        \Tinify\setKey("9krHPgyjMb8GlwyZlzjnTNWMfvSbdSxq");
+        $data = $request->validate([
+            'title' => 'required',
+            'photo' => 'required|file|between:0,2048|mimes:jpeg,jpg,png'
+        ]);
+
+        $filetype = $request->file('photo')->extension();
+        $source = \Tinify\fromFile($data['photo']);
+        $text = 'optimized' . random_int(100, 100000) . '.' . $filetype;
+        $source->toFile($text);
+        $data['photo'] = Storage::putFile('slides', new File(public_path($text)));
+        FacadesFile::delete(public_path($text));
+
+        Slide::create($data);
+        return redirect('/admin/slides')->with('status', 'Slider Created');
     }
 
     /**
@@ -62,7 +76,7 @@ class SliderController extends Controller
      */
     public function edit(Slide $slide)
     {
-        //
+        return view('admin.slider.edit', ['title' => 'Edit Slider', 'slide' => $slide]);
     }
 
     /**
@@ -74,7 +88,24 @@ class SliderController extends Controller
      */
     public function update(Request $request, Slide $slide)
     {
-        //
+        \Tinify\setKey("9krHPgyjMb8GlwyZlzjnTNWMfvSbdSxq");
+        $data = $request->validate([
+            'title' => 'required',
+            'photo' => 'file|between:0,2048|mimes:jpeg,jpg,png'
+        ]);
+
+        if ($request['photo']) {
+            Storage::delete($slide->photo);
+            $filetype = $request->file('photo')->extension();
+            $source = \Tinify\fromFile($data['photo']);
+            $text = 'optimized' . random_int(100, 100000) . '.' . $filetype;
+            $source->toFile($text);
+            $data['photo'] = Storage::putFile('slides', new File(public_path($text)));
+            FacadesFile::delete(public_path($text));
+        }
+
+        $slide->update($data);
+        return redirect('/admin/slides')->with('status', 'Slider Updated');
     }
 
     /**
@@ -85,6 +116,8 @@ class SliderController extends Controller
      */
     public function destroy(Slide $slide)
     {
-        //
+        Storage::delete($slide->photo);
+        $slide->delete();
+        return redirect('/admin/slides')->with('status', 'Slider Deleted');
     }
 }

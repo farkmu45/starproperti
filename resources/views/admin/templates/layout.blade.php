@@ -15,6 +15,8 @@
     <link href="{{asset('admin/assets/plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
     <!-- Dropify CSS -->
     <link href="{{asset('admin/assets/plugins/dropify/dist/css/dropify.css')}}" rel="stylesheet">
+    <!-- Toast CSS -->
+    <link href="{{asset('admin/assets/plugins/toast-master/css/jquery.toast.css')}}" rel="stylesheet">
     <!-- chartist CSS -->
     {{-- <link href="{{asset('admin/assets/plugins/chartist-js/dist/chartist.min.css')}}" rel="stylesheet">
     <link href="{{asset('admin/assets/plugins/chartist-js/dist/chartist-init.css')}}" rel="stylesheet">
@@ -158,6 +160,7 @@
     <script src="{{asset('admin/assets/plugins/sparkline/jquery.sparkline.min.js')}}"></script>
     <!--Custom JavaScript -->
     <script src="{{asset('admin/js/custom.min.js')}}"></script>
+    <script src="{{asset('admin/assets/plugins/toast-master/js/jquery.toast.js')}}"></script>
 
     <script src="{{asset('admin/assets/plugins/datatables/jquery.dataTables.min.js')}}"></script>
     <!-- start - This is for export functionality only -->
@@ -278,6 +281,20 @@
     <!-- Style switcher -->
     <!-- ============================================================== -->
     <script src="{{asset('admin/assets/plugins/styleswitcher/jQuery.style.switcher.js')}}"></script>
+
+    @if (session('status'))
+        <script>
+            $.toast({
+            heading: "{{session('status')}}",
+            // text: 'Use the predefined ones, or specify a custom position object.',
+            position: 'top-right',
+            loaderBg:'#ff6849',
+            icon: 'success',
+            hideAfter: 3000,
+            stack: 6
+          });
+        </script>
+    @endif
 </body>
 
 </html>

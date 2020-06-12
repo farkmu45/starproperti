@@ -12,7 +12,7 @@
                 <h4 class="m-b-0 text-white">Form {{$title}}</h4>
                 </div>
                 <div class="card-body">
-                    <form action="/admin/slides" enctype="multipart/form-data" method="POST">
+                    <form action="/admin/popups" enctype="multipart/form-data" method="POST">
                         @csrf
                         <div class="form-body">
                             <div class="row">

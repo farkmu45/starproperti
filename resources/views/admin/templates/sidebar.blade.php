@@ -26,14 +26,14 @@
                 </li>
                 <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-camera-burst"></i><span class="hide-menu">Promo Slider</span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="/admin/slider">All Slider</a></li>
-                        <li><a href="/admin/slider/create">Add Slider</a></li>
+                        <li><a href="/admin/slides">All Slider</a></li>
+                        <li><a href="/admin/slides/create">Add Slider</a></li>
                     </ul>
                 </li>
                 <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-image"></i><span class="hide-menu">Promo Popup</span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="/admin/popup">All Popup</a></li>
-                        <li><a href="/admin/popup/create">Add Popup</a></li>
+                        <li><a href="/admin/popups">All Popup</a></li>
+                        <li><a href="/admin/popups/create">Add Popup</a></li>
                     </ul>
                 </li>
                 <li>

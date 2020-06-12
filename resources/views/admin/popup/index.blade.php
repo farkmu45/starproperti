@@ -21,13 +21,13 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($sliders as $s)
+                                @foreach ($popups as $s)
                                     <tr>
                                         <td>{{$loop->iteration}}</td>
                                         <td>{{$s->title}}</td>
                                         <td><img width="60" src="{{asset($s->photo)}}" alt=""></td>
                                         <td>
-                                            <a href="/admin/slides/{{$s->id}}/edit" class="btn btn-info"><i class="ti-pencil"></i></a>
+                                            <button type="button" class="btn btn-info"><i class="ti-pencil"></i></button>
                                             <form action="/admin/slides/{{$s->id}}" method="POST" class="d-inline">
                                                 @method('delete')
                                                 @csrf

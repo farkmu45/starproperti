@@ -29,7 +29,8 @@ Route::group(['prefix' => 'agent'], function () {
 
 Route::group(['prefix' => 'admin'], function () {
     Route::get('/dashboard', 'AdminController@index');
-    Route::resource('/slider', 'Admin\SliderController');
+    Route::resource('/slides', 'Admin\SliderController');
+    Route::resource('/popups', 'Admin\PopupController');
 });
 
 
