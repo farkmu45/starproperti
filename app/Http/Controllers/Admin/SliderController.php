@@ -40,7 +40,7 @@ class SliderController extends Controller
      */
     public function store(Request $request)
     {
-        \Tinify\setKey("9krHPgyjMb8GlwyZlzjnTNWMfvSbdSxq");
+        \Tinify\setKey(env('TINIFY_KEY'));
         $data = $request->validate([
             'title' => 'required',
             'photo' => 'required|file|between:0,2048|mimes:jpeg,jpg,png'
@@ -88,7 +88,7 @@ class SliderController extends Controller
      */
     public function update(Request $request, Slide $slide)
     {
-        \Tinify\setKey("9krHPgyjMb8GlwyZlzjnTNWMfvSbdSxq");
+        \Tinify\setKey(env('TINFIY_KEY'));
         $data = $request->validate([
             'title' => 'required',
             'photo' => 'file|between:0,2048|mimes:jpeg,jpg,png'

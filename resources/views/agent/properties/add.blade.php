@@ -71,83 +71,9 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-3">
-          <div class="user-profile">
-            <div class="user-thumb">
-              <img src="{{asset('images/dashboard/user/thumb-1.jpg')}}" class="img-responsive" alt="">
-              <div class="varified">
-                <i class="fas fa-check"></i>
-              </div>
-            </div>
-            <div class="user-name">
-              <h5><a href="#">Maria K.Marlin</a></h5>
-            </div>
-            <div class="info">
-              <div class="profile-info">
-                <h6>85%</h6>
-                <p>Profile comp</p>
-                <a href="#" class="button primary-bg">Edit Profile</a>
-              </div>
-              <div class="notification">
-                <h6>35</h6>
-                <p>Notification</p>
-                <a href="#" class="button primary-bg">Log Out</a>
-              </div>
-            </div>
-          </div>
-          <div class="dashboard-sidenav">
-            <ul class="dashboard-nav" id="dashboard-nav">
-              <li class="navigation-item">
-                <a href="dashboard.html"><span class="ti-layers-alt"></span>Dashboard</a>
-              </li>
-              <li class="navigation-item dropdown">
-                <a href="#"><span class="ti-location-pin"></span>Properti Saya</a>
-                <ul class="dropdown-menu">
-                  <li><a href="/agent/properties">Semua Properti</a></li>
-                  <li><a href="/agent/properties/add">Tambah Properti</a></li>
-                  <li><a href="dashboard-active-listing.html">Active Listings</a></li>
-                  <li><a href="dashboard-expired-listing.html">Expired Listings</a></li>
-                </ul>
-              </li>
-              <li class="navigation-item">
-                <a href="dashboard-my-favorites.html"><span class="ti-heart"></span>My Favorites</a>
-              </li>
-              <li class="navigation-item dropdown">
-                <a href="#"><span class="ti-comment-alt"></span>Reviews<span class="badge">(05)</span></a>
-                <ul class="dropdown-menu">
-                  <li><a href="dashboard-all-review.html">All Reviews</a></li>
-                  <li><a href="dashboard-my-review.html">My Reviews</a></li>
-                </ul>
-              </li>
-              <li class="navigation-item dropdown">
-                <a href="#"><span class="ti-email"></span>Messages<span class="badge">(12)</span></a>
-                <ul class="dropdown-menu">
-                  <li><a href="dashboard-all-message.html">All Messages</a></li>
-                  <li><a href="dashboard-unread-message.html">Unread Messages</a></li>
-                </ul>
-              </li>
-              <li class="navigation-item dropdown">
-                <a href="#"><span class="ti-gift"></span>Packages</a>
-                <ul class="dropdown-menu">
-                  <li><a href="dashboard-checkout.html">Check Out</a></li>
-                  <li><a href="dashboard-package-plan.html">Package Plan</a></li>
-                </ul>
-              </li>
-              <li class="navigation-item">
-                <a href="dashboard-invoices.html"><span class="ti-clipboard"></span>Invoice</a>
-              </li>
-              <li class="navigation-item">
-                <a href="dashboard-claim-refund.html"><span class="ti-widget-alt"></span>Claim &amp; Refund</a>
-              </li>
-              <li class="navigation-item">
-                <a href="dashboard-settings.html"><span class="ti-settings"></span>Setting</a>
-              </li>
-              <li class="navigation-item">
-                <a href="dashboard-my-profile.html"><span class="ti-user"></span>My Profile</a>
-              </li>
-            </ul>
-          </div>
+          @include('layouts.sidebar')
         </div>
-        <div class="col-md-6">
+        <div class="col-md-9">
           <div class="dashboard-body-block">
             <div class="cpdv-add-listing-container">
               <form action="/agent/properties" method="POST" class="add-listing-form" enctype="multipart/form-data">
@@ -306,46 +232,12 @@
                         </div>
                       </div>
 
-
-                      <!-- <div class="form-group form-group-file-type">
-                        <label for="listing_company_brochure">Company Brochure</label>
-                        <input type="file" name="file">
-                        <span>File Format .pdf, .doc, .docx, .ppt, .pptx, .jpeg, .png</span>
-                      </div> -->
-
                     </div>
                   </div>
                   <button type="submit" class="button primary-bg">Tambah</button>
                 </div>
               </form>
             </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="dashboard-activity-container">
-            <h5 class="activity-title">Notification</h5>
-            <ul class="activity-wrapper">
-              <li class="activity-list">
-                <p class="time">10 Minutes ago</p>
-                <p class="title"><a href="#">Roman Write a Review</a></p>
-              </li>
-              <li class="activity-list">
-                <p class="time">10 Minutes ago</p>
-                <p class="title"><a href="#">New Message</a></p>
-              </li>
-              <li class="activity-list">
-                <p class="time">10 Minutes ago</p>
-                <p class="title"><a href="#">New Comment</a></p>
-              </li>
-              <li class="activity-list">
-                <p class="time">10 Minutes ago</p>
-                <p class="title"><a href="#">New Listing Added</a></p>
-              </li>
-              <li class="activity-list">
-                <p class="time">10 Minutes ago</p>
-                <p class="title"><a href="#">Found New Place</a></p>
-              </li>
-            </ul>
           </div>
         </div>
       </div>

@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
   
+<!-- Mirrored from eorrangeshop.com/html/divinevillas/dashboard-all-listing.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 21 Feb 2019 04:12:47 GMT -->
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Divine Villas - Real Estate HTML Template</title>
 
     <!-- Bootstrap -->
@@ -13,8 +15,6 @@
     <!-- External Css -->
     <link rel="stylesheet" href="{{asset('assets/css/fontawesome-all.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/owl.carousel.css')}}" />
-
-
     <!-- Custom Css -->
     <link rel="stylesheet" type="text/css" href="{{asset('css/main.css')}}">
 
@@ -31,21 +31,15 @@
     
     <!-- Dashboard -->
     <div class="cp-container section-padding">
-      <div class="container-fluid">
+      <div class="container">
         <div class="row">
-          <div class="col-md-3">
-            @include('layouts.sidebar')
-          </div>
-          <div class="col-md-6 margin-balance">
+          <div class="col-md-12 margin-balance">
             <div class="dashboard-body-block">
               <div class="all-listing">
                 <div class="row">
 
                   @foreach ($properties as $property)
-                                            
-                  
-
-                  <div class="col-lg-6 col-md-12 col-sm-6">
+                  <div class="col-lg-4 col-md-12 col-sm-6">
                     <div class="listing">
                       <div class="listing-thumb">
                         <div class="listing-slider">
@@ -69,7 +63,7 @@
                             <span class="listing-type">{{$property->type->name}}</span>
                           <span class="listing-status open">{{$property->user->name}}</span>
                           </div>
-                        <span class="address"><i class="fas fa-map-marker-alt"></i> {{$property->location}}</span>
+                        <span class="address"><i class="fas fa-map-marker-alt"></i>{{$property->location}}</span>
                           <div class="info">
                             <div class="listing-info bedroom">
                               <span class="title">Kamar Tidur</span>
@@ -95,16 +89,6 @@
               </div>
             </div>
           </div>
-
-          @if (!$properties)    
-          <div class="col-md-9">
-            <div class="dashboard-activity-container">
-              <h5 class="activity-title">Properti Kosong</h5>
-              <p>Anda belum menambahkan properti, silahkan tambah baru di menu disamping</p>
-            </div>
-          </div>
-          @endif
-          
         </div>
       </div>
     </div>
@@ -310,7 +294,6 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
     <script src="{{asset('assets/js/owl.carousel.min.js')}}"></script>
-
     <script>
       if ($('.cp-slider').length > 0) {
         $('.cp-slider').each(function () {
@@ -381,6 +364,8 @@
         });
     });
 
+
     </script>
-<!-- Mirrored from eorrangeshop.com/html/divinevillas/dashboard-all-listing.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 21 Feb 2019 04:12:48 GMT -->
+
+
 </html>

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Property;
+use App\User;
 use Illuminate\Http\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File as FacadesFile;
@@ -12,12 +14,14 @@ class FrontEndController extends Controller
 
     public function __construct()
     {
-        $this->middleware(['auth', 'internalAgent'])->only(['profile', 'profileUpdate', 'dashboard']);
+        $this->middleware(['auth', 'agent'])->only(['profile', 'profileUpdate', 'dashboard']);
     }
 
     public function index()
     {
-        return view('index');
+        $properties = Property::limit(3)->get();
+        $agents = User::where('role_id', '!=', 3)->get(['id','photo', 'name', 'facebook_link', 'youtube_link', 'twitter_link']);
+        return view('index')->withAgents($agents)->withProperties($properties);
     }
 
     public function dashboard()
@@ -32,7 +36,7 @@ class FrontEndController extends Controller
 
     public function profileUpdate(Request $request)
     {
-        \Tinify\setKey("9krHPgyjMb8GlwyZlzjnTNWMfvSbdSxq");
+        \Tinify\setKey(env('TINIFY_KEY'));
 
         $data = $request->validate([
             'photo' => '',
@@ -61,9 +65,21 @@ class FrontEndController extends Controller
         return back();
     }
 
-    public function propertyDetails()
+    public function showAgentProperties(User $agent)
     {
-        return view('property-details');
+
+        return view('agent-properties')->withProperties($agent->properties)->withAgent($agent);
+    }
+
+    public function showProperties()
+    {
+        $properties = Property::all();
+        return view('all-properties')->withProperties($properties);
+    }
+
+    public function showProperty(Property $property)
+    {
+        return view('property-details')->withProperty($property);
     }
 
     public function search()

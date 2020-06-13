@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'FrontEndController@index');
+Route::get('/properties/{property}', 'FrontEndController@showProperty');
+Route::get('/agents/{agent}', 'FrontEndController@showAgentProperties');
+Route::get('/properties', 'FrontEndController@showProperties');
 
 Route::get('/search', 'FrontEndController@search');
 
@@ -21,8 +24,6 @@ Route::group(['prefix' => 'agent'], function () {
     Route::get('/', 'FrontEndController@profile');
     Route::patch('/', 'FrontEndController@profileUpdate');
     Route::get('/dashboard', 'FrontEndController@dashboard');
-
-    
     Route::resource('/properties', 'AgentPropertyController');
 });
 

