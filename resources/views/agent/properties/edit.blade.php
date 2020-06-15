@@ -65,7 +65,7 @@
                       <div class="col-xs-12">
                         <div class="form-group">
                           <label for="title">Judul</label>
-                        <input id="title" name="title" type="text" value="{{$property->title}}" class="form-control" @error('title') style="border-color: red" @enderror required>
+                        <input id="title" name="title" type="text" value="{{$property->title}}" class="form-control" @error('title') style="border-color: red" @enderror >
                         @error('title')    
                             <div style="color:red">
                               {{$message}}
@@ -77,7 +77,7 @@
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="surface_area">Luas Tanah</label>
-                          <input id="surface_area" name="surface_area" type="number" class="form-control" value="{{$property->surface_area}}" placeholder="Dalam satuan meter persegi" required" @error('surface_area') style="border-color: red" @enderror>
+                          <input id="surface_area" name="surface_area" type="number" class="form-control" value="{{$property->surface_area}}" placeholder="Dalam satuan meter persegi" " @error('surface_area') style="border-color: red" @enderror>
                           @error('surface_area')    
                             <div style="color:red">
                               {{$message}}
@@ -88,7 +88,7 @@
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="building_area">Luas Bangunan</label>
-                          <input id="building_area" name="building_area" type="number" class="form-control" value="{{$property->building_area}}" placeholder="Dalam satuan meter persegi" required @error('building_area') style="border-color: red" @enderror required>
+                          <input id="building_area" name="building_area" type="number" class="form-control" value="{{$property->building_area}}" placeholder="Dalam satuan meter persegi" @error('building_area') style="border-color: red" @enderror >
                           @error('building_area')    
                             <div style="color:red">
                               {{$message}}
@@ -99,7 +99,7 @@
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="location">Lokasi</label>
-                          <input id="location" name="location" type="text" class="form-control" value="{{$property->location}}" placeholder="" required @error('location') style="border-color: red" @enderror required>
+                          <input id="location" name="location" type="text" class="form-control" value="{{$property->location}}" placeholder="" @error('location') style="border-color: red" @enderror >
                           @error('location')    
                             <div style="color:red">
                               {{$message}}
@@ -110,7 +110,7 @@
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="direction">Arah hadap</label>
-                          <input id="direction" name="direction" type="text" class="form-control" value="{{$property->direction}}" placeholder="Barat,timur dll" required @error('direction') style="border-color: red" @enderror required>
+                          <input id="direction" name="direction" type="text" class="form-control" value="{{$property->direction}}" placeholder="Barat,timur dll" @error('direction') style="border-color: red" @enderror >
                           @error('direction')    
                             <div style="color:red">
                               {{$message}}
@@ -121,7 +121,7 @@
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="bathroom">Kamar Mandi</label>
-                          <input id="bathroom" name="bathroom" type="number" class="form-control" value="{{$property->bathroom}}" placeholder="" @error('bathroom') style="border-color: red" @enderror required>
+                          <input id="bathroom" name="bathroom" type="number" class="form-control" value="{{$property->bathroom}}" placeholder="" @error('bathroom') style="border-color: red" @enderror >
                            @error('bathroom')    
                             <div style="color:red">
                               {{$message}}
@@ -132,7 +132,7 @@
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="bedroom">Kamar Tidur</label>
-                          <input id="bedroom" name="bedroom" type="number" class="form-control" value="{{$property->bedroom}}" placeholder="" @error('bedroom') style="border-color: red" @enderror  required>
+                          <input id="bedroom" name="bedroom" type="number" class="form-control" value="{{$property->bedroom}}" placeholder="" @error('bedroom') style="border-color: red" @enderror  >
                           @error('bedroom')    
                             <div style="color:red">
                               {{$message}}
@@ -143,7 +143,7 @@
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="price">Harga</label>
-                          <input id="price" name="price" type="number" class="form-control" value="{{$property->price}}" placeholder="" @error('price') style="border-color: red" @enderror required>
+                          <input id="price" name="price" type="number" class="form-control" value="{{$property->price}}" placeholder="" @error('price') style="border-color: red" @enderror >
                           @error('price')    
                             <div style="color:red">
                               {{$message}}
@@ -154,7 +154,7 @@
                       <div class="col-sm-6">
                         <div class="form-group">
                           <label for="value">Satuan Harga</label>
-                          <select id="value" name="value" required class="form-control">
+                          <select id="value" name="value" class="form-control">
                             <option value="JT" {{old('value') == "JT" ? 'selected' : ''}}>Juta</option>
                             <option value="M" {{old('value') == "M" ? 'selected' : ''}}>Miliar</option>
                           </select>
@@ -164,7 +164,7 @@
                       <div class="col-sm-6">
                         <div class="form-group">
                           <label for="type_id">Tipe Rumah</label>
-                          <select id="type_id" name="type_id" class="form-control" required>
+                          <select id="type_id" name="type_id" class="form-control">
                             @foreach ($types as $type)    
                               <option value="{{$type->id}}" {{old('type_id') == $type->id ? 'selected' : ''}}>{{$type->name}}</option>
                             @endforeach
@@ -175,7 +175,7 @@
                       <div class="col-sm-6">
                         <div class="form-group">
                           <label for="status_id">Status</label>
-                          <select id="status_id" name="status_id" class="form-control" required>
+                          <select id="status_id" name="status_id" class="form-control">
                             @foreach ($status as $s)    
                               <option value="{{$s->id}}" {{old('status_id') == $s->id ? 'selected' : ''}}>{{$s->name}}</option>
                             @endforeach
@@ -186,7 +186,7 @@
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="electricity">Listrik</label>
-                          <input id="electricity" name="electricity" value="{{$property->electricity}}"   type="number" class="form-control" placeholder="Dalam satuan Watt" @error('electricity') style="border-color: red" @enderror required>
+                          <input id="electricity" name="electricity" value="{{$property->electricity}}"   type="number" class="form-control" placeholder="Dalam satuan Watt" @error('electricity') style="border-color: red" @enderror >
                           @error('electricity')    
                             <div style="color:red">
                               {{$message}}
@@ -198,7 +198,7 @@
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="water">Sumber Air</label>
-                          <input id="water" name="water" type="text" value="{{$property->water}}"  class="form-control" placeholder="" @error('water') style="border-color: red" @enderror required>
+                          <input id="water" name="water" type="text" value="{{$property->water}}"  class="form-control" placeholder="" @error('water') style="border-color: red" @enderror >
                           @error('water')    
                             <div style="color:red">
                               {{$message}}
@@ -210,7 +210,7 @@
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="legality">Legalitas</label>
-                          <input id="legality" name="legality" value="{{$property->legality}}" type="text" class="form-control" placeholder="" @error('legality') style="border-color: red" @enderror required>
+                          <input id="legality" name="legality" value="{{$property->legality}}" type="text" class="form-control" placeholder="" @error('legality') style="border-color: red" @enderror >
                           @error('legality')    
                             <div style="color:red">
                               {{$message}}
@@ -222,7 +222,7 @@
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="garage">Garasi</label>
-                          <input id="garage" name="garage" value="{{$property->garage}}"  type="number" class="form-control" placeholder="" @error('garage') style="border-color: red" @enderror required>
+                          <input id="garage" name="garage" value="{{$property->garage}}"  type="number" class="form-control" placeholder="" @error('garage') style="border-color: red" @enderror >
                           @error('garage')    
                             <div style="color:red">
                               {{$message}}
@@ -234,7 +234,7 @@
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="name">Nama</label>
-                          <input id="name" name="name" type="text" value="{{$property->name}}"  class="form-control" placeholder="" @error('name') style="border-color: red" @enderror  required>
+                          <input id="name" name="name" type="text" value="{{$property->name}}"  class="form-control" placeholder="" @error('name') style="border-color: red" @enderror  >
                           @error('name')    
                             <div style="color:red">
                               {{$message}}
@@ -246,7 +246,7 @@
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="phone_number">Nomor Handphone Pemilik</label>
-                          <input id="phone_number" name="phone_number" type="text" value="{{$property->phone_number}}"  class="form-control" placeholder="" required @error('phone_number') style="border-color: red" @enderror>
+                          <input id="phone_number" name="phone_number" type="text" value="{{$property->phone_number}}"  class="form-control" placeholder=""  @error('phone_number') style="border-color: red" @enderror>
                           @error('phone_number')    
                             <div style="color:red">
                               {{$message}}
@@ -259,7 +259,7 @@
                       <div class="col-xs-12">
                         <div class="form-group listing-compose-block">
                           <label for="mytextarea">Description</label>
-                        <textarea name="description" id="mytextarea" rows="20" class="tinymce-editor" required>{{$property->description}}</textarea>
+                        <textarea name="description" id="mytextarea" rows="20" class="tinymce-editor" >{{$property->description}}</textarea>
                         @error('description')    
                             <div style="color:red">
                               {{$message}}

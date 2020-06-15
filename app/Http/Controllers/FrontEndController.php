@@ -79,7 +79,8 @@ class FrontEndController extends Controller
 
     public function showProperty(Property $property)
     {
-        return view('property-details')->withProperty($property);
+        $randomProperty = Property::all()->random()->limit(3)->where('id','!=',$property->id)->get();
+        return view('property-details')->withProperty($property)->withRandomProperty($randomProperty);
     }
 
     public function search()

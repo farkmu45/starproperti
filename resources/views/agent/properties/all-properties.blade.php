@@ -13,6 +13,7 @@
     <!-- External Css -->
     <link rel="stylesheet" href="{{asset('assets/css/fontawesome-all.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/owl.carousel.css')}}" />
+    <link rel="stylesheet" href="{{asset('assets/css/themify-icons.css')}}" />
 
 
     <!-- Custom Css -->
@@ -86,9 +87,11 @@
                           </div>
                           <div style="margin-top: 40px;">
                             <a href="/agent/properties/{{$property->id}}/edit" class="button" style="margin-right: 10px;">Edit</a>
-                            <form action="/agent/properties/{{$property->id}}" hidden method="post">
+                            <form id="delete" action="/agent/properties/{{$property->id}}" hidden method="post">
+                                @csrf
+                                @method('delete')
                             </form>
-                            <button class="button" type="submit">Hapus</button>
+                            <button id="btn_delete" class="button" type="submit">Hapus</button>
                           </div>
                         </div>
                       </div>
@@ -102,11 +105,11 @@
             </div>
           </div>
 
-          @if (!$properties)    
+          @if (sizeof($properties) == 0)    
           <div class="col-md-9">
             <div class="dashboard-activity-container">
-              <h5 class="activity-title">Properti Kosong</h5>
-              <p>Anda belum menambahkan properti, silahkan tambah baru di menu disamping</p>
+              <h4 class="activity-title">Properti Kosong</h5>
+              <p>Anda bisa menambahkan properti baru di menu disamping</p>
             </div>
           </div>
           @endif
@@ -388,5 +391,15 @@
     });
 
     </script>
+  
+  @if (sizeof($properties) !== 0)  
+    <script>
+      document.getElementById('btn_delete').addEventListener('click', function () {
+          document.getElementById('delete').submit()
+        })
+    </script>
+  @endif
+    
+  <script src="{{asset('js/dashboard.js')}}"></script>
 <!-- Mirrored from eorrangeshop.com/html/divinevillas/dashboard-all-listing.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 21 Feb 2019 04:12:48 GMT -->
 </html>

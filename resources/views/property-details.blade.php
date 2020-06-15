@@ -114,26 +114,6 @@
                   <li>Kode            : {{$property->code}}</li>
                 </ul>
               </div>
-              {{-- <div class="property-block property-features">
-                <h4>Property Features</h4>
-                <ul class="feature-list">
-                  <li>Air Conditioning</li>
-                  <li>Barbeque</li>
-                  <li>Dryer</li>
-                  <li>Gym</li>
-                  <li>Laundry</li>
-                  <li>Lawn</li>
-                  <li>Microwave</li>
-                  <li>Outdoor Shower</li>
-                  <li>Refrigerator</li>
-                  <li>Sauna</li>
-                  <li>Swimming Pool</li>
-                  <li>TV Cable</li>
-                  <li>Washer</li>
-                  <li>Wifi</li>
-                  <li>Window Coverings</li>
-                </ul>
-              </div> --}}
               <div class="property-block property-locaton">
                 <h4>Map Location</h4>
                 <!-- Maps -->
@@ -148,8 +128,8 @@
             <div class="sidebar">
               <aside class="widget widget-author-contact">
                 <div class="author-thumb">
-                  <a href="#">
-                    <img src="{{asset('images/widget/author-thumb.jpg')}}" class="img-responsive" alt="">
+                <a href="/agents/{{$property->user->id}}">
+                    <img src="{{!empty($property->user->photo) ? asset($property->user->photo) : asset('images/dashboard/user/demo-user.png')}}" class="img-responsive" alt="">
                   </a>
                 </div>
                 <div class="info">
@@ -249,183 +229,59 @@
           </div> 
         </div>
         <div class="row margin-balance">
+          @foreach ($randomProperty as $property)
           <div class="col-md-4 col-sm-6">
             <div class="listing">
               <div class="listing-thumb">
                 <div class="listing-slider">
-                  <div class="slide slide-1">
-                    <img src="{{asset('images/listing/listing-slide-1.jpg')}}" class="img-responsive" alt="">
+                  @foreach ($property->images as $image)
+                  <div class="slide" style="height: 240px">
+                    <img src="{{asset($image->photo)}}" class="img-responsive" style="width: 100%; height:100%; object-fit:cover" alt="">
                   </div>
-                  <div class="slide slide-2">
-                    <img src="{{asset('images/listing/listing-slide-2.jpg')}}" class="img-responsive" alt="">
-                  </div>
-                  <div class="slide slide-3">
-                    <img src="{{asset('images/listing/listing-slide-3.jpg')}}" class="img-responsive" alt="">
-                  </div>
+                  @endforeach
                 </div>
                 <div class="overlay"></div>
                 <div class="rate">
-                  <span>&#36;22,500.00</span>
+                <span>{{(int)$property->price}} {{$property->value}}</span>
                 </div>
               </div>
               <div class="content-block">
                 <div class="listing-body">
-                  <h5><a href="#">Olivers Kitchen</a> <span class="badge sale">Sale</span></h5>
+                <h5><a href="/properties/{{$property->id}}">{{$property->title}}</a></h5>
                   <div class="meta">
-                    <span class="listing-type">living room</span>
-                    <span class="listing-status open">Open</span>
+                    <span class="listing-type">{{$property->type->name}}</span>
+                  <span class="listing-status open">{{$property->status->name}}</span>
                   </div>
-                  <span class="address"><i class="fas fa-map-marker-alt"></i> 187, Madison Squre, New York, NY2154215</span>
+                <span class="address"><i class="fas fa-map-marker-alt"></i> {{$property->location}}</span>
                   <div class="info">
                     <div class="listing-info bedroom">
-                      <span class="title">Bedrooms</span>
-                      <span class="number">05</span>
+                      <span class="title">Kamar Tidur</span>
+                      <span class="number">{{$property->bedroom}}</span>
                     </div>
                     <div class="listing-info bath">
-                      <span class="title">Baths</span>
-                      <span class="number">05</span>
+                      <span class="title">Kamar Mandi</span>
+                      <span class="number">{{$property->bathroom}}</span>
                     </div>
                     <div class="listing-info size">
-                      <span class="title">Size (Sq.ft)</span>
-                      <span class="number">1650</span>
+                      <span class="title">Luas (m<sup>2</sup>)</span>
+                      <span class="number">{{$property->building_area}}</span>
                     </div>
                   </div>
                 </div>
                 <div class="author">
                   <div class="author-thumb">
-                    <a href="#"><img src="{{asset('images/listing/author-thumb-1.jpg')}}" class="img-responsive" alt=""></a>
+                    <a href="#" style="height: 100%"><img src="{{$property->user->photo ? asset($property->user->photo) : asset('images/dashboard/user/demo-user.png')}}" class="img-responsive" style="width: 100%; height:100%; object-fit:cover"alt=""></a>
                   </div>
                   <div class="author-info">
-                  <h6>{{$property->user->name}}</h6>
-                    <span class="listing-date"><i class="far fa-clock"></i> 12 December 2018</span>
+                  <h6><a href="/agents/{{$property->user->id}}">{{$property->user->name}}</a></h6>
+                    <span class="listing-date"><i class="far fa-clock"></i>12 December 2018</span>
                     <a href="#"><i class="fas fa-long-arrow-alt-right"></i></a>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="col-md-4 col-sm-6">
-            <div class="listing">
-              <div class="listing-thumb">
-                <div class="listing-slider">
-                  <div class="slide slide-2">
-                    <img src="{{asset('images/listing/listing-slide-2.jpg')}}" class="img-responsive" alt="">
-                  </div>
-                  <div class="slide slide-1">
-                    <img src="{{asset('images/listing/listing-slide-1.jpg')}}" class="img-responsive" alt="">
-                  </div>
-                  <div class="slide slide-3">
-                    <img src="{{asset('images/listing/listing-slide-3.jpg')}}" class="img-responsive" alt="">
-                  </div>
-                </div>
-                <div class="overlay"></div>
-                <div class="quick-action">
-                  <ul>
-                    <li><a href="#"><i class="fas fa-exchange-alt"></i></a></li>
-                    <li><a href="#"><i class="far fa-heart"></i></a></li>
-                  </ul>
-                </div>
-                <div class="rate">
-                  <span>&#36;22,500.00</span>
-                </div>
-              </div>
-              <div class="content-block">
-                <div class="listing-body">
-                  <h5><a href="#">Olivers Kitchen</a> <span class="badge rent">rent</span></h5>
-                  <div class="meta">
-                    <span class="listing-type">living room</span>
-                    <span class="listing-status expired">Expired</span>
-                  </div>
-                  <span class="address"><i class="fas fa-map-marker-alt"></i> 187, Madison Squre, New York, NY2154215</span>
-                  <div class="info">
-                    <div class="listing-info bedroom">
-                      <span class="title">Bedrooms</span>
-                      <span class="number">05</span>
-                    </div>
-                    <div class="listing-info bath">
-                      <span class="title">Baths</span>
-                      <span class="number">05</span>
-                    </div>
-                    <div class="listing-info size">
-                      <span class="title">Size (Sq.ft)</span>
-                      <span class="number">1650</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="author">
-                  <div class="author-thumb">
-                    <a href="#"><img src="{{asset('images/listing/author-thumb-1.jpg')}}" class="img-responsive" alt=""></a>
-                  </div>
-                  <div class="author-info">
-                    <h6><a href="#">Maria Marlin</a></h6>
-                    <span class="listing-date"><i class="far fa-clock"></i> 12 December 2018</span>
-                    <a href="#"><i class="fas fa-long-arrow-alt-right"></i></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 col-sm-6">
-            <div class="listing">
-              <div class="listing-thumb">
-                <div class="listing-slider">
-                  <div class="slide slide-3">
-                    <img src="{{asset('images/listing/listing-slide-3.jpg')}}" class="img-responsive" alt="">
-                  </div>
-                  <div class="slide slide-1">
-                    <img src="{{asset('images/listing/listing-slide-1.jpg')}}" class="img-responsive" alt="">
-                  </div>
-                  <div class="slide slide-2">
-                    <img src="{{asset('images/listing/listing-slide-2.jpg')}}" class="img-responsive" alt="">
-                  </div>
-                </div>
-                <div class="overlay"></div>
-                <div class="quick-action">
-                  <ul>
-                    <li><a href="#"><i class="fas fa-exchange-alt"></i></a></li>
-                    <li><a href="#"><i class="far fa-heart"></i></a></li>
-                  </ul>
-                </div>
-                <div class="rate">
-                  <span>&#36;22,500.00</span>
-                </div>
-              </div>
-              <div class="content-block">
-                <div class="listing-body">
-                  <h5><a href="#">Olivers Kitchen</a> <span class="badge sale">Sale</span></h5>
-                  <div class="meta">
-                    <span class="listing-type">living room</span>
-                    <span class="listing-status open">Open</span>
-                  </div>
-                  <span class="address"><i class="fas fa-map-marker-alt"></i> 187, Madison Squre, New York, NY2154215</span>
-                  <div class="info">
-                    <div class="listing-info bedroom">
-                      <span class="title">Bedrooms</span>
-                      <span class="number">05</span>
-                    </div>
-                    <div class="listing-info bath">
-                      <span class="title">Baths</span>
-                      <span class="number">05</span>
-                    </div>
-                    <div class="listing-info size">
-                      <span class="title">Size (Sq.ft)</span>
-                      <span class="number">1650</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="author">
-                  <div class="author-thumb">
-                    <a href="#"><img src="{{asset('images/listing/author-thumb-1.jpg')}}" class="img-responsive" alt=""></a>
-                  </div>
-                  <div class="author-info">
-                    <h6><a href="#">Maria Marlin</a></h6>
-                    <span class="listing-date"><i class="far fa-clock"></i> 12 December 2018</span>
-                    <a href="#"><i class="fas fa-long-arrow-alt-right"></i></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          @endforeach
         </div>
       </div>
     </div>
