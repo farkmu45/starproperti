@@ -49,24 +49,24 @@ class AgentPropertyController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'title' => '',
-            'surface_area' => '',
-            'building_area' => '',
-            'location' => '',
-            'direction' => '',
-            'bathroom' => '',
-            'bedroom' => '',
-            'price' => '',
-            'value' => '',
-            'electricity' => '',
-            'water' => '',
-            'legality' => '',
-            'garage' => '',
-            'name' => '',
-            'description' => '',
-            'status_id' => '',
-            'type_id' => '',
-            'phone_number' => ''
+            'title' => 'required|string|max:60',
+            'surface_area' => 'required|numeric|digits_between:1,6',
+            'building_area' => 'required|numeric|digits_between:1,6',
+            'location' => 'required|string|max:70',
+            'direction' => 'required|alpha|max:40',
+            'bathroom' => 'required|integer|digits_between:1,3',
+            'bedroom' => 'required|integer|digits_between:1,3',
+            'price' => 'required|numeric|digits_between:1,8',
+            'value' => 'required|in:JT,M',
+            'electricity' => 'required|numeric|digits_between:1,8',
+            'water' => 'required|string|max:30',
+            'legality' => 'required|string|max:30',
+            'garage' => 'required|integer|digits_between:1,4',
+            'name' => 'required|string|max:50',
+            'description' => 'required|string|max:65535',
+            'status_id' => 'required|exists:property_status,id',
+            'type_id' => 'required|exists:property_types,id',
+            'phone_number' => 'required|max:20|min:6'
         ]);
 
         // dd($request->file('photo'));
@@ -138,24 +138,24 @@ class AgentPropertyController extends Controller
         abort_if(auth()->user()->id !== $property->user->id, 404);
         dd($request->photo);
         $data = $request->validate([
-            'title' => '',
-            'surface_area' => '',
-            'building_area' => '',
-            'location' => '',
-            'direction' => '',
-            'bathroom' => '',
-            'bedroom' => '',
-            'price' => '',
-            'value' => '',
-            'electricity' => '',
-            'water' => '',
-            'legality' => '',
-            'garage' => '',
-            'name' => '',
-            'description' => '',
-            'status_id' => '',
-            'type_id' => '',
-            'phone_number' => ''
+            'title' => 'required|string|max:60',
+            'surface_area' => 'required|numeric|digits_between:1,6',
+            'building_area' => 'required|numeric|digits_between:1,6',
+            'location' => 'required|string|max:70',
+            'direction' => 'required|alpha|max:40',
+            'bathroom' => 'required|integer|digits_between:1,3',
+            'bedroom' => 'required|integer|digits_between:1,3',
+            'price' => 'required|numeric|digits_between:1,8',
+            'value' => 'required|in:JT,M',
+            'electricity' => 'required|numeric|digits_between:1,8',
+            'water' => 'required|string|max:30',
+            'legality' => 'required|string|max:30',
+            'garage' => 'required|integer|digits_between:1,4',
+            'name' => 'required|string|max:50',
+            'description' => 'required|string|max:65535',
+            'status_id' => 'required|exists:property_status,id',
+            'type_id' => 'required|exists:property_types,id',
+            'phone_number' => 'required|max:20|min:6'
         ]);
 
         $property->update($data);

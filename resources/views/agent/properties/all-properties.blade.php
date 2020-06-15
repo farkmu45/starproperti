@@ -59,7 +59,7 @@
                         </div>
                         <div class="overlay"></div>
                         <div class="rate">
-                        <span>{{$property->price}} {{$property->value}}</span>
+                        <span>{{(int)$property->price}} {{$property->value}}</span>
                         </div>
                       </div>
                       <div class="content-block">
@@ -83,6 +83,12 @@
                               <span class="title">Luas (m<sup>2</sup>)</span>
                             <span class="number">{{$property->building_area}}</span>
                             </div>
+                          </div>
+                          <div style="margin-top: 40px;">
+                            <a href="/agent/properties/{{$property->id}}/edit" class="button" style="margin-right: 10px;">Edit</a>
+                            <form action="/agent/properties/{{$property->id}}" hidden method="post">
+                            </form>
+                            <button class="button" type="submit">Hapus</button>
                           </div>
                         </div>
                       </div>

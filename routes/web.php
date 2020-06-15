@@ -16,7 +16,6 @@ Route::get('/', 'FrontEndController@index');
 Route::get('/properties/{property}', 'FrontEndController@showProperty');
 Route::get('/agents/{agent}', 'FrontEndController@showAgentProperties');
 Route::get('/properties', 'FrontEndController@showProperties');
-
 Route::get('/search', 'FrontEndController@search');
 
 
@@ -31,7 +30,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
     Route::get('/dashboard', 'AdminController@index');
     Route::resource('/slides', 'Admin\SliderController');
     Route::resource('/popups', 'Admin\PopupController');
-    Route::resource('/propertys', 'Admin\PropertyController');
+    Route::resource('/properties', 'Admin\PropertyController');
     Route::resource('/articles', 'Admin\ArticleController');
     Route::resource('/events', 'Admin\EventController');
     Route::resource('/events-categories', 'Admin\EventCategoryController');
