@@ -24,7 +24,7 @@ class AgentPropertyController extends Controller
      */
     public function index()
     {
-        $properties = Property::with('status', 'type')->where('user_id',auth()->user()->id)->get();
+        $properties = Property::where('user_id',auth()->user()->id)->get();
         return view('agent.properties.all-properties')->withProperties($properties);
     }
 
@@ -171,5 +171,11 @@ class AgentPropertyController extends Controller
     public function destroy(Property $property)
     {
         abort_if(auth()->user()->id !== $property->user->id, 404);
+        foreach ($property->images as $image) {
+            Storage::delete($image->photo);
+        }
+
+        $property->delete();
+        return redirect()->back();
     }
 }

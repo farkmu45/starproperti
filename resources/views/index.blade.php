@@ -272,7 +272,7 @@
               <div class="listing-thumb">
                 <div class="listing-slider">
                   @foreach ($property->images as $image)
-                  <div class="slide" style="height: 350px">
+                  <div class="slide" style="height: 240px">
                     <img src="{{asset($image->photo)}}" class="img-responsive" style="width: 100%; height:100%; object-fit:cover" alt="">
                   </div>
                   @endforeach

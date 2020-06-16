@@ -71,7 +71,7 @@
                       <div class="col-xs-12">
                         <div class="form-group">
                           <label for="title">Judul</label>
-                          <input id="title" name="title" type="text" value="{{old('title')}}" @error('title') style="border-color: red" @enderror class="form-control" required>
+                          <input id="title" name="title" type="text" value="{{old('title')}}" @error('title') style="border-color: red" @enderror class="form-control" >
                           @error('title')    
                             <div style="color:red">
                               {{$message}}
@@ -83,7 +83,7 @@
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="surface_area">Luas Tanah</label>
-                          <input id="surface_area" name="surface_area" type="number" class="form-control" @error('surface_area') style="border-color: red" @enderror value="{{old('surface_area')}}" placeholder="Dalam satuan meter persegi" required>
+                          <input id="surface_area" name="surface_area" type="number" class="form-control" @error('surface_area') style="border-color: red" @enderror value="{{old('surface_area')}}" placeholder="Dalam satuan meter persegi" >
                           @error('surface_area')    
                             <div style="color:red">
                               {{$message}}
@@ -94,7 +94,7 @@
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="building_area">Luas Bangunan</label>
-                          <input id="building_area" name="building_area" type="number" class="form-control" @error('building_area') style="border-color: red" @enderror value="{{old('building_area')}}" placeholder="Dalam satuan meter persegi" required>
+                          <input id="building_area" name="building_area" type="number" class="form-control" @error('building_area') style="border-color: red" @enderror value="{{old('building_area')}}" placeholder="Dalam satuan meter persegi" >
                           @error('building_area')    
                             <div style="color:red">
                               {{$message}}
@@ -105,7 +105,7 @@
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="location">Lokasi</label>
-                          <input id="location" name="location" type="text" class="form-control" @error('location') style="border-color: red" @enderror value="{{old('location')}}" placeholder="" required>
+                          <input id="location" name="location" type="text" class="form-control" @error('location') style="border-color: red" @enderror value="{{old('location')}}" placeholder="" >
                           @error('location')    
                             <div style="color:red">
                               {{$message}}
@@ -116,7 +116,7 @@
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="direction">Arah hadap</label>
-                          <input id="direction" name="direction" type="text" class="form-control" value="{{old('direction')}}" @error('direction') style="border-color: red" @enderror placeholder="Barat,timur dll" required>
+                          <input id="direction" name="direction" type="text" class="form-control" value="{{old('direction')}}" @error('direction') style="border-color: red" @enderror placeholder="Barat,timur dll" >
                           @error('direction')    
                             <div style="color:red">
                               {{$message}}
@@ -127,7 +127,7 @@
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="bathroom">Kamar Mandi</label>
-                          <input id="bathroom" name="bathroom" type="number" class="form-control" @error('bathroom') style="border-color: red" @enderror value="{{old('bathroom')}}" placeholder="" required>
+                          <input id="bathroom" name="bathroom" type="number" class="form-control" @error('bathroom') style="border-color: red" @enderror value="{{old('bathroom')}}" placeholder="" >
                           @error('bathroom')    
                             <div style="color:red">
                               {{$message}}
@@ -138,7 +138,7 @@
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="bedroom">Kamar Tidur</label>
-                          <input id="bedroom" name="bedroom" type="number" class="form-control" value="{{old('bedroom')}}" @error('bedroom') style="border-color: red" @enderror placeholder="" required>
+                          <input id="bedroom" name="bedroom" type="number" class="form-control" value="{{old('bedroom')}}" @error('bedroom') style="border-color: red" @enderror placeholder="" >
                           @error('bedroom')    
                             <div style="color:red">
                               {{$message}}
@@ -149,7 +149,7 @@
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="price">Harga</label>
-                          <input id="price" name="price" type="number" class="form-control" value="{{old('price')}}" @error('price') style="border-color: red" @enderror placeholder="" required>
+                          <input id="price" name="price" type="number" class="form-control" value="{{old('price')}}" @error('price') style="border-color: red" @enderror placeholder="" >
                           @error('price')    
                             <div style="color:red">
                               {{$message}}
@@ -160,7 +160,7 @@
                       <div class="col-sm-6">
                         <div class="form-group">
                           <label for="value">Satuan Harga</label>
-                          <select id="value" name="value" class="form-control" required>
+                          <select id="value" name="value" class="form-control">
                             <option value="JT" {{old('value') == "JT" ? 'selected' : ''}}>Juta</option>
                             <option value="M" {{old('value') == "M" ? 'selected' : ''}}>Miliar</option>
                           </select>
@@ -170,7 +170,7 @@
                       <div class="col-sm-6">
                         <div class="form-group">
                           <label for="type_id">Tipe Rumah</label>
-                          <select id="type_id" name="type_id" class="form-control" required>
+                          <select id="type_id" name="type_id" class="form-control">
                             @foreach ($types as $type)
                             <option value="{{$type->id}}" {{old('type_id') == $type->id ? 'selected' : ''}}>{{$type->name}}</option>
                             @endforeach
@@ -181,7 +181,7 @@
                       <div class="col-sm-6">
                         <div class="form-group">
                           <label for="status_id">Status</label>
-                          <select id="status_id" name="status_id" class="form-control" required>
+                          <select id="status_id" name="status_id" class="form-control">
                             @foreach ($status as $s)
                             <option value="{{$s->id}}" {{old('status_id') == $s->id ? 'selected' : ''}}>{{$s->name}}</option>
                             @endforeach
@@ -192,7 +192,7 @@
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="electricity">Listrik</label>
-                          <input id="electricity" name="electricity" value="{{old('electricity')}}" type="number" class="form-control" placeholder="Dalam satuan watt" @error('electricity') style="border-color: red" @enderror required>
+                          <input id="electricity" name="electricity" value="{{old('electricity')}}" type="number" class="form-control" placeholder="Dalam satuan watt" @error('electricity') style="border-color: red" @enderror >
                           @error('electricity')    
                             <div style="color:red">
                               {{$message}}
@@ -204,7 +204,7 @@
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="water">Sumber Air</label>
-                          <input id="water" name="water" type="text" value="{{old('water')}}" class="form-control" @error('water') style="border-color: red" @enderror placeholder="" required>
+                          <input id="water" name="water" type="text" value="{{old('water')}}" class="form-control" @error('water') style="border-color: red" @enderror placeholder="" >
                           @error('water')    
                             <div style="color:red">
                               {{$message}}
@@ -216,7 +216,7 @@
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="legality">Legalitas</label>
-                          <input id="legality" name="legality" value="{{old('legality')}}" @error('legality') style="border-color: red" @enderror type="text" class="form-control" placeholder="" required>
+                          <input id="legality" name="legality" value="{{old('legality')}}" @error('legality') style="border-color: red" @enderror type="text" class="form-control" placeholder="" >
                           @error('legality')    
                             <div style="color:red">
                               {{$message}}
@@ -228,7 +228,7 @@
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="garage">Garasi</label>
-                          <input id="garage" name="garage" value="{{old('garage')}}" @error('garage') style="border-color: red" @enderror type="number" class="form-control" placeholder="" required>
+                          <input id="garage" name="garage" value="{{old('garage')}}" @error('garage') style="border-color: red" @enderror type="number" class="form-control" placeholder="" >
                           @error('garage')    
                             <div style="color:red">
                               {{$message}}
@@ -240,7 +240,7 @@
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="name">Nama</label>
-                          <input id="name" name="name" type="text" value="{{old('name')}}" @error('name') style="border-color: red" @enderror class="form-control" placeholder="" required>
+                          <input id="name" name="name" type="text" value="{{old('name')}}" @error('name') style="border-color: red" @enderror class="form-control" placeholder="" >
                           @error('name')    
                             <div style="color:red">
                               {{$message}}
@@ -252,7 +252,7 @@
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label for="phone_number">Nomor Handphone Pemilik</label>
-                          <input id="phone_number" name="phone_number" type="text" value="{{old('phone_number')}}" @error('phone_number') style="border-color: red" @enderror class="form-control" placeholder="" required>
+                          <input id="phone_number" name="phone_number" type="text" value="{{old('phone_number')}}" @error('phone_number') style="border-color: red" @enderror class="form-control" placeholder="" >
                           @error('phone_number')    
                             <div style="color:red">
                               {{$message}}
@@ -265,7 +265,7 @@
                       <div class="col-xs-12">
                         <div class="form-group listing-compose-block">
                           <label for="mytextarea">Description</label>
-                          <textarea required name="description" id="mytextarea" rows="20" class="tinymce-editor">{{old('description')}}</textarea>
+                          <textarea  name="description" id="mytextarea" rows="20" class="tinymce-editor">{{old('description')}}</textarea>
                           @error('description')    
                             <div style="color:red">
                               {{$message}}
@@ -278,7 +278,7 @@
                         <div class="form-group">
                           <label for="">Foto 1</label>
                           <input type="file" name="photo[]" data-max-file-size="2M" class="dropify" />
-                          <span>*Wajib diisi</span>
+                          <span>*Wajib diisi (jpg,jpeg,png. Max 2 MB)</span>
                         </div>
                       </div>
                       <div class="col-lg-4">
