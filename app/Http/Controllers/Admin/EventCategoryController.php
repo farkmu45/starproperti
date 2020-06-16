@@ -62,9 +62,9 @@ class EventCategoryController extends Controller
      * @param  \App\EventCategory  $eventCategory
      * @return \Illuminate\Http\Response
      */
-    public function edit(EventCategory $eventCategory)
+    public function edit(EventCategory $events_category)
     {
-        //
+        return view('admin.event-category.edit', ['title' => 'Edit Category', 'events_category' => $events_category]);
     }
 
     /**
@@ -74,9 +74,14 @@ class EventCategoryController extends Controller
      * @param  \App\EventCategory  $eventCategory
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, EventCategory $eventCategory)
+    public function update(Request $request, EventCategory $events_category)
     {
-        //
+        $data = $request->validate([
+            'name' => 'required',
+        ]);
+
+        $events_category->update($data);
+        return redirect('/admin/events-categories')->with('status', 'Event Category Updated');
     }
 
     /**
@@ -85,8 +90,9 @@ class EventCategoryController extends Controller
      * @param  \App\EventCategory  $eventCategory
      * @return \Illuminate\Http\Response
      */
-    public function destroy(EventCategory $eventCategory)
+    public function destroy(EventCategory $events_category)
     {
-        //
+        $events_category->delete();
+        return redirect('/admin/events-categories')->with('status', 'Event Category Delected');
     }
 }

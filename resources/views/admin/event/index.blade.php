@@ -18,7 +18,6 @@
                                     <th>Image</th>
                                     <th>Title</th>
                                     <th>Description</th>
-                                    <th>Date Upload</th>
                                     <th>Date Event</th>
                                     <th>Event Category</th>
                                     <th>Location</th>
@@ -31,10 +30,10 @@
                                         <td>{{$loop->iteration}}</td>
                                         <td><img width="60" src="{{asset($s->photo)}}" alt=""></td>
                                         <td>{{$s->title}}</td>
-                                        <td>{{$s->description}}</td>
-                                        <td>{{$s->create_at}}</td>
+                                        <td>{{ Str::limit($s->description)}}</td>
                                         <td>{{$s->event_date}}</td>
-                                        <td>{{$s->Location}}</td>
+                                        <td>{{$s->category->name}}</td>
+                                        <td>{{$s->location}}</td>
                                         <td>
                                             <a href="/admin/events/{{$s->id}}/edit" class="btn btn-info"><i class="ti-pencil"></i></a>
                                             <form action="/admin/events/{{$s->id}}" method="POST" class="d-inline">

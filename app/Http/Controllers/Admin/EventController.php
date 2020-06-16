@@ -3,8 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Event;
+use App\EventCategory;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Http\File;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File as FacadesFile;
 
 class EventController extends Controller
 {
@@ -26,7 +30,8 @@ class EventController extends Controller
      */
     public function create()
     {
-        return view('admin.event.create', ['title' => 'Add Event']);
+        $events = EventCategory::all();
+        return view('admin.event.create', ['title' => 'Add Event', 'events' => $events]);
     }
 
     /**
@@ -37,7 +42,26 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        \Tinify\setKey("9krHPgyjMb8GlwyZlzjnTNWMfvSbdSxq");
+        $data = $request->validate([
+            'title' => 'required',
+            'location' => 'required',
+            'event_date' => 'required',
+            'description' => 'required',
+            'category_id' => 'required',
+            'photo' => 'required',
+        ]);
+
+        $filetype = $request->file('photo')->extension();
+        $source = \Tinify\fromFile($data['photo']);
+        $text = 'optimized' . random_int(100, 100000) . '.' . $filetype;
+        $source->toFile($text);
+        $data['photo'] = Storage::putFile('eventPhotos', new File(public_path($text)));
+        FacadesFile::delete(public_path($text));
+
+        Event::create($data);
+        return redirect('/admin/events')->with('status', 'Event Created');
+
     }
 
     /**
