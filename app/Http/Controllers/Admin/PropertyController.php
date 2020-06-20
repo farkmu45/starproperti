@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Property;
+use App\PropertyType;
+use App\PropertyStatus;
+use App\User;
+use App\PropertyImage;
 use Illuminate\Http\Request;
 
 class PropertyController extends Controller
@@ -15,7 +19,8 @@ class PropertyController extends Controller
      */
     public function index()
     {
-        //
+        $propertys = Property::all();
+        return view('admin.property.index', ['title' => 'Propertys', 'propertys' => $propertys]);
     }
 
     /**
@@ -25,7 +30,9 @@ class PropertyController extends Controller
      */
     public function create()
     {
-        //
+        $propertyType = PropertyType::all();
+        $propertyStatus = PropertyStatus::all();
+        return view('admin.property.create', ['title' => 'Add Propertys', 'propertyStatus' => $propertyStatus, 'propertyType' => $propertyType]);
     }
 
     /**

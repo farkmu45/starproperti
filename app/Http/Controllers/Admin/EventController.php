@@ -49,7 +49,7 @@ class EventController extends Controller
             'event_date' => 'required',
             'description' => 'required',
             'category_id' => 'required',
-            'photo' => 'required',
+            'photo' => 'requiredfile|between:0,2048|mimes:jpeg,jpg,png',
         ]);
 
         $filetype = $request->file('photo')->extension();
@@ -83,7 +83,8 @@ class EventController extends Controller
      */
     public function edit(Event $event)
     {
-        //
+        $eventCategory = EventCategory::all();
+        return view('admin.event.edit', ['title' => 'Edit Events', 'event' => $event, 'eventCategory' => $eventCategory]);
     }
 
     /**
@@ -95,7 +96,29 @@ class EventController extends Controller
      */
     public function update(Request $request, Event $event)
     {
-        //
+        \Tinify\setKey("9krHPgyjMb8GlwyZlzjnTNWMfvSbdSxq");
+        $data = $request->validate([
+            'title' => 'required',
+            'location' => 'required',
+            'event_date' => 'required',
+            'description' => 'required',
+            'category_id' => 'required',
+            'photo' => 'file|between:0,2048|mimes:jpeg,jpg,png',
+        ]);
+
+        if ($request['photo']) {
+            Storage::delete($event->photo);
+            $filetype = $request->file('photo')->extension();
+            $source = \Tinify\fromFile($data['photo']);
+            $text = 'optimized' . random_int(100, 100000) . '.' . $filetype;
+            $source->toFile($text);
+            $data['photo'] = Storage::putFile('eventPhotos', new File(public_path($text)));
+            FacadesFile::delete(public_path($text));
+        }
+
+
+        $event->update($data);
+        return redirect('/admin/events')->with('status', 'Event Updated');
     }
 
     /**
@@ -106,6 +129,8 @@ class EventController extends Controller
      */
     public function destroy(Event $event)
     {
-        //
+        Storage::delete($event->photo);
+        $event->delete();
+        return redirect('/admin/events')->with('status', 'Event Deleted');
     }
 }

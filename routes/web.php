@@ -30,7 +30,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
     Route::get('/dashboard', 'AdminController@index');
     Route::resource('/slides', 'Admin\SliderController');
     Route::resource('/popups', 'Admin\PopupController');
-    Route::resource('/properties', 'Admin\PropertyController');
+    Route::resource('/propertys', 'Admin\PropertyController');
     Route::resource('/articles', 'Admin\ArticleController');
     Route::resource('/events', 'Admin\EventController');
     Route::resource('/events-categories', 'Admin\EventCategoryController');

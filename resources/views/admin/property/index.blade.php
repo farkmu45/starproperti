@@ -25,7 +25,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($events as $s)
+                                {{-- @foreach ($events as $s)
                                     <tr>
                                         <td>{{$loop->iteration}}</td>
                                         <td><img width="60" src="{{asset($s->photo)}}" alt=""></td>
@@ -43,7 +43,7 @@
                                             </form>
                                         </td>
                                     </tr>
-                                @endforeach
+                                @endforeach --}}
                             </tbody>
                         </table>
                     </div>
